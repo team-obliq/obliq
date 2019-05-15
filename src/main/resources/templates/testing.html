@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Testing</title>
 </head>
 <body>
 
+<div th:each="user : ${users}">
+    <h4 th:text="${user.username}"></h4>
+    <p th:text="${user.email}"></p>
 
+</div>
+<h1>These are the posts by user id</h1>
+<div th:each="post : ${posts}">
+    <p th:text="${post.title}"></p>
+    <p th:text="${post.body}"></p>
+    <p th:text="${post.user.id}"></p>
+</div>
+
+<h1>These are the comments by user id</h1>
+<div th:each="comment : ${comments}">
+    <p th:text="${comment.body}"></p>
+    <p th:text="${comment.user.id}"></p>
+
+</div>
+
+<h1>These are the comments by post id</h1>
+<div th:each="comment : ${commentsByPostId}">
+    <p th:text="${comment.body}"></p>
+    <p th:text="${comment.post.id}"></p>
+</div>
+
+<h1>These are all the comments</h1>
+<div th:each="comment : ${allComments}">
+    <p th:text="${comment.body}"></p>
+</div>
 </body>
 </html>
