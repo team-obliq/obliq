@@ -1,7 +1,7 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.TESTING;
 
-import com.obliq.obliq.ENTITYS.test;
-import com.obliq.obliq.REPOS.test_Repo;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class testing_CTRL {
 
     /* -Connection------------------------------------------------------------------------------------------ */
-    private test_Repo connectionTest;
+    private testing_Repo connectionTest;
 
-    public testing_CTRL(test_Repo connectionTest) {
+    public testing_CTRL(testing_Repo connectionTest) {
         this.connectionTest = connectionTest;
     }
     /* -Connection------------------------------------------------------------------------------------------ */
@@ -21,8 +21,6 @@ public class testing_CTRL {
     public String welcome() {
 
         System.out.println("working");
-
-        test test = new test();
 
 
         return "testing";

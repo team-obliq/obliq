@@ -1,8 +1,9 @@
-package com.obliq.obliq.REPOS;
-import com.obliq.obliq.ENTITYS.test;
+package com.obliq.obliq.TESTING;
+
+
 import org.springframework.data.repository.CrudRepository;
 
-public interface test_Repo extends CrudRepository <test, Long>{
+public interface testing_Repo extends CrudRepository <Testing, Long>{
 
 
 }
