@@ -11,11 +11,15 @@ public class Tribe{
 @Id @GeneratedValue
 private long id;
 
+    public Tribe() {}
 
+    public long getId() {
+        return id;
+    }
 
-
-
-
+    public void setId(long id) {
+        this.id = id;
+    }
 }
 
 /* --1 (name of the table you want to create----------------------------------------------------------------------------------------- */
