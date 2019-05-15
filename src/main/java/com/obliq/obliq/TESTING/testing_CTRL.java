@@ -2,8 +2,12 @@ package com.obliq.obliq.TESTING;
 
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.lang.reflect.Array;
+import java.util.*;
 
 @Controller
 public class testing_CTRL {
@@ -20,7 +24,6 @@ public class testing_CTRL {
     @GetMapping("/testing")
     public String welcome() {
 
-        System.out.println("working");
 
 
         return "testing";
