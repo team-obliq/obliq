@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Profile</title>
+    <th:block th:replace="fragments/head :: head('Profile')" />
 </head>
 <body>
+<th:block th:replace="fragments/navbar :: navbar" />
+<h1>Hello, <span th:text="${user.first_name}"></span></h1>
 
+<div class="container">
+    <div class="row my-5">
+        <div th:each="post : ${posts}" class="col col-md-4">
+            <h3 th:text="${post.title}"></h3>
+            <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
+            <p th:text="${post.body}"></p>
+            <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
+            <a href="#" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
 <form>
 
     <button type="submit" class="btn btn-primary">Profile</button>
 
 </form>
 
-
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
 </body>
 </html>
 
