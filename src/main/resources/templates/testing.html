@@ -15,25 +15,31 @@
 <div th:each="post : ${posts}">
     <p th:text="${post.title}"></p>
     <p th:text="${post.body}"></p>
-    <p th:text="${post.user.id}"></p>
+    <p th:text="'user id: ' + ${post.user.id}"></p>
 </div>
 
 <h1>These are the comments by user id</h1>
 <div th:each="comment : ${comments}">
     <p th:text="${comment.body}"></p>
-    <p th:text="${comment.user.id}"></p>
+    <p th:text="'user id: ' + ${comment.user.id}"></p>
 
 </div>
 
 <h1>These are the comments by post id</h1>
 <div th:each="comment : ${commentsByPostId}">
     <p th:text="${comment.body}"></p>
-    <p th:text="${comment.post.id}"></p>
+    <p th:text="'post id: ' + ${comment.post.id}"></p>
 </div>
 
 <h1>These are all the comments</h1>
 <div th:each="comment : ${allComments}">
     <p th:text="${comment.body}"></p>
+</div>
+
+<h1>These are all the careers by id</h1>
+<div th:each="career : ${careers}">
+    <p th:text="${career.title}"></p>
+    <p th:text="'career id: ' + ${career.id}"></p>
 </div>
 </body>
 </html>

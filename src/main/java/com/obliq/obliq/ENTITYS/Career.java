@@ -1,15 +1,22 @@
-package com.obliq.obliq.models;
+package com.obliq.obliq.ENTITYS;
+
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="tribes")
-public class Tribe{
+@Table(name="careers")
+public class Career{
 
 @Id @GeneratedValue
 private long id;
 
-    public Tribe() {}
+@Column (name = "title", nullable = false, length = 250, unique=true )
+private String title;
+
+public Career(){}
+public Career(String title) {
+        this.title = title;
+    }
 
     public long getId() {
         return id;
@@ -18,7 +25,16 @@ private long id;
     public void setId(long id) {
         this.id = id;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
+
 
 /* --1 (name of the table you want to create----------------------------------------------------------------------------------------- */
 /* --2 (name of the entity object you are creating----------------------------------------------------------------------------------------- */

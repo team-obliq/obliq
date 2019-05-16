@@ -1,4 +1,4 @@
-package com.obliq.obliq.models;
+package com.obliq.obliq.ENTITYS;
 
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,11 +9,17 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="comments")
-public class Comment{
+@Table(name="posts")
+public class Post{
 
 @Id @GeneratedValue
 private long id;
+
+@Column (name = "title", nullable = false, length = 50)
+private String title;
+
+@Column (name = "body", nullable = false, length = 500)
+private String body;
 
 @CreationTimestamp
 @Temporal(TemporalType.TIMESTAMP)
@@ -21,32 +27,21 @@ private long id;
 @DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
 private Date dateCreated;
 
-@Column (name = "body", nullable = false, length = 500)
-private String body;
-
-@Column (name = "points")
-private long points = 0;
-
 @ManyToOne
 @JoinColumn (name="user_id", referencedColumnName = "id")
 private User user;
 
-@ManyToOne
-@JoinColumn (name="post_id", referencedColumnName = "id")
-private Post post;
 
-@ManyToMany(mappedBy = "comment_with_points")
-private List<User> users;
+@OneToMany (cascade = CascadeType.ALL, mappedBy = "post")
+private List<Comment> comments;
 
-public Comment(){}
-
-public Comment(Date dateCreated, String body, long points, User user, Post post, List<User> users) {
-        this.dateCreated = dateCreated;
+public Post(){}
+public Post(String title, String body, Date dateCreated, User user, List<Comment> comments) {
+        this.title = title;
         this.body = body;
-        this.points = points;
+        this.dateCreated = dateCreated;
         this.user = user;
-        this.post = post;
-        this.users = users;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -57,12 +52,12 @@ public Comment(Date dateCreated, String body, long points, User user, Post post,
         this.id = id;
     }
 
-    public Date getDateCreated() {
-        return dateCreated;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBody() {
@@ -73,12 +68,12 @@ public Comment(Date dateCreated, String body, long points, User user, Post post,
         this.body = body;
     }
 
-    public long getPoints() {
-        return points;
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
-    public void setPoints(long points) {
-        this.points = points;
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public User getUser() {
@@ -89,20 +84,12 @@ public Comment(Date dateCreated, String body, long points, User user, Post post,
         this.user = user;
     }
 
-    public Post getPost() {
-        return post;
+    public List<Comment> getComments() {
+        return comments;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }
 
