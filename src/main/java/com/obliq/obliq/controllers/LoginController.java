@@ -1,4 +1,4 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,35 +6,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class signup_CTRL {
+public class LoginController {
 
-    @GetMapping("/signup")
-    public String signup_get() {
+    @GetMapping("/login")
+    public String login_get() {
 
-        System.out.println("signup_working");
+        System.out.println("Login_working");
 
 
-        return "signup";
+        return "login";
 
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/login")
     public String login_post() {
 
         System.out.println("working");
 
 
-        return "signup";
+        return "login";
 
     }
 
-    @GetMapping("/signup/{user}")
+    @GetMapping("/login/{user}")
     public String login_get_var(@PathVariable String user) {
 
-        System.out.println(user + " signup_working");
+        System.out.println(user + " Login_working");
 
 
-        return "signup";
+        return "login";
 
     }
 

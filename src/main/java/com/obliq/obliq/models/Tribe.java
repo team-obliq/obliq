@@ -1,20 +1,23 @@
-package com.obliq.obliq.ENTITYS;
-
+package com.obliq.obliq.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name="careers")
-public class Career{
+@Table(name="tribes")
+public class Tribe{
 
 @Id @GeneratedValue
 private long id;
 
-@Column (name = "title", nullable = false, length = 250, unique=true )
-private String title;
+    public Tribe() {}
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
 
 /* --1 (name of the table you want to create----------------------------------------------------------------------------------------- */
