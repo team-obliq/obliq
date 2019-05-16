@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+    <th:block th:replace="fragments/head :: head('Home')" />
 </head>
 <body>
+<th:block th:replace="fragments/navbar :: navbar" />
 <h1>HELLO FROM OBLIQ.APP</h1>
 
+
+<th:block th:replace="fragments/footer :: footer" />
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
 </body>
 </html>
