@@ -38,25 +38,6 @@ public class testing_CTRL {
     @GetMapping("/testing")
     public String welcome(Model model) {
 
-//        Career programmer = new Career("programmer");
-//        Career lawyer = new Career("lawyer");
-//        Career doctor = new Career("doctor");
-//        Career scientist = new Career("scientist");
-//        Career teacher = new Career("teacher");
-//
-//        careerRepo.save(programmer);
-//        careerRepo.save(lawyer);
-//        careerRepo.save(doctor);
-//        careerRepo.save(scientist);
-//        careerRepo.save(teacher);
-
-//        model.addAttribute("users", userRepo.findAll());
-//        model.addAttribute("posts", postRepo.findByUserId(1L));
-//        model.addAttribute("allComments", commentRepo.findAll());
-//        model.addAttribute("comments", commentRepo.findByUserId(2L));
-//        model.addAttribute("commentsByPostId", commentRepo.findByPostId(2L));
-//        model.addAttribute("careers", careerRepo.findAll());
-
 
         return "testing";
     }
