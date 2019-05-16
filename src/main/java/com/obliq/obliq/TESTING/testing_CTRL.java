@@ -3,6 +3,8 @@ package com.obliq.obliq.TESTING;
 
 
 
+import com.obliq.obliq.ENTITYS.Career;
+import com.obliq.obliq.REPOS.CareersRepository;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
@@ -22,6 +24,7 @@ public class testing_CTRL {
 
     public testing_CTRL(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
     public testing_CTRL(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
+    public testing_CTRL(testing_Repo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.connectionTest = connectionTest;
         this.userRepo = userRepo;
         this.postRepo = postRepo;
