@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Signup</title>
+    <th:block th:replace = "fragments/head :: head('Signup')"/>
 </head>
+
 <body>
 
-<form>
 
-    <button type="submit" class="btn btn-primary">Signup</button>
+<button type="button" class="btn btn-primary">Primary</button>
 
-</form>
-
+<th:block th:replace = "fragments/jsLinks :: jsLinks"/>
 
 </body>
 </html>
+
