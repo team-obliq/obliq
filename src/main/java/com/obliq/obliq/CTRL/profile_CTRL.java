@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class profile_CTRL {
+
+//    repo injection
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
@@ -21,17 +23,18 @@ public class profile_CTRL {
         this.commentRepo = commentRepo;
     }
 
+
+//  map profile view
     @GetMapping("/profile")
     public String profile_get(Model model) {
         model.addAttribute("user", userRepo.findOne(1L));
         model.addAttribute("posts", postRepo.findByUserId(1L));
 
         System.out.println("profile_working");
-
-
         return "profile";
 
     }
+
 
     @PostMapping("/profile")
     public String profile_post() {
@@ -43,6 +46,7 @@ public class profile_CTRL {
 
     }
 
+//    map profile view with id
     @GetMapping("/profile/{id}")
     public String login_get_var(@PathVariable Long id, Model model) {
         model.addAttribute("user", userRepo.findOne(id));

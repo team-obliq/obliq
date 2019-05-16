@@ -14,7 +14,7 @@
             <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
             <p th:text="${post.body}"></p>
             <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <a th:href="@{'/posts/delete/' + ${post.id}}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>
