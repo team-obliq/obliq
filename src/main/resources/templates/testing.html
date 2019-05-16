@@ -35,5 +35,11 @@
 <div th:each="comment : ${allComments}">
     <p th:text="${comment.body}"></p>
 </div>
+
+<h1>These are all the careers by id</h1>
+<div th:each="career : ${careers}">
+    <p th:text="${career.title}"></p>
+    <p th:text="'career id: ' + ${career.id}"></p>
+</div>
 </body>
 </html>
