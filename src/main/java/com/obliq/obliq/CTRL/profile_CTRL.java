@@ -24,7 +24,7 @@ public class profile_CTRL {
     }
 
 
-//  map profile view
+//    map profile view
     @GetMapping("/profile")
     public String profile_get(Model model) {
         model.addAttribute("user", userRepo.findOne(1L));
