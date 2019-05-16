@@ -7,14 +7,12 @@ package com.obliq.obliq.TESTING;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
-=======
 import com.obliq.obliq.REPOS.CareersRepository;
->>>>>>> 6450ce0fac175df642d15c3bc1a36dad1e58118b:src/main/java/com/obliq/obliq/TESTING/testing_CTRL.java
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TestingController {
+public class testing_CTRL {
 
     /* -Connection------------------------------------------------------------------------------------------ */
     private TestingRepo connectionTest;
@@ -23,11 +21,8 @@ public class TestingController {
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
 
-<<<<<<< HEAD:src/main/java/com/obliq/obliq/TESTING/TestingController.java
-    public TestingController(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
-=======
-    public testing_CTRL(testing_Repo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
->>>>>>> 6450ce0fac175df642d15c3bc1a36dad1e58118b:src/main/java/com/obliq/obliq/TESTING/testing_CTRL.java
+    public testing_CTRL(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
+    public testing_CTRL(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.connectionTest = connectionTest;
         this.userRepo = userRepo;
         this.postRepo = postRepo;

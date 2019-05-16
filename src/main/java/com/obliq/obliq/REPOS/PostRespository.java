@@ -1,8 +1,6 @@
 package com.obliq.obliq.REPOS;
 
-<<<<<<< HEAD:src/main/java/com/obliq/obliq/repositories/PostRespository.java
 import com.obliq.obliq.ENTITYS.Post;
-=======
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
