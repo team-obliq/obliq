@@ -3,6 +3,7 @@ package com.obliq.obliq.TESTING;
 
 
 
+import com.obliq.obliq.ENTITYS.Career;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
@@ -33,11 +34,8 @@ public class testing_CTRL {
 
     @GetMapping("/testing")
     public String welcome(Model model) {
-        model.addAttribute("users", userRepo.findAll());
-        model.addAttribute("posts", postRepo.findByUserId(1L));
-        model.addAttribute("allComments", commentRepo.findAll());
-        model.addAttribute("comments", commentRepo.findByUserId(2L));
-        model.addAttribute("commentsByPostId", commentRepo.findByPostId(2L));
+
+
         return "testing";
     }
 
