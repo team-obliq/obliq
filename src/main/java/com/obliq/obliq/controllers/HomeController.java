@@ -1,11 +1,10 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class home_CTRL {
+public class HomeController {
 
     @GetMapping("/index")
     public String indexPage() {

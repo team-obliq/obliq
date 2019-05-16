@@ -1,4 +1,4 @@
-package com.obliq.obliq.ENTITYS;
+package com.obliq.obliq.models;
 
 
 import org.hibernate.annotations.ColumnDefault;
@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class profile_CTRL {
+public class ProfileController {
 
     @GetMapping("/profile")
     public String profile_get() {
