@@ -3,7 +3,6 @@ package com.obliq.obliq.TESTING;
 
 
 
-<<<<<<< HEAD:src/main/java/com/obliq/obliq/TESTING/TestingController.java
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
