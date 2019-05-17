@@ -84,6 +84,13 @@ public User(String username, String email, String password, String first_name, S
       this.comment_with_points = comment_with_points;
    }
 
+   public User(User copy) {
+      id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+      email = copy.email;
+      username = copy.username;
+      password = copy.password;
+   }
+
    public long getId() {
       return id;
    }

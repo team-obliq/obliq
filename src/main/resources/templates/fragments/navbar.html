@@ -11,16 +11,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" href="#">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <form th:action="@{/logout}" th:method="post">
+                        <a class="btn-link btn" style="margin-top: 8px">Logout</a>
+                    </form>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
