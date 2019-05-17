@@ -1,9 +1,11 @@
 package com.obliq.obliq.CTRL;
 
 import com.obliq.obliq.ENTITYS.Post;
+import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +46,8 @@ public class post_CTRL {
 //    map for edited post. save to DB
     @PostMapping("posts/edit/{id}")
     public String editPost(@ModelAttribute Post postEdited) {
-        postEdited.setUser(userRepo.findOne(1L));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        postEdited.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(postEdited);
         return "redirect:/profile";
     }
@@ -52,6 +55,7 @@ public class post_CTRL {
 //    map for delete function
     @GetMapping("/posts/delete/{id}")
     public String deletePost(@PathVariable long id) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findOne(id);
         postRepo.delete(post);
         return "redirect:/profile";

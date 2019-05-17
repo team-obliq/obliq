@@ -1,8 +1,10 @@
 package com.obliq.obliq.CTRL;
 
+import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,10 @@ public class profile_CTRL {
 //    map profile view
     @GetMapping("/profile")
     public String profile_get(Model model) {
-        model.addAttribute("user", userRepo.findOne(1L));
-        model.addAttribute("posts", postRepo.findByUserId(1L));
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
+        model.addAttribute("posts", postRepo.findByUserId(sessionUser.getId()));
 
         System.out.println("profile_working");
         return "profile";

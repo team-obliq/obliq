@@ -15,11 +15,11 @@
                     <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="/register">Register</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <form th:action="@{/logout}" th:method="post">
-                        <a class="btn-link btn" style="margin-top: 8px">Logout</a>
+                        <button class="btn-link btn" >Logout</button>
                     </form>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">

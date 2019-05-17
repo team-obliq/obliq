@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:replace="fragments/head :: head('Home')" />
 </head>
@@ -10,7 +10,16 @@
 <div class="container">
     <div class="row">
         <div th:each="post : ${posts}" class="col col-md-4">
-            <h3 th:text="${post.title}"></h3>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{'posts/showPost/' + ${post.id}}">
+                    <h3 th:text="${post.title}"></h3>
+                </a>
+            </div>
+            <div sec:authorize="isAnonymous()">
+                <a href="/login">
+                    <h3 th:text="${post.title}"></h3>
+                </a>
+            </div>
             <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
             <p th:text="${post.body}"></p>
             <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
