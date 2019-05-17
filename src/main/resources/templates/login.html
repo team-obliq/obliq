@@ -6,8 +6,14 @@
 <body>
 <th:block th:replace="fragments/navbar" />
 
-
+<h1> Log In</h1>
 <div class="container">
+    <div th:if="${param.error}">
+        Invalid Username or Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
     <form th:action="@{/login}" th:method="post">
         <div class="form-group">
             <input id="username" type="text" class="form-control" name="username" placeholder="username" />
