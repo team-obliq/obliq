@@ -46,10 +46,16 @@
         <option th:value="'Antartica'">Antartica</option>
     </select>
 
-    <!--<select class="form-control" th:field="${operator.opeId}"  id="dropOperator">-->
-        <!--<option value="0">select operator</option>-->
-        <!--<option th:each="operator : ${operators}" th:value="${operator.id}" th:text="${operator.operatorName}"></option>-->
-    <!--</select>-->
+    <br/>
+    <br/>
+    <br/>
+
+    <select th:field="*{career_id}">
+            <option th:each="career : ${careerList}"
+                    th:value="${career.getId()}"
+                    th:text="${career.getTitle()}">
+            </option>
+    </select>
 
 
     <br/>
