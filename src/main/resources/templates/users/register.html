@@ -5,16 +5,23 @@
 </head>
 <body>
 <h1>Create an account</h1>
+<div class="container fill">
 <form th:action="@{/register}" method="POST" th:object="${user}">
 
-    <input id="username" th:field="*{username}" class="form-control" placeholder="username"/>
-    <input id="email" th:field="*{email}" class="form-control" placeholder="email"/>
-    <input id="password" type="password" th:field="*{password}" class="form-control" placeholder="password"/>
-    <input id="first_name" type="text" th:field="*{first_name}" class="form-control" placeholder="first name" />
+    <div class="form-group">
+        <input id="username" th:field="*{username}" class="form-control" placeholder="username"/>
+        <input id="email" th:field="*{email}" class="form-control" placeholder="email"/>
+    </div>
+    <div class="form-group">
+        <input id="password" type="password" th:field="*{password}" class="form-control" placeholder="password"/>
+        <input id="first_name" type="text" th:field="*{first_name}" class="form-control" placeholder="first name" />
+    </div>
     <textarea id="bio" class="form-control" th:field="*{bio}" placeholder="bio" ></textarea>
-    <input id="continent" th:field="*{continent}" class="form-control" placeholder="continent" />
-    <input id="tribe" th:field="*{tribe_id}" class="form-control" placeholder="enter a tribe number" />
-    <input id="career" th:field="*{career_id}" class="form-control" placeholder="enter a career number" />
+    <div class="form-group">
+        <input id="continent" th:field="*{continent}" class="form-control" placeholder="continent" />
+        <input id="tribe" th:field="*{tribe_id}" class="form-control" placeholder="enter a tribe number" />
+        <input id="career" th:field="*{career_id}" class="form-control" placeholder="enter a career number" />
+    </div>
 
     <div class="box">
         <form id="pick-form">
@@ -41,6 +48,7 @@
 
     <!--<input value="Sign me up!" type="submit" />-->
 </form>
+</div>
 
 <th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace="fragments/jsLinks :: jsLinks" />
