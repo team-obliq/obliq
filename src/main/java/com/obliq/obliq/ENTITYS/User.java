@@ -44,6 +44,9 @@ private long tribe_id;
 @Column (name = "career_id")
 private long career_id;
 
+@Column (name = "image_URL")
+private String imageURL;
+
 @CreationTimestamp
 @Temporal(TemporalType.TIMESTAMP)
 @Column(nullable = false)
@@ -68,7 +71,7 @@ private List<Comment> comments;
    private List<Comment> comment_with_points;
 
 public User(){}
-public User(String username, String email, String password, String first_name, String bio, String continent, long points, Date dateCreated, long tribe_id, long career_id, List<Post> posts, List<Comment> comments, List<Comment> comment_with_points) {
+public User(String username, String email, String password, String first_name, String bio, String continent, long points, Date dateCreated, long tribe_id, long career_id, String imageURL, List<Post> posts, List<Comment> comments, List<Comment> comment_with_points) {
       this.username = username;
       this.email = email;
       this.password = password;
@@ -79,6 +82,7 @@ public User(String username, String email, String password, String first_name, S
       this.dateCreated = dateCreated;
       this.tribe_id = tribe_id;
       this.career_id = career_id;
+      this.imageURL = imageURL;
       this.posts = posts;
       this.comments = comments;
       this.comment_with_points = comment_with_points;
@@ -177,6 +181,14 @@ public User(String username, String email, String password, String first_name, S
 
    public void setCareer_id(long career_id) {
       this.career_id = career_id;
+   }
+
+   public String getImageURL() {
+      return imageURL;
+   }
+
+   public void setImageURL(String imageURL) {
+      this.imageURL = imageURL;
    }
 
    public List<Post> getPosts() {

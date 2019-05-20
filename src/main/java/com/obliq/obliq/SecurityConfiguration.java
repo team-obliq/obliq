@@ -36,31 +36,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
 //                login configuration
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/profile")
-                    .permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/profile")
+                .permitAll()
 //
 //                logout configuration
 
                 .and()
-                    .logout()
-                    .logoutSuccessUrl("/login?logout")
+                .logout()
+                .logoutSuccessUrl("/login?logout")
 
 //                pages that can be viewed without login
                 .and()
-                    .authorizeRequests()
-                    .antMatchers("/")
-                    .permitAll()
+                .authorizeRequests()
+                .antMatchers("/")
+                .permitAll()
 
 //                pages that can only be viewed when logged in
                 .and()
-                    .authorizeRequests()
-                    .antMatchers(
-                            "/profile",
-                            "/edit",
-                            "/delete"
-                    )
-                    .authenticated()
+                .authorizeRequests()
+                .antMatchers(
+                        "/profile",
+                        "/edit",
+                        "/delete"
+                )
+                .authenticated()
                 ;
     }
 }

@@ -6,6 +6,8 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 <h1>Hello, <span th:text="${user.first_name}"></span></h1>
+<img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+
 
 <div class="container" >
     <div class="row my-5">

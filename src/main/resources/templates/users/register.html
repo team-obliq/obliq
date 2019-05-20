@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <title>Sign up</title>
+    <th:block th:replace="fragments/head :: head('Register')" />
 </head>
 <body>
 <h1>Create an account</h1>
@@ -17,7 +16,33 @@
     <input id="tribe" th:field="*{tribe_id}" class="form-control" placeholder="enter a tribe number" />
     <input id="career" th:field="*{career_id}" class="form-control" placeholder="enter a career number" />
 
-    <input value="Sign me up!" type="submit" />
+    <div class="box">
+        <form id="pick-form">
+            <div class="field">
+                <div class="control">
+                    <button class="button btn btn-primary my-2" type="button" id="picker">Pick file</button>
+                    <input type="hidden" id="fileupload" name="fileupload" />
+                    <input id="file-url" name="file-url" type="hidden" />
+                    <input th:field="*{imageURL}" id="imageURL" name="imageURL" type="hidden" />
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+
+                </div>
+                <div class="control" id="nameBox"></div>
+                <div class="control" id="urlBox"></div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="button btn btn-primary my-2" type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--<input value="Sign me up!" type="submit" />-->
 </form>
+
+<th:block th:replace="fragments/footer :: footer" />
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
 </body>
 </html>
