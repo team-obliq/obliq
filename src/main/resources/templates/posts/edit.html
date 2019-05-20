@@ -6,7 +6,7 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
-<div class="container">
+<div class="container fill">
     <form th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
         <div class="form-group">
             <input type="text" class="form-control" th:field="*{title}" />

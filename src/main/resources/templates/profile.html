@@ -9,7 +9,7 @@
 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
 
 
-<div class="container" >
+<div class="container fill" >
     <div class="row my-5">
         <div th:each="post : ${posts}" class="col col-md-4">
             <h3 th:text="${post.title}"></h3>
@@ -21,8 +21,6 @@
     </div>
 </div>
 <form>
-
-    <button type="submit" class="btn btn-primary">Profile</button>
 
 </form>
 

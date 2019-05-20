@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:thL="http://www.w3.org/1999/html">
+<head>
+    <th:block th:replace="fragments/head :: head('Edit Profile')" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar :: navbar" />
+
+<div class="container fill">
+    <form th:action="@{'/users/edit/' + ${id}}" th:method="post" th:object="${user}">
+        <div class="form-group">
+            <input type="text" th:field="*{username}" class="form-control"/>
+            <input type="email" th:field="*{email}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{first_name}" class="form-control"/>
+            <textarea th:field="*{bio}" class="form-control"></textarea>
+        </div>
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{password}" />
+        <input type="hidden" th:field="*{dateCreated}" />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<th:block th:replace="fragments/footer :: footer" />
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
+</body>
+</html>

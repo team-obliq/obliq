@@ -17,16 +17,20 @@
                 <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn" >Logout</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="dropdown">
+                    <a class="btn-link btn dropdown-toggle" href="#" role="button" id="dropdownMenu" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Profile</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/posts/create">Create Post</a>
+                        <a class="dropdown-item" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit Profile</a>
+                        <form th:action="@{/logout}" th:method="post" class="dropdown-item">
+                            <button id="navbarBtnLink" class="btn-link btn btn-primary">Logout</button>
+                        </form>
+                    </div>
                 </li>
             </ul>
         </div>
