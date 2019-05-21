@@ -58,6 +58,6 @@ public class comments_CTRL {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         commentEdited.setUser(userRepo.findOne(sessionUser.getId()));
         commentRepo.save(commentEdited);
-        return "redirect:/posts/showPost" + comment
+        return "redirect:/posts/showPost";
     }
 }

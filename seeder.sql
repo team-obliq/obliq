@@ -1,6 +1,4 @@
-drop obliq_db;
-create
-use obliq_db;
+use obliq;
 
 INSERT INTO users (username, email, password, first_name, bio, continent, points, tribe_id, career_id, date_created)
 VALUES
@@ -93,3 +91,5 @@ values
 ('Spectrum analysis'),('Retrace your steps'),('Go to an extreme, move back to the more comfortable place'),
 ('Once the search is in the progress, something will be found'),('Only a part, not the whole'),
 ('From nothing to more than nothing'),('Be less critical more often');
+
+
