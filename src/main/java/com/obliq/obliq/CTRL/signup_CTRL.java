@@ -5,7 +5,6 @@ import com.obliq.obliq.ENTITYS.Tribe;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.*;
 import com.obliq.obliq.SERVICE.tribe_assigment_SRV;
-import com.obliq.obliq.TESTING.testing_Repo;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -20,7 +19,6 @@ import java.util.List;
 public class signup_CTRL {
 
     /* -Connection------------------------------------------------------------------------------------------ */
-    private testing_Repo connectionTest;
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
@@ -29,8 +27,7 @@ public class signup_CTRL {
 
     private tribe_assigment_SRV assigment_tool;
 
-    public signup_CTRL(TribesRepository tribeRepo, testing_Repo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo, tribe_assigment_SRV assigment_tool) {
-        this.connectionTest = connectionTest;
+    public signup_CTRL(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo, tribe_assigment_SRV assigment_tool) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;

@@ -3,7 +3,6 @@ package com.obliq.obliq.SERVICE;
 import com.obliq.obliq.ENTITYS.Tribe;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.*;
-import com.obliq.obliq.TESTING.testing_Repo;
 import javassist.compiler.Javac;
 import org.springframework.stereotype.Service;
 
@@ -13,43 +12,41 @@ import java.util.logging.Filter;
 @Service
 public class tribe_assigment_SRV {
 
-/* -Connection------------------------------------------------------------------------------------------ */
-    private testing_Repo connectionTest;
+    /* -Connection------------------------------------------------------------------------------------------ */
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
     private TribesRepository tribeRepo;
 
-    public tribe_assigment_SRV(TribesRepository tribeRepo, testing_Repo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
-        this.connectionTest = connectionTest;
+    public tribe_assigment_SRV(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;
         this.careerRepo = careerRepo;
         this.tribeRepo = tribeRepo;
     }
-/* -Connection------------------------------------------------------------------------------------------ */
+    /* -Connection------------------------------------------------------------------------------------------ */
 
-/* -Returns a list of all tribes from database------------------------------------------------------------------------------------------ */
+    /* -Returns a list of all tribes from database------------------------------------------------------------------------------------------ */
     public List<Tribe> CREATE_master_Tribe_List() {
         List<Tribe> list = new ArrayList<>();
-        for (Tribe t: tribeRepo.findAll()) {
+        for (Tribe t : tribeRepo.findAll()) {
             list.add(t);
         }
         return list;
     }
 
-/* -Returns a list of all users from database------------------------------------------------------------------------------------------ */
+    /* -Returns a list of all users from database------------------------------------------------------------------------------------------ */
     public List<User> CREATE_master_User_List() {
         List<User> list = new ArrayList<>();
-        for (User u: userRepo.findAll()) {
+        for (User u : userRepo.findAll()) {
             list.add(u);
         }
         return list;
     }
 
-/* -Test a list to see if it has 0 members------------------------------------------------------------------------------------------ */
+    /* -Test a list to see if it has 0 members------------------------------------------------------------------------------------------ */
     public boolean TEST_is_list_empty(List<Tribe> list) {
         if (list.size() == 0) {
             return true;
@@ -66,17 +63,17 @@ public class tribe_assigment_SRV {
         }
     }
 
-/* -Takes a boolean and if true creates a tribe------------------------------------------------------------------------------------------ */
+    /* -Takes a boolean and if true creates a tribe------------------------------------------------------------------------------------------ */
     public void CREATE_a_new_tribe() {
-            Tribe tribe = new Tribe();
-            tribeRepo.save(tribe);
+        Tribe tribe = new Tribe();
+        tribeRepo.save(tribe);
     }
 
-/* -Updates all member tribe count------------------------------------------------------------------------------------------ */
+    /* -Updates all member tribe count------------------------------------------------------------------------------------------ */
     public void UPDATE_tribe_member_count() {
-        for (Tribe t: CREATE_master_Tribe_List()) {
+        for (Tribe t : CREATE_master_Tribe_List()) {
             long count = 0;
-            for (User u: CREATE_master_User_List()) {
+            for (User u : CREATE_master_User_List()) {
                 if (u.getTribe_id() == t.getId()) {
                     count++;
                 }
@@ -87,12 +84,12 @@ public class tribe_assigment_SRV {
         }
     }
 
-/* -Make a list of tribes with user less than the chosen number------------------------------------------------------------------------------------------ */
+    /* -Make a list of tribes with user less than the chosen number------------------------------------------------------------------------------------------ */
     public List<Tribe> CREATE_max_tribe_member_list(long max_count) {
         List<Tribe> list = new ArrayList<>();
         UPDATE_tribe_member_count();
         //Loop 1
-        for (Tribe t: CREATE_master_Tribe_List()) {
+        for (Tribe t : CREATE_master_Tribe_List()) {
             if (t.getMember_count() < max_count) {
                 list.add(t);
             }
@@ -100,7 +97,7 @@ public class tribe_assigment_SRV {
         return list;
     }
 
-/* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
+    /* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
     public List<Tribe> FILTER_list_using_new_member_career(List<Tribe> candidate_List, User user) {
 
         List<Tribe> candidate_rewrite = new ArrayList<>();
@@ -126,19 +123,19 @@ public class tribe_assigment_SRV {
 
     }
 
-/* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
+    /* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
     public long return_Tribe_ID_with_highest_member_count(List<Tribe> list) {
         List<Tribe> max_tribe_list = new ArrayList<>();
         List<Long> list_size_tracker = new ArrayList<>();
         long tribe_ID = 0;
 
-        for (Tribe t: list) {
+        for (Tribe t : list) {
             list_size_tracker.add(t.getMember_count());
         }
 
 
-        for (Tribe t: list) {
-            if (t.getMember_count() == Collections.max(list_size_tracker)){
+        for (Tribe t : list) {
+            if (t.getMember_count() == Collections.max(list_size_tracker)) {
                 max_tribe_list.add(t);
             }
         }
@@ -156,15 +153,15 @@ public class tribe_assigment_SRV {
         return tribe_ID;
     }
 
-/* ---Put new user in database---------------------------------------------------------------------------------------- */
+    /* ---Put new user in database---------------------------------------------------------------------------------------- */
     public void PUT_user_in_tribe(User user, long tribe_ID) {
         user.setTribe_id(tribe_ID);
     }
 
 
-/* --------------------------------------------------------------------------------------------------------------------- */
-/* --------------------------------------------------------------------------------------------------------------------- */
-/* -Tibe assigment master tool (Assigns a User a tribe and returns that user)---------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------------------------------- */
+    /* -Tibe assigment master tool (Assigns a User a tribe and returns that user)---------------------------------------------------------------------------------------- */
     public User tribe_assigment_master_tool(User user) {
         System.out.println(user.getFirst_name());
         while (true) {

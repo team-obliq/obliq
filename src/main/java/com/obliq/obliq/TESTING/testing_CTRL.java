@@ -6,10 +6,7 @@ package com.obliq.obliq.TESTING;
 import com.obliq.obliq.ENTITYS.Career;
 
 
-import com.obliq.obliq.REPOS.CareersRepository;
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.REPOS.*;
 import com.obliq.obliq.REPOS.CareersRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +17,6 @@ import java.util.Random;
 public class testing_CTRL {
 
     /* -Connection------------------------------------------------------------------------------------------ */
-    private TestingRepo connectionTest;
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
@@ -31,16 +27,14 @@ public class testing_CTRL {
    
 
 
-    public testing_CTRL(TestingRepo connectionTest, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
+    public testing_CTRL(UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
 
 
-        this.connectionTest = connectionTest;
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;
         this.careerRepo = careerRepo;
         this.tribeRepo = tribeRepo;
-        this.assigment_tool = assigment_tool;
     }
     /* -Connection------------------------------------------------------------------------------------------ */
 
