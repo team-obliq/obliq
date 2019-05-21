@@ -16,9 +16,23 @@
                         <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
                         <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
                     </div>
+                    <div class="row">
+                        <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
+            <div class="form-group">
+                <input th:field="*{body}" class="form-control" placeholder="enter comment"/>
+                <input type="hidden" name="postId" th:value="${post.id}"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!--<div class="row">-->
+            <!--<a class="btn btn-primary" th:href="@{'/comments/create/' + ${post.id}}">Comment</a>-->
+        <!--</div>-->
     </div>
 
     <th:block th:replace="fragments/footer :: footer" />
