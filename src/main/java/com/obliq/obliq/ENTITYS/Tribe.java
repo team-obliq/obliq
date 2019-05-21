@@ -1,5 +1,7 @@
 package com.obliq.obliq.ENTITYS;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,10 @@ public class Tribe{
 @Id @GeneratedValue
 private long id;
 
+@Column (name = "member_count")
+@ColumnDefault("0")
+private long member_count;
+
     public Tribe() {}
 
     public long getId() {
@@ -17,6 +23,14 @@ private long id;
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setMember_count(long member_count) {
+        this.member_count = member_count;
+    }
+
+    public long getMember_count() {
+        return member_count;
     }
 }
 

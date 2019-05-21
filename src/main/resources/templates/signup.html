@@ -7,10 +7,69 @@
 <body>
 
 
-<button type="button" class="btn btn-primary">Primary</button>
+<form  th:action="@{/signup}" th:method="post" th:object="${user}">
+
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" th:field="*{username}" class="form-control" id="username" aria-describedby="" placeholder="Enter username"/>
+    </div>
+
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" th:field="*{email}" class="form-control" id="email" aria-describedby="" placeholder="Enter email"/>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" th:field="*{password}" class="form-control" id="password" aria-describedby="" placeholder="Enter password"/>
+    </div>
+
+
+    <div class="form-group">
+        <label for="first_name">First name</label>
+        <input type="text" th:field="*{first_name}" class="form-control" id="first_name" placeholder="First Name"/>
+    </div>
+
+    <div class="form-group">
+        <label for="bio">Write a short bio to tell your tribe who you are</label>
+        <input type="text" th:field="*{bio}" class="form-control" id="bio" placeholder="I am...."/>
+    </div>
+
+
+    <select th:field="*{continent}">
+        <option th:value="'North America'">North America</option>
+        <option th:value="'South America'">South America</option>
+        <option th:value="'Asia'">Asia</option>
+        <option th:value="'Africa'">Africa</option>
+        <option th:value="'Europe'">Europe</option>
+        <option th:value="'Australia'">Australia</option>
+        <option th:value="'Antartica'">Antartica</option>
+    </select>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <select th:field="*{career_id}">
+            <option th:each="career : ${careerList}"
+                    th:value="${career.getId()}"
+                    th:text="${career.getTitle()}">
+            </option>
+    </select>
+
+
+    <br/>
+    <br/>
+    <br/>
+
+    <button type="submit" class="btn btn-primary">Signup</button>
+
+</form>
+
+
+
 
 <th:block th:replace = "fragments/jsLinks :: jsLinks"/>
-
 </body>
 </html>
 
