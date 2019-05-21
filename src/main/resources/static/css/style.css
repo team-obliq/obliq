@@ -1,0 +1,29 @@
+#footer {
+    color: #fff;
+}
+.profile-img {
+    height: 50px;
+}
+
+#navbarBtnLink {
+    color: deepskyblue;
+    ease-in: 0, 0, 1m, 0
+}
+
+.fill {
+    height: 100vh;
+}
+
+.background-color {
+    background-color: #475563
+}
+
+.border {
+    color: #334355
+}
+
+.text-color {
+    text-decoration-color: #e8e2d6;
+    font-family: "Raleway", sans-serif;
+}
+

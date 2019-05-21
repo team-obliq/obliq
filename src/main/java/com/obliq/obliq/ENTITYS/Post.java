@@ -9,34 +9,37 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="posts")
-public class Post{
+@Table(name = "posts")
+public class Post {
 
-@Id @GeneratedValue
-private long id;
+    @Id
+    @GeneratedValue
+    private long id;
 
-@Column (name = "title", nullable = false, length = 50)
-private String title;
+    @Column(name = "title", nullable = false, length = 50)
+    private String title;
 
-@Column (name = "body", nullable = false, length = 500)
-private String body;
+    @Column(name = "body", nullable = false, length = 500)
+    private String body;
 
-@CreationTimestamp
-@Temporal(TemporalType.TIMESTAMP)
-@Column(nullable = false)
-@DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
-private Date dateCreated;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private Date dateCreated;
 
-@ManyToOne
-@JoinColumn (name="user_id", referencedColumnName = "id")
-private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 
-@OneToMany (cascade = CascadeType.ALL, mappedBy = "post")
-private List<Comment> comments;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+    private List<Comment> comments;
 
-public Post(){}
-public Post(String title, String body, Date dateCreated, User user, List<Comment> comments) {
+    public Post() {
+    }
+
+    public Post(String title, String body, Date dateCreated, User user, List<Comment> comments) {
         this.title = title;
         this.body = body;
         this.dateCreated = dateCreated;

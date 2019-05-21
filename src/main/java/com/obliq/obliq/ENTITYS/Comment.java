@@ -9,38 +9,40 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="comments")
-public class Comment{
+@Table(name = "comments")
+public class Comment {
 
-@Id @GeneratedValue
-private long id;
+    @Id
+    @GeneratedValue
+    private long id;
 
-@CreationTimestamp
-@Temporal(TemporalType.TIMESTAMP)
-@Column(nullable = false)
-@DateTimeFormat(pattern="dd.MM.yyyy HH:mm:ss")
-private Date dateCreated;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")
+    private Date dateCreated;
 
-@Column (name = "body", nullable = false, length = 500)
-private String body;
+    @Column(name = "body", nullable = false, length = 500)
+    private String body;
 
-@Column (name = "points")
-private long points = 0;
+    @Column(name = "points")
+    private long points = 0;
 
-@ManyToOne
-@JoinColumn (name="user_id", referencedColumnName = "id")
-private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-@ManyToOne
-@JoinColumn (name="post_id", referencedColumnName = "id")
-private Post post;
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    private Post post;
 
-@ManyToMany(mappedBy = "comment_with_points")
-private List<User> users;
+    @ManyToMany(mappedBy = "comment_with_points")
+    private List<User> users;
 
-public Comment(){}
+    public Comment() {
+    }
 
-public Comment(Date dateCreated, String body, long points, User user, Post post, List<User> users) {
+    public Comment(Date dateCreated, String body, long points, User user, Post post, List<User> users) {
         this.dateCreated = dateCreated;
         this.body = body;
         this.points = points;

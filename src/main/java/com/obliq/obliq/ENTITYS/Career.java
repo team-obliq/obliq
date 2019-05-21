@@ -4,17 +4,20 @@ package com.obliq.obliq.ENTITYS;
 import javax.persistence.*;
 
 @Entity
-@Table(name="careers")
-public class Career{
+@Table(name = "careers")
+public class Career {
 
-@Id @GeneratedValue
-private long id;
+    @Id
+    @GeneratedValue
+    private long id;
 
-@Column (name = "title", nullable = false, length = 250, unique=true )
-private String title;
+    @Column(name = "title", nullable = false, length = 250, unique = true)
+    private String title;
 
-public Career(){}
-public Career(String title) {
+    public Career() {
+    }
+
+    public Career(String title) {
         this.title = title;
     }
 
