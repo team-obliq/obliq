@@ -67,6 +67,9 @@ public class signup_CTRL {
 
         assigment_tool.tribe_assigment_master_tool(user);
 
+        userRepo.save(user);
+
+        assigment_tool.UPDATE_tribe_member_count();
 
         return "signup";
 //        return "redirect:/profile";

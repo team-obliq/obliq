@@ -7,10 +7,7 @@ import com.obliq.obliq.TESTING.testing_Repo;
 import javassist.compiler.Javac;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Filter;
 
 @Service
@@ -61,6 +58,14 @@ public class tribe_assigment_SRV {
         }
     }
 
+    public boolean TEST_is_User_list_empty(List<User> list) {
+        if (list.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 /* -Takes a boolean and if true creates a tribe------------------------------------------------------------------------------------------ */
     public void CREATE_a_new_tribe() {
             Tribe tribe = new Tribe();
@@ -69,7 +74,6 @@ public class tribe_assigment_SRV {
 
 /* -Updates all member tribe count------------------------------------------------------------------------------------------ */
     public void UPDATE_tribe_member_count() {
-
         for (Tribe t: CREATE_master_Tribe_List()) {
             long count = 0;
             for (User u: CREATE_master_User_List()) {
@@ -97,34 +101,44 @@ public class tribe_assigment_SRV {
     }
 
 /* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
-    public void FILTER_list_using_new_member_career(List<Tribe> list, User user) {
+    public List<Tribe> FILTER_list_using_new_member_career(List<Tribe> candidate_List, User user) {
 
-        for (Tribe t: list) {
-            //loop2
-            for (User u: CREATE_master_User_List()) {
-                if (u.getTribe_id() == t.getId() & user.getCareer_id() == u.getCareer_id()) {
-                    list.remove(t);
+        List<Tribe> candidate_rewrite = new ArrayList<>();
+        List<User> userList = CREATE_master_User_List();
+
+        Iterator t = candidate_List.iterator();
+        Iterator u = userList.iterator();
+
+        Tribe tribe = new Tribe();
+        User user1 = new User();
+        while (t.hasNext()) {
+            tribe = (Tribe) t.next();
+            while (u.hasNext()) {
+                user1 = (User) u.next();
+                if (tribe.getId() == user1.getTribe_id() && user1.getCareer_id() == user.getCareer_id()) {
+                    t.remove();
+                    break;
                 }
             }
         }
+
+        return candidate_List;
+
     }
 
 /* -Filters all tribes containing a member with a matching careers to the new user------------------------------------------------------------------------------------------ */
     public long return_Tribe_ID_with_highest_member_count(List<Tribe> list) {
-
-        list = CREATE_master_Tribe_List();
         List<Tribe> max_tribe_list = new ArrayList<>();
-        List<Integer> list_size_tracker = new ArrayList<>();
+        List<Long> list_size_tracker = new ArrayList<>();
         long tribe_ID = 0;
 
         for (Tribe t: list) {
-            Integer i = (int) (long) t.getMember_count();
-            list_size_tracker.add(i);
+            list_size_tracker.add(t.getMember_count());
         }
 
+
         for (Tribe t: list) {
-            Integer i = (int) (long) t.getMember_count();
-            if (i == Collections.max(list_size_tracker)){
+            if (t.getMember_count() == Collections.max(list_size_tracker)){
                 max_tribe_list.add(t);
             }
         }
@@ -135,7 +149,7 @@ public class tribe_assigment_SRV {
 
         if (max_tribe_list.size() > 1) {
             Random rand = new Random();
-            int rand_int = rand.nextInt(max_tribe_list.size())-1;
+            int rand_int = rand.nextInt(max_tribe_list.size());
             tribe_ID = max_tribe_list.get(rand_int).getId();
         }
 
@@ -152,62 +166,64 @@ public class tribe_assigment_SRV {
 /* --------------------------------------------------------------------------------------------------------------------- */
 /* -Tibe assigment master tool (Assigns a User a tribe and returns that user)---------------------------------------------------------------------------------------- */
     public User tribe_assigment_master_tool(User user) {
+        System.out.println(user.getFirst_name());
         while (true) {
-
             //1: Update all tribe member count
+            System.out.println("Step 1");
             UPDATE_tribe_member_count();
 
             //2: Test to see if there are any tribe and if not (CREATE NEW TRIBE)
+            System.out.println("Step 2");
             if (TEST_is_list_empty(CREATE_master_Tribe_List())) {
                 CREATE_a_new_tribe();
+                System.out.println("Starting over: Create_master_Tribe_list empty");
                 continue;
             }
 
+            System.out.println("Step 3");
             //3: Set max members per tribe variable;
             long max_members_per_tribe = 3;
 
-            //4: Create a list to filter and test for new user placement
+            System.out.println("Step 4");
+            //4: Create 2 lists to filter and test for new user placement
             List<Tribe> candidate_List;
+            List<Tribe> candidate_List_2 = new ArrayList<>();
 
+            System.out.println("Step 5");
             //5; Fill candidate_List with Tribes who have less than x members;
             candidate_List = CREATE_max_tribe_member_list(max_members_per_tribe);
 
+            System.out.println("Step 6");
             //6: Test candidate list to see if its empty if so (CREATE NEW TRIBE)
             if (TEST_is_list_empty(candidate_List)) {
                 CREATE_a_new_tribe();
+                System.out.println("Starting over: candidate_List: All tribes full");
                 continue;
             }
 
+            System.out.println("Step 7");
+//            7: Filter max member tribe list for career members matching new user
+            candidate_List = FILTER_list_using_new_member_career(candidate_List, user);
 
-            //loop 1
-            for (Tribe t: candidate_List) {
-                //loop 2
-                for (User u: CREATE_master_User_List()) {
-                    if (u.getTribe_id() == t.getId() && user.getCareer_id() == u.getCareer_id()) {
-                        candidate_List.remove(t);
-                    }
-                }
+            System.out.println("Step 8");
+//            8: Test candidate list to see if its empty if so (CREATE NEW TRIBE)
+            if (TEST_is_list_empty(candidate_List)) {
+                CREATE_a_new_tribe();
+                System.out.println("Starting over: candidate_List: no tribes with open career spot");
+                continue;
             }
 
-
-            //7: Filter max member tribe list for career members matching new user
-//            FILTER_list_using_new_member_career(candidate_List, user);
-
-
-            //8: Test candidate list to see if its empty if so (CREATE NEW TRIBE)
-//            if (TEST_is_list_empty(candidate_List)) {
-//                CREATE_a_new_tribe();
-//                continue;
-//            }
-
+            System.out.println("Step 9");
             //9: Create the tribe ID variable that will be used to assign new member to tribe
-            long tribe_Id;
+            long tribe_Id = 0;
 
-            //9: find Tribe ID with the highest member count and assign to tribe_Id
-//            tribe_Id = return_Tribe_ID_with_highest_member_count(candidate_List);
+            System.out.println("Step 10");
+            //10: find Tribe ID with the highest member count and assign to tribe_Id
+            tribe_Id = return_Tribe_ID_with_highest_member_count(candidate_List);
 
-            //10: Set tribe Id on new member
-//            user.setTribe_id(tribe_Id);
+            System.out.println("Step 11");
+//            11: Set tribe Id on new member
+            user.setTribe_id(tribe_Id);
 
             return user;
         }
