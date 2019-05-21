@@ -19,9 +19,11 @@
         <input type="hidden" th:field="*{id}" />
         <input type="hidden" th:field="*{password}" />
         <input type="hidden" th:field="*{dateCreated}" />
+        <input type="hidden" th:field="*{imageURL}" />
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
 </div>
 
 <th:block th:replace="fragments/footer :: footer" />
