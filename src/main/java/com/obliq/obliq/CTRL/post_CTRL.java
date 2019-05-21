@@ -50,7 +50,7 @@ public class post_CTRL {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(post);
-        return "redirect:/posts/" + post.getId();
+        return "redirect:/posts/showPost/" + post.getId();
     }
 
 //    map for edit form in the edit view
