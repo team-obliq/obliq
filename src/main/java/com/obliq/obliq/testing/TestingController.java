@@ -11,14 +11,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class testing_CTRL {
+public class TestingController {
 
     /* -Connection------------------------------------------------------------------------------------------ */
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
 
-    public testing_CTRL( UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
+    public TestingController(UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;
