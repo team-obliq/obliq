@@ -2,6 +2,7 @@ package com.obliq.obliq.ENTITYS;
 
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ private long points = 0;
 @JoinColumn (name="user_id", referencedColumnName = "id")
 private User user;
 
-@ManyToOne
+@ManyToOne(cascade = CascadeType.PERSIST)
 @JoinColumn (name="post_id", referencedColumnName = "id")
 private Post post;
 

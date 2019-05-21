@@ -1,5 +1,6 @@
 package com.obliq.obliq.CTRL;
 
+import com.obliq.obliq.ENTITYS.Comment;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.CommentRepository;
@@ -31,7 +32,9 @@ public class post_CTRL {
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         model.addAttribute("post", postRepo.findOne(id));
+        model.addAttribute("comment", new Comment());
         model.addAttribute("comments", commentRepo.findByPostId(id));
+        model.addAttribute("postId");
         return "posts/showPost";
     }
 
@@ -75,5 +78,6 @@ public class post_CTRL {
         postRepo.delete(post);
         return "redirect:/profile";
     }
+
 
 }

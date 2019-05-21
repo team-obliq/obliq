@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head :: head('Create Comment')" />
+</head>
+<body>
+<th:block th:replace="fragments/navbar :: navbar" />
+
+<div class="container fill">
+    <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
+        <div class="form-group">
+            <textarea class="form-control" th:field="*{body}" placeholder="enter text"></textarea>
+            <!--<input type="hidden" th:field="*{post.id}" />-->
+            <!--<input type="hidden" th:field="*{post.body}" />-->
+            <!--<input type="hidden" th:field="*{post.title}" />-->
+            <!--<input type="hidden" th:field="*{post.dateCreated}" />-->
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<th:block th:replace="fragments/footer :: footer" />
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
+</body>
+</html>
