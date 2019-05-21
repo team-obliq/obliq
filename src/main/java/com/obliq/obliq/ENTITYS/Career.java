@@ -2,8 +2,6 @@ package com.obliq.obliq.ENTITYS;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="careers")

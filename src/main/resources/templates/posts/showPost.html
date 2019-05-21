@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head :: head('Show')" />
+</head>
+<body>
+    <th:block th:replace="fragments/navbar :: navbar" />
+    <div class="container fill">
+        <div class="row">
+            <div class="col">
+                <h1 th:text="${post.title}"></h1>
+                <p th:text="${post.body}"></p>
+                <div class="row">
+                    <div th:each="comment : ${comments}" class="col">
+                        <p th:text="${comment.body}"></p>
+                        <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
+                        <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="fragments/footer :: footer" />
+    <th:block th:replace="fragments/jsLinks :: jsLinks" />
+</body>
+</html>
