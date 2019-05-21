@@ -1,17 +1,14 @@
-package com.obliq.obliq.TESTING;
+package com.obliq.obliq.testing;
 
 
 
 
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.repositories.CommentRepository;
+import com.obliq.obliq.repositories.PostRespository;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.lang.reflect.Array;
-import java.util.*;
 
 @Controller
 public class testing_CTRL {

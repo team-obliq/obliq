@@ -1,15 +1,10 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
-import com.obliq.obliq.ENTITYS.Career;
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.ENTITYS.UserWithRoles;
-import com.obliq.obliq.REPOS.CareersRepository;
-import com.obliq.obliq.REPOS.UserRespository;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
+import com.obliq.obliq.models.Career;
+import com.obliq.obliq.models.User;
+import com.obliq.obliq.repositories.CareersRepository;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,22 +13,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.obliq.obliq.SERVICE.tribe_assigment_SRV;
+import com.obliq.obliq.service.TribeAssignmentService;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
-public class user_CTRL {
+public class UserController {
     private UserRespository users;
     private CareersRepository careerRepo;
     private PasswordEncoder passwordEncoder;
-    private tribe_assigment_SRV assigment_tool;
+    private TribeAssignmentService assigment_tool;
 
-    public user_CTRL(UserRespository users, PasswordEncoder passwordEncoder, tribe_assigment_SRV assigment_tool,
-                     CareersRepository careerRepo){
+    public UserController(UserRespository users, PasswordEncoder passwordEncoder, TribeAssignmentService assigment_tool,
+                          CareersRepository careerRepo){
         this.users = users;
         this.passwordEncoder = passwordEncoder;
         this.assigment_tool = assigment_tool;

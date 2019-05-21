@@ -1,16 +1,14 @@
-package com.obliq.obliq.SERVICE;
+package com.obliq.obliq.service;
 
-import com.obliq.obliq.ENTITYS.Tribe;
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.*;
-import javassist.compiler.Javac;
+import com.obliq.obliq.models.Tribe;
+import com.obliq.obliq.models.User;
+import com.obliq.obliq.repositories.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.logging.Filter;
 
 @Service
-public class tribe_assigment_SRV {
+public class TribeAssignmentService {
 
 /* -Connection------------------------------------------------------------------------------------------ */
     private UserRespository userRepo;
@@ -19,7 +17,7 @@ public class tribe_assigment_SRV {
     private CareersRepository careerRepo;
     private TribesRepository tribeRepo;
 
-    public tribe_assigment_SRV(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
+    public TribeAssignmentService(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;

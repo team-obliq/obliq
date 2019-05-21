@@ -1,6 +1,6 @@
-package com.obliq.obliq.REPOS;
+package com.obliq.obliq.repositories;
 
-import com.obliq.obliq.ENTITYS.Post;
+import com.obliq.obliq.models.Post;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

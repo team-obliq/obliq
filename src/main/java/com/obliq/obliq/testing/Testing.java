@@ -1,13 +1,12 @@
-package com.obliq.obliq.TESTING;
+package com.obliq.obliq.testing;
 
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
-import java.util.Calendar;
+
 import java.util.Date;
 
 import javax.persistence.*;
-import java.sql.Time;
 
 @Entity
 @Table(name="testing")

@@ -1,8 +1,8 @@
-package com.obliq.obliq.SECURITY;
+package com.obliq.obliq.security;
 
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.ENTITYS.UserWithRoles;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.models.User;
+import com.obliq.obliq.models.UserWithRoles;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

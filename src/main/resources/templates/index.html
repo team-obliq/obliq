@@ -5,7 +5,7 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<h1>HELLO FROM OBLIQ.APP</h1>
+<h1>OBLIQ</h1>
 
 <div class="container fill">
     <div class="row">
@@ -23,7 +23,7 @@
             <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
             <p th:text="${post.body}"></p>
             <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
-
+            <h1 th:text="${card.card}"></h1>
         </div>
     </div>
 </div>

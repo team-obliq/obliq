@@ -1,27 +1,29 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
-import com.obliq.obliq.ENTITYS.Comment;
-import com.obliq.obliq.ENTITYS.Post;
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.models.Comment;
+import com.obliq.obliq.models.User;
+import com.obliq.obliq.repositories.CardRepository;
+import com.obliq.obliq.repositories.CommentRepository;
+import com.obliq.obliq.repositories.PostRespository;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class comments_CTRL {
+public class CommentsController {
 
     private UserRespository userRepo;
     private PostRespository postRepo;
     private CommentRepository commentRepo;
+    private CardRepository cardRepo;
 
-    public comments_CTRL(UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
+    public CommentsController(UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CardRepository cardRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;
+        this.cardRepo = cardRepo;
     }
 
     @GetMapping("/comments/create")
@@ -51,6 +53,7 @@ public class comments_CTRL {
     @GetMapping("/comments/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {
         model.addAttribute("comment", commentRepo.findOne(id));
+        model.addAttribute("card", cardRepo.findOne(id));
         return "comments/edit";
     }
     @PostMapping("/comments/edit/{id}")

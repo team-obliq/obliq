@@ -1,6 +1,6 @@
-package com.obliq.obliq.REPOS;
+package com.obliq.obliq.repositories;
 
-import com.obliq.obliq.ENTITYS.Career;
+import com.obliq.obliq.models.Career;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

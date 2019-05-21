@@ -1,20 +1,20 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.repositories.CommentRepository;
+import com.obliq.obliq.repositories.PostRespository;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class home_CTRL {
+public class HomeController {
 
     private PostRespository postRepo;
     private UserRespository userRepo;
     private CommentRepository commentRepo;
 
-    public home_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo) {
+    public HomeController(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;

@@ -1,22 +1,21 @@
-package com.obliq.obliq.ENTITYS;
+package com.obliq.obliq.models;
 
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="careers")
-public class Career{
+@Table(name="tribes")
+public class Tribe{
 
 @Id @GeneratedValue
 private long id;
 
-@Column (name = "title", nullable = false, length = 250, unique=true )
-private String title;
+@Column (name = "member_count")
+@ColumnDefault("0")
+private long member_count;
 
-public Career(){}
-public Career(String title) {
-        this.title = title;
-    }
+    public Tribe() {}
 
     public long getId() {
         return id;
@@ -26,15 +25,14 @@ public Career(String title) {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public void setMember_count(long member_count) {
+        this.member_count = member_count;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public long getMember_count() {
+        return member_count;
     }
 }
-
 
 /* --1 (name of the table you want to create----------------------------------------------------------------------------------------- */
 /* --2 (name of the entity object you are creating----------------------------------------------------------------------------------------- */

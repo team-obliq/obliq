@@ -1,4 +1,4 @@
-package com.obliq.obliq.ENTITYS;
+package com.obliq.obliq.models;
 
 
 import javax.persistence.*;

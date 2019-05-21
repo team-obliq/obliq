@@ -1,22 +1,11 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
-import com.obliq.obliq.ENTITYS.Career;
-import com.obliq.obliq.ENTITYS.Tribe;
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.*;
-import com.obliq.obliq.SERVICE.tribe_assigment_SRV;
+import com.obliq.obliq.repositories.*;
+import com.obliq.obliq.service.TribeAssignmentService;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import javax.swing.text.View;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @Controller
-public class signup_CTRL {
+public class SignupController {
 
     /* -Connection------------------------------------------------------------------------------------------ */
     private UserRespository userRepo;
@@ -25,9 +14,9 @@ public class signup_CTRL {
     private CareersRepository careerRepo;
     private TribesRepository tribeRepo;
 
-    private tribe_assigment_SRV assigment_tool;
+    private TribeAssignmentService assigment_tool;
 
-    public signup_CTRL(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo, tribe_assigment_SRV assigment_tool) {
+    public SignupController(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo, TribeAssignmentService assigment_tool) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;

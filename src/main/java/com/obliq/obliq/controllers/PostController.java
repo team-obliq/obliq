@@ -1,11 +1,11 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
-import com.obliq.obliq.ENTITYS.Comment;
-import com.obliq.obliq.ENTITYS.Post;
-import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.models.Comment;
+import com.obliq.obliq.models.Post;
+import com.obliq.obliq.models.User;
+import com.obliq.obliq.repositories.CommentRepository;
+import com.obliq.obliq.repositories.PostRespository;
+import com.obliq.obliq.repositories.UserRespository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class post_CTRL {
+public class PostController {
 
 //    repo injection
     private PostRespository postRepo;
     private UserRespository userRepo;
     private CommentRepository commentRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo) {
+    public PostController(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;

@@ -1,10 +1,10 @@
-package com.obliq.obliq.CTRL;
+package com.obliq.obliq.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class authentication_CTRL {
+public class AuthenticationController {
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
