@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:replace="fragments/head :: head('Show')" />
 </head>
@@ -13,8 +13,8 @@
                 <div class="row">
                     <div th:each="comment : ${comments}" class="col">
                         <p th:text="${comment.body}"></p>
-                        <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
-                        <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
+                        <small sec:authorize="isAnonymous()" th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
+                        <p sec:authorize="isAnonymous()" th:text="'posted by: '+ ${comment.user.first_name}"></p>
                     </div>
                     <div class="row">
                         <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
-            <div class="form-group">
+            <div class="form-group my-5">
                 <input th:field="*{body}" class="form-control" placeholder="enter comment"/>
                 <input type="hidden" name="postId" th:value="${post.id}"/>
             </div>
