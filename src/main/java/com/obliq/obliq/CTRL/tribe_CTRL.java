@@ -10,9 +10,7 @@ import com.obliq.obliq.REPOS.UserRespository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -80,13 +78,42 @@ public class tribe_CTRL {
 
 
     @PostMapping("/Tribe")
-    public String profile_post() {
+    public String profile_post(@ModelAttribute Comment comment, @RequestParam(name = "password") String password) {
 
 
 
         return "Tribe";
 
     }
+
+
+    @PostMapping("tribes/comment")
+    public String createComment(@ModelAttribute Comment comment, @RequestParam(name="postId") long postId) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        comment.setUser(userRepo.findOne(sessionUser.getId()));
+        comment.setPost(postRepo.findOne(postId));
+        System.out.println(postId);
+
+
+        commentRepo.save(comment);
+        System.out.println(comment.getBody());
+        System.out.println(comment.getUser().getId());
+        System.out.println(comment.getPost().getId());
+
+//        return "redirect:/posts/showPost/" + comment.getPost().getId();
+        return "tribes/posts/" + postId;
+    }
+
+//    @PostMapping("tribes/comment")
+//    public String createComment() {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        comment.setUser(userRepo.findOne(sessionUser.getId()));
+//        String thisPost = postId;
+//        System.out.println(comment.getPost().getId());
+
+//        return "redirect:/posts/showPost/" + comment.getPost().getId();
+//        return "tribes/posts";
+//    }
 
 
 }

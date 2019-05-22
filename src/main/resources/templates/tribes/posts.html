@@ -46,10 +46,11 @@
 
     <br/>
 
-    <form th:action="@{/posts/showPost}" th:method="post" th:object="${comment}">
+    <form th:action="@{/tribes/comment}" th:method="post" th:object="${comment}">
         <div class="row form-group" id="comment_input">
-            <!--<input th:field="*{body}" class="form-control" placeholder="enter comment"/>-->
+            <input th:field="*{body}" class="form-control" placeholder="enter comment"/>
             <input type="hidden" name="postId" th:value="${post.id}"/>
+            <!--<input type="hidden" name="postId" th:value="${.id}"/>-->
         </div>
 
         <div class ="row" id="submit_button">

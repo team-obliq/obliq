@@ -29,24 +29,24 @@ public class comments_CTRL {
         model.addAttribute("comment", new Comment());
         return "posts/showPost";
     }
-
-    @PostMapping("/comments/create")
-    public String createComment(@ModelAttribute Comment comment, @RequestParam(name="postId") long postId) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        comment.setUser(userRepo.findOne(sessionUser.getId()));
-//        String thisPost = postId;
-        comment.setPost(postRepo.findOne(postId));
-        System.out.println(postId);
-
-
-        commentRepo.save(comment);
-        System.out.println(comment.getBody());
-        System.out.println(comment.getUser().getId());
-//        System.out.println(comment.getPost().getId());
-
-//        return "redirect:/posts/showPost/" + comment.getPost().getId();
-            return "/comments/create";
-    }
+//
+//    @PostMapping("/comments/create")
+//    public String createComment(@ModelAttribute Comment comment, @RequestParam(name="postId") long postId) {
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        comment.setUser(userRepo.findOne(sessionUser.getId()));
+////        String thisPost = postId;
+//        comment.setPost(postRepo.findOne(postId));
+//        System.out.println(postId);
+//
+//
+//        commentRepo.save(comment);
+//        System.out.println(comment.getBody());
+//        System.out.println(comment.getUser().getId());
+////        System.out.println(comment.getPost().getId());
+//
+////        return "redirect:/posts/showPost/" + comment.getPost().getId();
+//            return "tribes/" + postId;
+//    }
 
     @GetMapping("/comments/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {
