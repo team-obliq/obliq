@@ -6,7 +6,7 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
-<div class="container fill">
+<div id="createContainer" class="container fill">
     <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
         <div class="form-group">
             <input th:field="*{title}" placeholder="title" class="form-control"/>
@@ -18,6 +18,19 @@
         <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
 </div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+
+    let post = [[${post}]];
+
+    // document.getElementById('createContainer').innerHTML += '<div id="postFromThymeleaf"><h1>hello</h1></div>';
+    let div = document.createElement("div");
+    div.innerHTML = "Hello from script tag " + post.body;
+    document.body.appendChild(div);
+    /*]]>*/
+</script>
 
 <th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace="fragments/jsLinks :: jsLinks" />

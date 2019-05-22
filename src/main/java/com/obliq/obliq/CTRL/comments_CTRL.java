@@ -1,11 +1,10 @@
 package com.obliq.obliq.CTRL;
 
 import com.obliq.obliq.ENTITYS.Comment;
-import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.REPOS.PostRepository;
+import com.obliq.obliq.REPOS.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class comments_CTRL {
 
-    private UserRespository userRepo;
-    private PostRespository postRepo;
+    private UserRepository userRepo;
+    private PostRepository postRepo;
     private CommentRepository commentRepo;
 
-    public comments_CTRL(UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo) {
+    public comments_CTRL(UserRepository userRepo, PostRepository postRepo, CommentRepository commentRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;

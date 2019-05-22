@@ -26,6 +26,19 @@
 
 </div>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+
+    let username = /*[[${user.username}]]*/ '';
+
+    let div = document.createElement("div");
+    div.innerHTML = "Hello from script tag " + username;
+    document.body.appendChild(div);
+
+    /*]]>*/
+</script>
+
 <th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace="fragments/jsLinks :: jsLinks" />
 </body>

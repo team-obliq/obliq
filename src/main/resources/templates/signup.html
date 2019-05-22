@@ -57,12 +57,35 @@
             </option>
     </select>
 
+    <div class="box">
+        <form id="pick-form">
+            <div class="field">
+                <div class="control">
+                    <button class="button btn btn-primary my-2" type="button" id="picker">Pick file</button>
+                    <input type="hidden" id="fileupload" name="fileupload" />
+                    <input id="file-url" name="file-url" type="hidden" />
+                    <input th:field="*{imageURL}" id="imageURL" name="imageURL" type="hidden" />
+                    <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+
+
+                </div>
+                <div class="control" id="nameBox"></div>
+                <div class="control" id="urlBox"></div>
+            </div>
+            <div class="field my-4">
+                <div class="control">
+                    <input class="button btn btn-primary my-2" type="submit" value="Submit" />
+                </div>
+            </div>
+        </form>
+    </div>
+
 
     <br/>
     <br/>
     <br/>
 
-    <button type="submit" class="btn btn-primary">Signup</button>
+    <!--<button type="submit" class="btn btn-primary">Signup</button>-->
 
 </form>
 
