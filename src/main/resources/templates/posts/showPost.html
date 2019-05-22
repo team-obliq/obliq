@@ -35,26 +35,6 @@
 
     <div class="container fill">
 
-        <div class = "row" id = "title" th:text="${post.title}"> </div>
-        <div class = "row" id = "post_body" th:text="${post.body}"> </div>
-
-        <div class = "row" id = "post_owner_info">
-            <div class="col" th:text="${post_owner_name}"></div>
-            <div class="col" th:text="${post_owner_career}"></div>
-            <div class="col" th:text="${post_date}"></div>
-        </div>
-
-        <br/>
-
-        <form th:action="@{/posts/showPost}" th:method="post" th:object="${comment}">
-                <div class="row form-group" id="comment_input">
-                    <!--<input th:field="*{body}" class="form-control" placeholder="enter comment"/>-->
-                    <input type="hidden" name="postId" th:value="${post.id}"/>
-                </div>
-
-                <div class ="row" id="submit_button">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
         </form>
 
         <br/>

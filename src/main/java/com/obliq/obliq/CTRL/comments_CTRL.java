@@ -45,7 +45,7 @@ public class comments_CTRL {
 //        System.out.println(comment.getPost().getId());
 
 //        return "redirect:/posts/showPost/" + comment.getPost().getId();
-            return "/comments/create";
+            return "redirect:/posts/showPost/" + postId;
     }
 
     @GetMapping("/comments/edit/{id}")
