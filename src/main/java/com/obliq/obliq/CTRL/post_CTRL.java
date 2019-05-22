@@ -3,6 +3,7 @@ package com.obliq.obliq.CTRL;
 import com.obliq.obliq.ENTITYS.Comment;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
+import com.obliq.obliq.REPOS.CareersRepository;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRespository;
 import com.obliq.obliq.REPOS.UserRespository;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
+
 @Controller
 public class post_CTRL {
 
@@ -21,22 +24,57 @@ public class post_CTRL {
     private PostRespository postRepo;
     private UserRespository userRepo;
     private CommentRepository commentRepo;
+    private CareersRepository careerRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo) {
+    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
+        this.careerRepo = careerRepo;
     }
 
 //    map to show individual posts
     @GetMapping("/posts/showPost/{id}")
-    public String showPost(@PathVariable long id, Model model) {
-        model.addAttribute("post", postRepo.findOne(id));
-        model.addAttribute("comment", new Comment());
-        model.addAttribute("comments", commentRepo.findByPostId(id));
-        model.addAttribute("postId");
-        return "posts/showPost";
+//    public String showPost(@PathVariable long id, Model model, String post_owner_name, String post_owner_career, Date post_date) {
+//        model.addAttribute("post", postRepo.findOne(id));
+//
+//        /* ---Post info attributes---------------------------------------------------------------------------------------- */
+//        post_owner_name = postRepo.findOne(id).getUser().getFirst_name();
+//        long career_id = postRepo.findOne(id).getUser().getCareer_id();
+//        post_owner_career = careerRepo.findOne(career_id).getTitle();
+//        post_date = postRepo.findOne(id).getDateCreated();
+//
+//        model.addAttribute("post_owner_name", post_owner_name);
+//        model.addAttribute("post_owner_career", post_owner_career);
+//        model.addAttribute("post_date", post_date);
+//        /* ------------------------------------------------------------------------------------------- */
+//
+//
+//        model.addAttribute("comment", new Comment());
+//        model.addAttribute("comments", commentRepo.findByPostId(id));
+//        model.addAttribute("postId");
+//        return "posts/showPost";
+//    }
+
+    @PostMapping("/posts/showPost")
+        public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
+
+        System.out.println(comment.getBody());
+
+
+        return "/posts/showPost";
+//        return "redirect:/posts/showPost/{id}";
+
     }
+
+
+
+
+
+
+
+
+
 
 //    map for creating posts
     @GetMapping("/posts/create")

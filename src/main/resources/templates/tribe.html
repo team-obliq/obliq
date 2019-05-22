@@ -5,13 +5,13 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<h1>HELLO FROM OBLIQ.APP</h1>
+<h1>My tribe</h1>
 
 <div class="container fill">
     <div class="row">
         <div th:each="post : ${posts}" class="col col-md-4">
             <div sec:authorize="isAuthenticated()">
-                <a th:href="@{'posts/' + ${post.id}}">
+                <a th:href="@{'tribe/' + ${post.id}}">
                     <h3 th:text="${post.title}"></h3>
                 </a>
             </div>
