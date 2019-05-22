@@ -29,12 +29,12 @@ public class profile_CTRL {
 //    map profile view
     @GetMapping("/profile")
     public String profile_get(Model model) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
-        model.addAttribute("posts", postRepo.findByUserId(sessionUser.getId()));
-
-        System.out.println("profile_working");
+//        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
+//        model.addAttribute("posts", postRepo.findByUserId(sessionUser.getId()));
+//
+//        System.out.println("profile_working");
         return "profile";
 
     }
