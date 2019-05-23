@@ -25,9 +25,9 @@ const imageUrl = document.getElementById('imageURL');
 // add event listeners
 
 pickerBtn.addEventListener('click', function (e) {
-    console.log("hello from picker btn");
     e.preventDefault();
     picker.open();
+    console.log("hello from picker btn");
 });
 
 form.addEventListener('submit', function (e) {
@@ -49,5 +49,10 @@ function updateForm (result) {
     urlBox.appendChild(document.createTextNode('Upload to: '));
     urlBox.appendChild(url);
 }
+
+
+
+
+
 // };
 

@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/head :: head('Show')" />
+    <th:block th:replace="fragments/head :: head('Show')"/>
 
 
     <style>
-       #title {
-           background-color: lightgrey;
-           align-items: center;
-           justify-content: center;
-       }
+        #title {
+            background-color: lightgrey;
+            align-items: center;
+            justify-content: center;
+        }
 
-       #post_body {
-           background-color: red;
-           height: 100px;
-       }
+        #post_body {
+            background-color: red;
+            height: 100px;
+        }
 
-       #submit_button {
-           background-color: white;
-           justify-content: right;
-       }
+        #submit_button {
+            background-color: white;
+            justify-content: right;
+        }
 
-       #body {
-           background-color: white;
-           justify-content: right;
-       }
+        #body {
+            background-color: white;
+            justify-content: right;
+        }
 
 
     </style>
 </head>
 
 <body>
-    <th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container fill">
     <div class="row">
-        <div class="col">
-            <h1 th:text="${post.title}"></h1>
-            <p th:text="${post.body}"></p>
-            <div class="row">
-                <div th:each="comment : ${comments}" class="col">
-                    <p th:text="${comment.body}"></p>
-                    <small sec:authorize="isAnonymous()" th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
-                    <p sec:authorize="isAnonymous()" th:text="'posted by: '+ ${comment.user.first_name}"></p>
-                </div>
-                <div class="row">
-                    <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                </div>
-            </div>
+        <h1 th:text="${post.title}" class="mx-auto"></h1>
+    </div>
+    <div class="row">
+        <p th:text="${post.body}" class="mx-auto"></p>
+    </div>
+    <div class="row" th:each="comment : ${comments}">
+        <p th:text="${comment.body}"></p>
+        <small sec:authorize="isAnonymous()"
+               th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
+        <p sec:authorize="isAnonymous()" th:text="'posted by: '+ ${comment.user.first_name}"></p>
+        <div class="row">
+            <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
+            <a href="#" class="btn btn-primary ml-5">Delete</a>
         </div>
     </div>
     <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
@@ -58,88 +58,91 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <div class="row">
+        <div th:text="1" class="col">
+        </div>
+        <div class="col"></div>
+        <div class="col">
+            <button class="btn btn-success" id="upvote">
+                UPVOTE
+            </button>
+        </div>
+    </div>
 </div>
 
-    <!--<div class="container fill">-->
-        <!---->
+<!--<div class="container fill">-->
+<!---->
 
-        <!--<br/>-->
+<!--<br/>-->
 
-        <!--<div th:each="comment : ${comments}">-->
-            <!--<div sec:authorize="isAnonymous()" class="row" th:text="${comment.body}"> </div>-->
-        <!--</div>-->
-
-
-            <!--<div class ="row">-->
-                <!--<div class="col-sm">-->
-                    <!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
-                <!--</div>-->
-                <!--<div class="col-sm">-->
-                    <!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class ="row" >-->
-                <!--<div class="col-sm">-->
-                    <!--<p>	0 </p>-->
-                <!--</div>-->
-                <!--<div class="col-sm">-->
-
-                <!--</div>-->
-                <!--<div class="col-sm">-->
-                    <!--<button type="submit">upvote</button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+<!--<div th:each="comment : ${comments}">-->
+<!--<div sec:authorize="isAnonymous()" class="row" th:text="${comment.body}"> </div>-->
+<!--</div>-->
 
 
+<!--<div class ="row">-->
+<!--<div class="col-sm">-->
+<!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
+<!--</div>-->
+<!--<div class="col-sm">-->
+<!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class ="row" >-->
+<!--<div class="col-sm">-->
+<!--<p>	0 </p>-->
+<!--</div>-->
+<!--<div class="col-sm">-->
+
+<!--</div>-->
+<!--<div class="col-sm">-->
+<!--<button type="submit">upvote</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 
+<!--If your not the owner of the post-->
 
 
-                <!--If your not the owner of the post-->
+<!--&lt;!&ndash;For each start&ndash;&gt;-->
+<!--<div th:each="comment : ${comments}" class="row">-->
+
+<!--&lt;!&ndash;view 1: non comment owner&ndash;&gt;-->
+<!--<div sec:authorize="isAnonymous()" class ="row" id="not_comment_owner">-->
+<!--<p th:text="${comment.body}"></p>-->
+<!--</div>-->
+<!--<div class ="row">-->
+<!--<div class="col-sm">-->
+<!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
+<!--</div>-->
+<!--<div class="col-sm">-->
+<!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class ="row" >-->
+<!--<div class="col-sm">-->
+<!--<p>	0 </p>-->
+<!--</div>-->
+<!--<div class="col-sm">-->
+
+<!--</div>-->
+<!--<div class="col-sm">-->
+<!--<button type="submit">upvote</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
+<script>
 
-                <!--&lt;!&ndash;For each start&ndash;&gt;-->
-                <!--<div th:each="comment : ${comments}" class="row">-->
-
-                    <!--&lt;!&ndash;view 1: non comment owner&ndash;&gt;-->
-                    <!--<div sec:authorize="isAnonymous()" class ="row" id="not_comment_owner">-->
-                        <!--<p th:text="${comment.body}"></p>-->
-                    <!--</div>-->
-                    <!--<div class ="row">-->
-                        <!--<div class="col-sm">-->
-                            <!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm">-->
-                            <!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class ="row" >-->
-                        <!--<div class="col-sm">-->
-                            <!--<p>	0 </p>-->
-                        <!--</div>-->
-                        <!--<div class="col-sm">-->
-
-                        <!--</div>-->
-                        <!--<div class="col-sm">-->
-                            <!--<button type="submit">upvote</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
-
-
-
-             <!--</div>-->
-         <!--</div>-->
-    <!--</div>-->
-
-
-    <th:block th:replace="fragments/footer :: footer" />
-    <script src = "../../static/js/showPost.js"> </script>
+</script>
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks" />
 
 </body>
 
