@@ -92,4 +92,67 @@ values
 ('Once the search is in the progress, something will be found'),('Only a part, not the whole'),
 ('From nothing to more than nothing'),('Be less critical more often');
 
+INSERT INTO users (username, email, password, first_name, bio, continent, points, tribe_id, career_id, date_created)
+values ('MinaMoon', 'mina@mina.com', 'mina', 'Mina', 'My name is Mina and I am a user', 'Africa', 0, 1, 1,
+        current_date),
+       ('JesseRune', 'jesse@jess.com', 'jesse', 'Jesse', 'My name is Jesse & I am not a user', 'Australia', 0, 1, 1,
+        current_date),
+       ('MarshaTizzo', 'marsha@marsha.com', 'marsha', 'Marsha', 'My name is Marsha, I dont care', 'United States', 0, 1,
+        1, current_date),
+       ('RoamByaz', 'roam@roam.com', 'roam', 'Roam', 'I roam and thats it', 'Europe', 0, 1, 1, current_date),
+       ('ClydeDina', 'clyde@clyde.com', 'clyde', 'Clyde', 'My name is Clyde, thats all', 'Africa', 0, 1, 1,
+        current_date),
+       ('MagentaPatriot', 'magenta@magenta.com', 'magenta', 'Magenta', 'Magenta is my name', 'South America', 0, 1, 4,
+        current_date),
+       ('CyanMyst', 'myst@cyan.com', 'myst', 'Cyan', 'My name is an island - Myst', 'United States', 0, 1, 4,
+        current_date),
+       ('NadiaGeorgino', 'nadia@sheila.com', 'nadia', 'Nadia', 'Nadia is my name yo', 'Asia', 0, 1, 4, current_date),
+       ('MaroonAcme', 'maroon@acme.com', 'maroon', 'Maroon', 'Acme Brick Company - Maroon', 'Australia', 0, 1, 4,
+        current_date);
+
+
+INSERT INTO careers(title)
+values ('Doctor'),
+       ('Programmer'),
+       ('Astrologist'),
+       ('Nutritionist'),
+       ('Archaeologist'),
+       ('Architect'),
+       ('Writer'),
+       ('Cage Fighter'),
+       ('Painter'),
+       ('Teacher');
+
+INSERT INTO comments (date_created, body, points, post_id, user_id)
+VALUES (current_date,'this is Minas comment',0,1,1),
+       (current_date,'this is Maroons comment',0,2,2),
+       (current_date, 'this is Magentas comment', 0, 3, 3),
+       (current_date, 'this is Roams comment',0,4,4),
+       (current_date, 'This Clydes comment',0,5,5),
+       (current_date, 'This is Jesses comment', 0,6,6),
+       (current_date, 'This is Marshas comment', 0,7,7),
+       (current_date, 'This is Nadias comment', 0,8,8),
+       (current_date, 'This is Cyans comment', 0,9,9);
+
+INSERT INTO posts (title, body, date_created, user_id)
+VALUES ('Minas gonna Mean', 'Mina cant choose what color for her room', current_date, 1),
+       ('Maroon Acme rises Again', 'How come my bricks keep failing?', current_date, 2),
+       ('Magenta is no color at all!', 'Magenta needs more clarity on her problem', current_date, 3),
+       ('Roam is gonna Roam - thats it', 'Roam has had it with Peanuts - who can help?', current_date, 4),
+       ('Clyde doesnt belong here', 'Clyde cant get this paint to mix', current_date, '5'),
+       ('Jesse doesnt play that', 'Homie literally doesnt play that', current_date, '6'),
+       ('Marsha is not a Warfield', 'The warfield is my home & Im having a hard time adjusting', current_date, 7),
+       ('Nadia is in control of everything', 'How can I relinquish control more?',current_date, 8)
+       ('Cyan thinks Myst is awesome', 'Did I tell you the game Myst is awesome - how is it not awesome?', current_date, 9);
+
+INSERT INTO users (username, email, password, first_name, bio, continent, points, tribe_id, career_id, date_created)
+VALUES ('Triphone X', 'triphone@iphone.com', 'triphone', 'Triphone', 'My name is Triphone X', 'Asia', 0, 1, 2,current_date);
+
+INSERT INTO posts (title, body, date_created, user_id)
+VALUES ('Triphone is going to Try', 'I need help switching to Android', current_date, 10);
+
+INSERT INTO comments (date_created, body, points, post_id, user_id)
+VALUES (current_date, 'further comment: android sucks', 0, 4,10);
+
+
 

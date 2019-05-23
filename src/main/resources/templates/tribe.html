@@ -6,12 +6,22 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 <h1>My tribe</h1>
+<div class="container">
+    <div class="row">
+        <div th:each="user : ${users}" class="col col-md-4">
+
+            <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+            <p th:text="${user.bio}"></p>
+        </div>
+
+    </div>
+</div>
 
 <div class="container fill">
     <div class="row">
         <div th:each="post : ${posts}" class="col col-md-4">
             <div sec:authorize="isAuthenticated()">
-                <a th:href="@{'tribe/' + ${post.id}}">
+                <a th:href="@{'posts/showPost/' + ${post.id}}">
                     <h3 th:text="${post.title}"></h3>
                 </a>
             </div>
