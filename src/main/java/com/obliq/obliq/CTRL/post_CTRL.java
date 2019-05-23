@@ -33,34 +33,6 @@ public class post_CTRL {
         this.careerRepo = careerRepo;
     }
 
-
-
-
-
-
-//    map to show individual posts
-//    @GetMapping("/posts/showPost/{id}")
-//    public String showPost(@PathVariable long id, Model model, String post_owner_name, String post_owner_career, Date post_date) {
-//        model.addAttribute("post", postRepo.findOne(id));
-//
-//        /* ---Post info attributes---------------------------------------------------------------------------------------- */
-//        post_owner_name = postRepo.findOne(id).getUser().getFirst_name();
-//        long career_id = postRepo.findOne(id).getUser().getCareer_id();
-//        post_owner_career = careerRepo.findOne(career_id).getTitle();
-//        post_date = postRepo.findOne(id).getDateCreated();
-//
-//        model.addAttribute("post_owner_name", post_owner_name);
-//        model.addAttribute("post_owner_career", post_owner_career);
-//        model.addAttribute("post_date", post_date);
-//        /* ------------------------------------------------------------------------------------------- */
-//
-//
-//        model.addAttribute("comment", new Comment());
-//        model.addAttribute("comments", commentRepo.findByPostId(id));
-//        model.addAttribute("postId");
-//        return "posts/showPost";
-//    }
-
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -73,16 +45,16 @@ public class post_CTRL {
         return "posts/showPost";
     }
 
-    @PostMapping("/posts/showPost")
-        public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
-
-        System.out.println(comment.getBody());
-
-
-        return "/posts/showPost";
-//        return "redirect:/posts/showPost/{id}";
-
-    }
+//    @PostMapping("/posts/showPost")
+//        public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
+//
+//        System.out.println(comment.getBody());
+//
+//
+//        return "/posts/showPost/" + id;
+////        return "redirect:/posts/showPost/{id}";
+//
+//    }
 
 
 

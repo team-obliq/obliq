@@ -40,12 +40,7 @@ public class comments_CTRL {
         comment.setUser(userRepo.findOne(sessionUser.getId()));
         comment.setPost(postRepo.findOne(postId));
 
-
-        System.out.println(postId);
-
         commentRepo.save(comment);
-        System.out.println(comment.getBody());
-        System.out.println(comment.getUser().getId());
 
 
         return "redirect:/posts/showPost/" + postId;
@@ -53,32 +48,52 @@ public class comments_CTRL {
 
     @GetMapping("/add/{id}")
     public String upVoteShow(@PathVariable long id, Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDb = userRepo.findOne(sessionUser.getId());
+        Post currentPost = null;
+
+        for (Post post : postRepo.findAll()) {
+            if(post.getUser().getId() == userDb.getId())
+                currentPost = post;
+        }
+        System.out.println(currentPost.getId());
+
+        model.addAttribute("post", currentPost);
         model.addAttribute("comment", commentRepo.findOne(id));
         return "posts/showPost";
     }
     @PostMapping("/add/{id}")
-    public String upVoteAdd(@ModelAttribute Comment comment) {
+    public String upVoteAdd(@ModelAttribute Comment comment, @RequestParam(name = "postId") long postId) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDb = userRepo.findOne(sessionUser.getId());
         userDb.addToCommentList(comment);
         userRepo.save(userDb);
-        return "redirect:/posts/showPost";
+        return "redirect:/posts/showPost" + postId;
     }
 
 
-    @GetMapping("/comments/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {
-        model.addAttribute("comment", commentRepo.findOne(id));
+        Comment comment = commentRepo.findOne(id);
+        model.addAttribute("comment", comment);
+        model.addAttribute("post", comment.getPost());
         return "comments/edit";
     }
-    @PostMapping("/comments/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String editComment(@ModelAttribute Comment commentEdited) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         commentEdited.setUser(userRepo.findOne(sessionUser.getId()));
         commentRepo.save(commentEdited);
-        return "redirect:/posts/showPost";
+        return "redirect:/posts/showPost/" + commentEdited.getPost().getId();
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteComment(@PathVariable long id) {
+        Comment comment = commentRepo.findOne(id);
+
+        commentRepo.delete(comment);
+        return "redirect:/posts/showPost/" + comment.getPost().getId();
+    }
 
 
 

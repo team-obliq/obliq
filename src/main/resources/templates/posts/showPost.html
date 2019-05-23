@@ -3,32 +3,6 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <th:block th:replace="fragments/head :: head('Show')"/>
-
-
-    <style>
-        #title {
-            background-color: lightgrey;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #post_body {
-            background-color: red;
-            height: 100px;
-        }
-
-        #submit_button {
-            background-color: white;
-            justify-content: right;
-        }
-
-        #body {
-            background-color: white;
-            justify-content: right;
-        }
-
-
-    </style>
 </head>
 
 <body>
@@ -47,11 +21,11 @@
                th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
         <p sec:authorize="isAnonymous()" th:text="'posted by: '+ ${comment.user.first_name}"></p>
         <div class="row">
-            <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
-            <a href="#" class="btn btn-primary ml-5">Delete</a>
+            <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
+            <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
         </div>
 
-            <div th:text="1" class="col"></div>
+            <div th:text="${comment.points}" class="col"></div>
             <div class="col"></div>
             <div class="col">
                 <!--<form th:action="@{'/add/' + ${id}" th:method="post" th:object="${comment}" >-->
