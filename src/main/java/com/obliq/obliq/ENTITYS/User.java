@@ -214,6 +214,10 @@ public User(String username, String email, String password, String first_name, S
    public void setComment_with_points(List<Comment> comment_with_points) {
       this.comment_with_points = comment_with_points;
    }
+
+   public void addToCommentList(Comment comment) {
+      comment_with_points.add(comment);
+   }
 }
 
 /* --1 (name of the table you want to create----------------------------------------------------------------------------------------- */

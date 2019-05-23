@@ -21,7 +21,7 @@
                     <a class="btn-link btn dropdown-toggle" href="#" role="button" id="dropdownMenu" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">My Account</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu">
-                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="/posts/create">Create Post</a>
                         <a class="dropdown-item" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit Profile</a>
                         <form th:action="@{/logout}" th:method="post" class="dropdown-item">

@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class comments_CTRL {
 
@@ -33,20 +36,35 @@ public class comments_CTRL {
     @PostMapping("/comments/create")
     public String createComment(@ModelAttribute Comment comment, @RequestParam(name="postId") long postId) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDb = userRepo.findOne(sessionUser.getId());
         comment.setUser(userRepo.findOne(sessionUser.getId()));
-//        String thisPost = postId;
         comment.setPost(postRepo.findOne(postId));
-        System.out.println(postId);
 
+
+        System.out.println(postId);
 
         commentRepo.save(comment);
         System.out.println(comment.getBody());
         System.out.println(comment.getUser().getId());
-//        System.out.println(comment.getPost().getId());
 
-//        return "redirect:/posts/showPost/" + comment.getPost().getId();
-            return "redirect:/posts/showPost/" + postId;
+
+        return "redirect:/posts/showPost/" + postId;
     }
+
+    @GetMapping("/add/{id}")
+    public String upVoteShow(@PathVariable long id, Model model) {
+        model.addAttribute("comment", commentRepo.findOne(id));
+        return "posts/showPost";
+    }
+    @PostMapping("/add/{id}")
+    public String upVoteAdd(@ModelAttribute Comment comment) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User userDb = userRepo.findOne(sessionUser.getId());
+        userDb.addToCommentList(comment);
+        userRepo.save(userDb);
+        return "redirect:/posts/showPost";
+    }
+
 
     @GetMapping("/comments/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {
@@ -60,5 +78,9 @@ public class comments_CTRL {
         commentRepo.save(commentEdited);
         return "redirect:/posts/showPost";
     }
+
+
+
+
 
 }

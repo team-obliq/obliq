@@ -50,6 +50,17 @@
             <a th:href="@{'/comments/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
             <a href="#" class="btn btn-primary ml-5">Delete</a>
         </div>
+
+            <div th:text="1" class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+                <!--<form th:action="@{'/add/' + ${id}" th:method="post" th:object="${comment}" >-->
+                    <!--<a th:href="@{'/posts/showPost/' + ${comment.post.id}}" class="btn btn-success">Upvote!</a>-->
+                    <!--<input type="hidden" th:field="${id}" />-->
+                <!--</form>-->
+                <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>
+            </div>
+
     </div>
     <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
         <div class="form-group my-5">
@@ -58,16 +69,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <div class="row">
-        <div th:text="1" class="col">
-        </div>
-        <div class="col"></div>
-        <div class="col">
-            <button class="btn btn-success" id="upvote">
-                UPVOTE
-            </button>
-        </div>
-    </div>
+
 </div>
 
 <!--<div class="container fill">-->

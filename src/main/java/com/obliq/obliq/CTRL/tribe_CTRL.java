@@ -48,7 +48,6 @@ public class tribe_CTRL {
         }
 
         model.addAttribute("users", tribe_users);
-        System.out.println(tribe_users.size());
 
         List<Post> tribe_posts = new ArrayList<>();
         for(Post p: postRepo.findAll()) {

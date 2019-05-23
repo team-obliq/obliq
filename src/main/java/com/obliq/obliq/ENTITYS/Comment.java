@@ -39,6 +39,7 @@ private Post post;
 @ManyToMany(mappedBy = "comment_with_points")
 private List<User> users;
 
+
 public Comment(){}
 
 public Comment(Date dateCreated, String body, long points, User user, Post post, List<User> users) {
