@@ -33,8 +33,13 @@ public class post_CTRL {
         this.careerRepo = careerRepo;
     }
 
+
+
+
+
+
 //    map to show individual posts
-    @GetMapping("/posts/showPost/{id}")
+//    @GetMapping("/posts/showPost/{id}")
 //    public String showPost(@PathVariable long id, Model model, String post_owner_name, String post_owner_career, Date post_date) {
 //        model.addAttribute("post", postRepo.findOne(id));
 //
@@ -55,6 +60,18 @@ public class post_CTRL {
 //        model.addAttribute("postId");
 //        return "posts/showPost";
 //    }
+
+    @GetMapping("/posts/showPost/{id}")
+    public String showPost(@PathVariable long id, Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
+        model.addAttribute("post", postRepo.findOne(id));
+        model.addAttribute("comment", new Comment());
+        model.addAttribute("comments", commentRepo.findByPostId(id));
+        model.addAttribute("postId");
+        return "posts/showPost";
+    }
 
     @PostMapping("/posts/showPost")
         public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
