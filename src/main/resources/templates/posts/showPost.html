@@ -28,7 +28,7 @@
             <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
         </div>
 
-        <div th:text="${user.comment_with_points.contains(comment)}" class="col"></div>
+        <div th:text="${comment.getUsers().size()}" class="col"></div>
         <div class="col">
             <!--<div th:each="comment : ${comments}">-->
                 <div th:if="${user.comment_with_points.contains(comment)}">
