@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -22,13 +21,13 @@ import java.util.Random;
 public class post_CTRL {
 
 //    repo injection
-    private PostRespository postRepo;
-    private UserRespository userRepo;
+    private PostRepository postRepo;
+    private UserRepository userRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
     private CardsRepository cardsRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardsRepository cardsRepo) {
+    public post_CTRL(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardsRepository cardsRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
@@ -42,10 +41,18 @@ public class post_CTRL {
         Random random =  new Random();
         long randomNumber = (long) random.nextInt(133);
         Card postCard = cardsRepo.findOne(randomNumber);
+        User userDb = userRepo.findOne(sessionUser.getId());
+        System.out.println(userDb.getComment_with_points());
 
+//        list of comments by userId
+        List<Comment> userComments = new ArrayList<>();
+        for(Comment comment : commentRepo.findByUserId(userDb.getId())) {
+            if (comment.getUser().getId() == userDb.getId())
+                userComments.add(comment);
+        }
+        System.out.println("line 52: " + userComments.size());
 
-
-
+//        if (commentRepo.findByPostId(id).contains(userComments))
 
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
         model.addAttribute("post", postRepo.findOne(id));
@@ -55,26 +62,6 @@ public class post_CTRL {
         model.addAttribute("card", postCard);
         return "posts/showPost";
     }
-
-//    @PostMapping("/posts/showPost")
-//        public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
-//
-//        System.out.println(comment.getBody());
-//
-//
-//        return "/posts/showPost/" + id;
-////        return "redirect:/posts/showPost/{id}";
-//
-//    }
-
-
-
-
-
-
-
-
-
 
 //    map for creating posts
     @GetMapping("/posts/create")
@@ -87,6 +74,7 @@ public class post_CTRL {
     public String createPost(@ModelAttribute Post post) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(userRepo.findOne(sessionUser.getId()));
+
         postRepo.save(post);
         return "redirect:/posts/showPost/" + post.getId();
     }
