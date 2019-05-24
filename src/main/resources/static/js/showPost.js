@@ -8,3 +8,12 @@ function upvoteListener(){
 
 }
 upvoteListener();
+
+function cardListener() {
+    document.getElementById('card-create').addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log('the CARD is listening');
+    });
+}
+
+cardListener();

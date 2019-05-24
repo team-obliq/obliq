@@ -3,23 +3,21 @@ package com.obliq.obliq.SERVICE;
 import com.obliq.obliq.ENTITYS.Tribe;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.*;
-import javassist.compiler.Javac;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.logging.Filter;
 
 @Service
 public class tribe_assigment_SRV {
 
 /* -Connection------------------------------------------------------------------------------------------ */
-    private UserRespository userRepo;
-    private PostRespository postRepo;
+    private UserRepository userRepo;
+    private PostRepository postRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
     private TribesRepository tribeRepo;
 
-    public tribe_assigment_SRV(TribesRepository tribeRepo, UserRespository userRepo, PostRespository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
+    public tribe_assigment_SRV(TribesRepository tribeRepo, UserRepository userRepo, PostRepository postRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;

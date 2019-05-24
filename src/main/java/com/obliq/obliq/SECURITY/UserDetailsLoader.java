@@ -2,7 +2,7 @@ package com.obliq.obliq.SECURITY;
 
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.ENTITYS.UserWithRoles;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.REPOS.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsLoader implements UserDetailsService {
-    private final UserRespository users;
+    private final UserRepository users;
 
-    public UserDetailsLoader(UserRespository users) {
+    public UserDetailsLoader(UserRepository users) {
         this.users = users;
     }
 

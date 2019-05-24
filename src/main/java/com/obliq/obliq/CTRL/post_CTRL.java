@@ -8,27 +8,22 @@ import com.obliq.obliq.REPOS.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 @Controller
+@SessionAttributes("card")
 public class post_CTRL {
 
 //    repo injection
-    private PostRespository postRepo;
-    private UserRespository userRepo;
+    private PostRepository postRepo;
+    private UserRepository userRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
     private CardsRepository cardsRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardsRepository cardsRepo) {
+    public post_CTRL(PostRepository postRepo, UserRepository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardsRepository cardsRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
@@ -39,12 +34,6 @@ public class post_CTRL {
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Random random =  new Random();
-        long randomNumber = (long) random.nextInt(133);
-        Card postCard = cardsRepo.findOne(randomNumber);
-
-
-
 
 
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
@@ -52,42 +41,35 @@ public class post_CTRL {
         model.addAttribute("comment", new Comment());
         model.addAttribute("comments", commentRepo.findByPostId(id));
         model.addAttribute("postId");
-        model.addAttribute("card", postCard);
         return "posts/showPost";
     }
 
-//    @PostMapping("/posts/showPost")
-//        public String login_post(@PathVariable long id, @ModelAttribute Comment comment) {
-//
-//        System.out.println(comment.getBody());
-//
-//
-//        return "/posts/showPost/" + id;
-////        return "redirect:/posts/showPost/{id}";
-//
-//    }
+    @GetMapping("/posts/")
+    public void Card(long Card) {
 
-
-
-
-
-
-
-
-
+    }
 
 //    map for creating posts
     @GetMapping("/posts/create")
     public String showCreatePostForm(Model model) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Random random =  new Random();
+        long randomNumber = (long) random.nextInt(133);
+        Card postCard = cardsRepo.findOne(randomNumber);
+
+
         model.addAttribute("post", new Post());
+        model.addAttribute("card", postCard);
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         post.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(post);
+
         return "redirect:/posts/showPost/" + post.getId();
     }
 

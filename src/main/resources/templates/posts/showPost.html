@@ -8,7 +8,6 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 <div class="container">
-    <div th:text="${card.card}" class="row"></div>
 </div>
 
 <div class="container fill">
@@ -41,7 +40,6 @@
 
             </div>
         </div>
-
     </div>
     <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
         <div class="form-group my-5">
@@ -125,7 +123,7 @@
 
 </script>
 <th:block th:replace="fragments/footer :: footer"/>
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 
 </body>
 

@@ -9,7 +9,6 @@
 <div class="container">
     <div class="row">
         <div th:each="user : ${users}" class="col col-md-4">
-
             <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
             <p th:text="${user.bio}"></p>
         </div>

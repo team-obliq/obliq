@@ -1,4 +1,4 @@
-use obliq;
+use obliq_db;
 
 INSERT INTO users (username, email, password, first_name, bio, continent, points, tribe_id, career_id, date_created)
 VALUES

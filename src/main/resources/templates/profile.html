@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col col-md-4">
-
+            <div th:text="${card.card}" class="btn-primary mx-auto text-center"></div>
             <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
             <p th:text="${user.bio}"></p>
         </div>
