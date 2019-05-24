@@ -36,21 +36,21 @@ public class profile_CTRL {
         model.addAttribute("comments", commentRepo.findByUserId(sessionUser.getId()));
 
         System.out.println("profile_working");
-        return "/users/profile";
+        return "users/profile";
 
     }
 
 
-    //    map profile view with id
-    @GetMapping("/profile/{id}")
-    public String login_get_var(@PathVariable Long id, Model model) {
-        model.addAttribute("user", userRepo.findOne(id));
-        model.addAttribute("posts", postRepo.findByUserId(id));
-
-
-        return "/users/profile/" + id;
-
-    }
+//    //    map profile view with id
+//    @GetMapping("/profile/{id}")
+//    public String login_get_var(@PathVariable Long id, Model model) {
+//        model.addAttribute("user", userRepo.findOne(id));
+//        model.addAttribute("posts", postRepo.findByUserId(id));
+//
+//
+//        return "/users/profile/" + id;
+//
+//    }
 
     @PostMapping("/profile")
     public String profile_post() {
@@ -58,7 +58,7 @@ public class profile_CTRL {
         System.out.println("profile");
 
 
-        return "/user/profile";
+        return "user/profile";
 
     }
 
