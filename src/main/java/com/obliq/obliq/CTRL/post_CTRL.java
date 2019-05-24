@@ -42,7 +42,6 @@ public class post_CTRL {
         long randomNumber = (long) random.nextInt(133);
         Card postCard = cardsRepo.findOne(randomNumber);
         User userDb = userRepo.findOne(sessionUser.getId());
-        System.out.println(userDb.getComment_with_points());
 
 //        list of comments by userId
         List<Comment> userComments = new ArrayList<>();
@@ -50,9 +49,6 @@ public class post_CTRL {
             if (comment.getUser().getId() == userDb.getId())
                 userComments.add(comment);
         }
-
-
-//        if (commentRepo.findByPostId(id).contains(userComments))
 
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
         model.addAttribute("post", postRepo.findOne(id));
