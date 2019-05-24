@@ -21,6 +21,9 @@ private String title;
 @Column (name = "body", nullable = false, length = 500)
 private String body;
 
+@Column (name = "card_id", nullable = false)
+private long cardID;
+
 @CreationTimestamp
 @Temporal(TemporalType.TIMESTAMP)
 @Column(nullable = false)
@@ -36,12 +39,13 @@ private User user;
 private List<Comment> comments;
 
 public Post(){}
-public Post(String title, String body, Date dateCreated, User user, List<Comment> comments) {
+public Post(String title, String body, Date dateCreated, User user, List<Comment> comments, long cardID) {
         this.title = title;
         this.body = body;
         this.dateCreated = dateCreated;
         this.user = user;
         this.comments = comments;
+        this.cardID = cardID;
     }
 
     public long getId() {
@@ -90,6 +94,14 @@ public Post(String title, String body, Date dateCreated, User user, List<Comment
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public long getCardID() {
+        return cardID;
+    }
+
+    public void setCardID(long cardID) {
+        this.cardID = cardID;
     }
 }
 

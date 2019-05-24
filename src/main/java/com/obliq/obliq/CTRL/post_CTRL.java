@@ -70,6 +70,10 @@ public class post_CTRL {
     public String createPost(@ModelAttribute Post post) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(userRepo.findOne(sessionUser.getId()));
+        Random random =  new Random();
+        long randomNumber = (long) random.nextInt(133);
+        Card postCard = cardsRepo.findOne(randomNumber);
+        post.setCardID(postCard.getId());
 
         postRepo.save(post);
         return "redirect:/posts/showPost/" + post.getId();
