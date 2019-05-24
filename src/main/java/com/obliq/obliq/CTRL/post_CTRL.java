@@ -53,19 +53,19 @@ public class post_CTRL {
     @GetMapping("/posts/create")
     public String showCreatePostForm(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Random random =  new Random();
-        long randomNumber = (long) random.nextInt(133);
-        Card postCard = cardsRepo.findOne(randomNumber);
 
 
         model.addAttribute("post", new Post());
-        model.addAttribute("card", postCard);
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Random random =  new Random();
+        long randomNumber = (long) random.nextInt(133);
+        Card postCard = cardsRepo.findOne(randomNumber);
+        post.setCardID(postCard.getId());
 
         post.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(post);
