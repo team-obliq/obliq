@@ -106,6 +106,7 @@ public Comment(Date dateCreated, String body, long points, User user, Post post,
         this.post = post;
     }
 
+
     public List<User> getUsers() {
         return users;
     }
