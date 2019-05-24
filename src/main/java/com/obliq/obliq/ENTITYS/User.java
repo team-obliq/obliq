@@ -66,7 +66,7 @@ private List<Comment> comments;
    @JoinTable(
        name="comment_point_tracker",
        joinColumns={@JoinColumn(name="user_id")},
-       inverseJoinColumns={@JoinColumn(name="comment_id")}
+   inverseJoinColumns={@JoinColumn(name="comment_id")}
    )
    private List<Comment> comment_with_points;
 
