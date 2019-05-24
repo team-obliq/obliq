@@ -39,16 +39,23 @@ private Post post;
 @ManyToMany(mappedBy = "comment_with_points")
 private List<User> users;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="comment_point_tracker",
+            joinColumns={@JoinColumn(name="comment_id")},
+            inverseJoinColumns={@JoinColumn(name="user_id")}
+    )
+    private List<Comment> commentPoints;
 
 public Comment(){}
 
-public Comment(Date dateCreated, String body, long points, User user, Post post, List<User> users) {
+public Comment(Date dateCreated, String body, long points, User user, Post post, List<Comment> commentPoints) {
         this.dateCreated = dateCreated;
         this.body = body;
         this.points = points;
         this.user = user;
         this.post = post;
-        this.users = users;
+        this.commentPoints = commentPoints;
     }
 
     public long getId() {
@@ -105,6 +112,14 @@ public Comment(Date dateCreated, String body, long points, User user, Post post,
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Comment> getCommentPoints() {
+        return commentPoints;
+    }
+
+    public void setCommentPoints(List<Comment> commentPoints) {
+        this.commentPoints = commentPoints;
     }
 }
 
