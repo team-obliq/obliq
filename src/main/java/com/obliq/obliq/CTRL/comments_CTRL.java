@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class comments_CTRL {
@@ -30,6 +32,8 @@ public class comments_CTRL {
     @GetMapping("/comments/create")
     public String showCommentForm(Model model) {
         model.addAttribute("comment", new Comment());
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", user);
         return "posts/showPost";
     }
 
@@ -39,10 +43,7 @@ public class comments_CTRL {
         User userDb = userRepo.findOne(sessionUser.getId());
         comment.setUser(userRepo.findOne(sessionUser.getId()));
         comment.setPost(postRepo.findOne(postId));
-
         commentRepo.save(comment);
-
-
         return "redirect:/posts/showPost/" + postId;
     }
 
@@ -50,27 +51,13 @@ public class comments_CTRL {
     public String upVoteShow(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User userDb = userRepo.findOne(sessionUser.getId());
-        Post currentPost = null;
-
-        for (Post post : postRepo.findAll()) {
-            if(post.getUser().getId() == userDb.getId())
-                currentPost = post;
-        }
-        System.out.println(currentPost.getId());
-
-        model.addAttribute("post", currentPost);
-        model.addAttribute("comment", commentRepo.findOne(id));
-        return "posts/showPost";
-    }
-    @PostMapping("/add/{id}")
-    public String upVoteAdd(@ModelAttribute Comment comment, @RequestParam(name = "postId") long postId) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User userDb = userRepo.findOne(sessionUser.getId());
+        Comment comment = commentRepo.findOne(id);
         userDb.addToCommentList(comment);
-        userRepo.save(userDb);
-        return "redirect:/posts/showPost" + postId;
-    }
 
+        userRepo.save(userDb);
+        model.addAttribute("comment", commentRepo.findOne(id));
+        return "redirect:/posts/showPost/" + comment.getPost().getId();
+    }
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {

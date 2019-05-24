@@ -1,12 +1,10 @@
 package com.obliq.obliq.CTRL;
 
+import com.obliq.obliq.ENTITYS.Card;
 import com.obliq.obliq.ENTITYS.Comment;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.CareersRepository;
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.REPOS.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 public class post_CTRL {
@@ -25,23 +26,33 @@ public class post_CTRL {
     private UserRespository userRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
+    private CardsRepository cardsRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
+    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardsRepository cardsRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
         this.careerRepo = careerRepo;
+        this.cardsRepo = cardsRepo;
     }
 
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Random random =  new Random();
+        long randomNumber = (long) random.nextInt(133);
+        Card postCard = cardsRepo.findOne(randomNumber);
+
+
+
+
 
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
         model.addAttribute("post", postRepo.findOne(id));
         model.addAttribute("comment", new Comment());
         model.addAttribute("comments", commentRepo.findByPostId(id));
         model.addAttribute("postId");
+        model.addAttribute("card", postCard);
         return "posts/showPost";
     }
 
