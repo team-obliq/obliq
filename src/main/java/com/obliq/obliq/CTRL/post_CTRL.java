@@ -3,10 +3,7 @@ package com.obliq.obliq.CTRL;
 import com.obliq.obliq.ENTITYS.Comment;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
-import com.obliq.obliq.REPOS.CareersRepository;
-import com.obliq.obliq.REPOS.CommentRepository;
-import com.obliq.obliq.REPOS.PostRespository;
-import com.obliq.obliq.REPOS.UserRespository;
+import com.obliq.obliq.REPOS.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +22,14 @@ public class post_CTRL {
     private UserRespository userRepo;
     private CommentRepository commentRepo;
     private CareersRepository careerRepo;
+    private CardRepository cardRepo;
 
-    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo) {
+    public post_CTRL(PostRespository postRepo, UserRespository userRepo, CommentRepository commentRepo, CareersRepository careerRepo, CardRepository cardRepo) {
         this.postRepo = postRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
         this.careerRepo = careerRepo;
+        this.cardRepo = cardRepo;
     }
 
 
@@ -69,6 +68,7 @@ public class post_CTRL {
         model.addAttribute("post", postRepo.findOne(id));
         model.addAttribute("comment", new Comment());
         model.addAttribute("comments", commentRepo.findByPostId(id));
+        model.addAttribute("card", cardRepo.findOne(id));
         model.addAttribute("postId");
         return "posts/showPost";
     }
