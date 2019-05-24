@@ -50,7 +50,7 @@ public class post_CTRL {
             if (comment.getUser().getId() == userDb.getId())
                 userComments.add(comment);
         }
-        System.out.println("line 52: " + userComments.size());
+
 
 //        if (commentRepo.findByPostId(id).contains(userComments))
 
