@@ -23,23 +23,22 @@
         <small sec:authorize="isAnonymous()"
                th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
         <p sec:authorize="isAnonymous()" th:text="'posted by: '+ ${comment.user.first_name}"></p>
-        <div class="row">
+
+        <!--   show edit and delete for user who created comment   -->
+        <div  th:if="${comment.user.id == user.id}" class="row">
             <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
             <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
         </div>
 
         <div th:text="${comment.getUsers().size()}" class="col"></div>
-        <div class="col">
-            <!--<div th:each="comment : ${comments}">-->
-                <div th:if="${user.comment_with_points.contains(comment)}">
-                    <a href="#" class="btn btn-warning ml-5">Voted</a>
-                </div>
-                <div th:unless="${user.comment_with_points.contains(comment)}">
-                    <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>
-                </div>
-            <!--<a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>-->
-
-            <!--</div>-->
+        <!--   hide vote button form user who created comment   -->
+        <div th:unless="${comment.user.id == user.id}" class="col">
+            <div th:if="${user.comment_with_points.contains(comment)}">
+                <a href="#" class="btn btn-warning ml-5">Voted</a>
+            </div>
+            <div th:unless="${user.comment_with_points.contains(comment)}">
+                <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>
+            </div>
         </div>
 
     </div>
@@ -53,77 +52,6 @@
 
 </div>
 
-<!--<div class="container fill">-->
-<!---->
-
-<!--<br/>-->
-
-<!--<div th:each="comment : ${comments}">-->
-<!--<div sec:authorize="isAnonymous()" class="row" th:text="${comment.body}"> </div>-->
-<!--</div>-->
-
-
-<!--<div class ="row">-->
-<!--<div class="col-sm">-->
-<!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
-<!--</div>-->
-<!--<div class="col-sm">-->
-<!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class ="row" >-->
-<!--<div class="col-sm">-->
-<!--<p>	0 </p>-->
-<!--</div>-->
-<!--<div class="col-sm">-->
-
-<!--</div>-->
-<!--<div class="col-sm">-->
-<!--<button type="submit">upvote</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--If your not the owner of the post-->
-
-
-<!--&lt;!&ndash;For each start&ndash;&gt;-->
-<!--<div th:each="comment : ${comments}" class="row">-->
-
-<!--&lt;!&ndash;view 1: non comment owner&ndash;&gt;-->
-<!--<div sec:authorize="isAnonymous()" class ="row" id="not_comment_owner">-->
-<!--<p th:text="${comment.body}"></p>-->
-<!--</div>-->
-<!--<div class ="row">-->
-<!--<div class="col-sm">-->
-<!--<small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>-->
-<!--</div>-->
-<!--<div class="col-sm">-->
-<!--<p th:text="'posted by: '+ ${comment.user.first_name}"></p>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class ="row" >-->
-<!--<div class="col-sm">-->
-<!--<p>	0 </p>-->
-<!--</div>-->
-<!--<div class="col-sm">-->
-
-<!--</div>-->
-<!--<div class="col-sm">-->
-<!--<button type="submit">upvote</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<script>
-
-</script>
 <th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/jsLinks :: jsLinks" />
 
