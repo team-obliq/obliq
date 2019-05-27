@@ -21,7 +21,13 @@
         <input type="hidden" th:field="*{dateCreated}" />
         <input type="hidden" th:field="*{imageURL}" />
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/profile" class="btn btn-primary">Cancel</a>
+
+            </div>
+        </div>
     </form>
 
 </div>

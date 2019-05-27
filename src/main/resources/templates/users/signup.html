@@ -5,7 +5,7 @@
 </head>
 
 <body>
-
+<th:block th:replace="fragments/navbar :: navbar" />
 
 <form  th:action="@{/signup}" th:method="post" th:object="${user}">
 
@@ -90,7 +90,7 @@
 
 
 
-
+<th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace = "fragments/jsLinks :: jsLinks"/>
 </body>
 </html>
