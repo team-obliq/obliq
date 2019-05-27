@@ -4,6 +4,7 @@
 }
 .profile-img {
     height: 50px;
+    width: 50px;
 }
 
 #navbarBtnLink {
@@ -11,7 +12,7 @@
 }
 
 .fill {
-    height: 100%;
+    height: calc(100vh - 155px);
 }
 
 .hidden {

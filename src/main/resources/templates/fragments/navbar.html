@@ -8,7 +8,7 @@
 
         <div class="collapse navbar-collapse" id="main">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" href="/tribe">My Tribe</a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="nav-item">
