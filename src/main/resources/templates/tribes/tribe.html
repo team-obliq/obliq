@@ -16,26 +16,15 @@
         </div>
         <div class="col-12 col-md-10">
             <div th:each="post : ${posts}">
-                <a th:href="@{'posts/showPost/' + ${post.id}}">
-                    <div class="row card my-4">
-                        <div class="card-body">
-                            <div sec:authorize="isAuthenticated()">
-                                <a th:href="@{'posts/showPost/' + ${post.id}}">
-                                    <h3 th:text="${post.title}"></h3>
-                                </a>
-                            </div>
-                            <div sec:authorize="isAnonymous()">
-                                <a href="/login">
-                                    <h3 th:text="${post.title}"></h3>
-                                </a>
-                            </div>
-                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
-                            <p th:text="${post.body}"></p>
-                            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
-                        </div>
+                <div class="row card custom-anchor my-4">
+                    <div class="card-body">
+                        <h3 th:text="${post.title}"></h3>
+                        <p><small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
+                        <p><small th:text="'posted by: ' + ${post.user.username}"></small></p>
+                        <p th:text="${post.body}"></p>
                     </div>
-                </a>
-
+                    <a th:href="@{'posts/showPost/' + ${post.id}}"></a>
+                </div>
             </div>
         </div>
 
