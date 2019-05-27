@@ -5,46 +5,56 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<h1>Hello, <span th:text="${user.first_name}"></span></h1>
+
 <div class="container">
+    <h1>Hello, <span th:text="${user.first_name}"></span></h1>
     <div class="row">
         <div class="col col-md-4">
-
             <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
             <p th:text="${user.bio}"></p>
         </div>
+    </div>
+</div>
+
+<div class="container my-4" >
+    <h1>My Posts</h1>
+    <div class="row my-2">
+        <div th:each="post : ${posts}" class="col-12 col-md-4 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <h3 th:text="${post.title}"></h3>
+                    <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
+                    <p th:text="${post.body}"></p>
+                    <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{'/posts/delete/' + ${post.id}}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
 
-
-<div class="container" >
-    <div class="row my-5">
-        <div th:each="post : ${posts}" class="col col-md-4">
-            <h3 th:text="${post.title}"></h3>
-            <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
-            <p th:text="${post.body}"></p>
-            <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
-            <a th:href="@{'/posts/delete/' + ${post.id}}" class="btn btn-danger">Delete</a>
+<div class="container my-4">
+    <h1>My Comments</h1>
+    <div class="row my-2">
+        <div th:each="comment : ${comments}" class="col-12 col-md-4 my-2">
+            <div class="card">
+                <div class="card-body">
+                    <p th:text="${comment.body}"></p>
+                    <p><small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small></p>
+                    <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div th:each="comment : ${comments}" class="col col-md-4">
-            <p th:text="${comment.body}"></p>
-            <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
-            <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
-            <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary">Delete</a>
-        </div>
     </div>
 </div>
 <form>
 
 </form>
 
-<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace="fragments/jsLinks :: jsLinks" />
 </body>
 </html>
