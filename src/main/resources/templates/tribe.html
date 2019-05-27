@@ -5,37 +5,44 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<h1>My tribe</h1>
 <div class="container">
     <div class="row">
-        <div th:each="user : ${users}" class="col col-md-4">
+        <div id="sidebar" class="col-12 col-md-2">
+            <h3 class="d-flex justify-content-center my-2">Members</h3>
+            <div th:each="user : ${users}" class="col-12 col-md-2">
+                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
+                <p th:text="${user.username}"></p>
+            </div>
+        </div>
+        <div class="col-12 col-md-10">
+            <div th:each="post : ${posts}">
+                <a th:href="@{'posts/showPost/' + ${post.id}}">
+                    <div class="row card my-4">
+                        <div class="card-body">
+                            <div sec:authorize="isAuthenticated()">
+                                <a th:href="@{'posts/showPost/' + ${post.id}}">
+                                    <h3 th:text="${post.title}"></h3>
+                                </a>
+                            </div>
+                            <div sec:authorize="isAnonymous()">
+                                <a href="/login">
+                                    <h3 th:text="${post.title}"></h3>
+                                </a>
+                            </div>
+                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
+                            <p th:text="${post.body}"></p>
+                            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
+                        </div>
+                    </div>
+                </a>
 
-            <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
-            <p th:text="${user.bio}"></p>
+            </div>
         </div>
 
     </div>
 </div>
 
 <div class="container fill">
-    <div class="row">
-        <div th:each="post : ${posts}" class="col col-md-4">
-            <div sec:authorize="isAuthenticated()">
-                <a th:href="@{'posts/showPost/' + ${post.id}}">
-                    <h3 th:text="${post.title}"></h3>
-                </a>
-            </div>
-            <div sec:authorize="isAnonymous()">
-                <a href="/login">
-                    <h3 th:text="${post.title}"></h3>
-                </a>
-            </div>
-            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
-            <p th:text="${post.body}"></p>
-            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
-
-        </div>
-    </div>
 </div>
 
 <th:block th:replace="fragments/footer :: footer" />
