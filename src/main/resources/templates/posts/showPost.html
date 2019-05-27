@@ -54,7 +54,7 @@
                 <!--   hide vote button from user who created comment   -->
                 <div th:unless="${comment.user.id == user.id}" class="col">
                     <div th:if="${user.comment_with_points.contains(comment)}">
-                        <a href="#" class="btn btn-warning ml-5">Voted</a>
+                        <a href="#" class="btn btn-success ml-5">Voted</a>
                     </div>
                     <div th:unless="${user.comment_with_points.contains(comment)}">
                         <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>
