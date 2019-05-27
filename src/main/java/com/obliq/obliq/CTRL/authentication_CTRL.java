@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class authentication_CTRL {
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login";
+        return "users/login";
     }
 }

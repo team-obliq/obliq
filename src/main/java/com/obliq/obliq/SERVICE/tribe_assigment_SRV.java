@@ -177,7 +177,7 @@ public class tribe_assigment_SRV {
 
             System.out.println("Step 3");
             //3: Set max members per tribe variable;
-            long max_members_per_tribe = 3;
+            long max_members_per_tribe = 5;
 
             System.out.println("Step 4");
             //4: Create 2 lists to filter and test for new user placement

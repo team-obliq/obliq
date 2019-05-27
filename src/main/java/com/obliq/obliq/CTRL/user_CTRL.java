@@ -52,12 +52,12 @@ public class user_CTRL {
 
 
 
-        return "signup";
+        return "users/signup";
     }
 
     /* ------------------------------------------------------------------------------------------- */
     @PostMapping("/signup")
-    public String savUser(@ModelAttribute User user) {
+    public String saveUser(@ModelAttribute User user) {
 
         assigment_tool.tribe_assigment_master_tool(user);
         String hash = passwordEncoder.encode(user.getPassword());

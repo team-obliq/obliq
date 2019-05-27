@@ -55,7 +55,7 @@ public class tribe_CTRL {
         model.addAttribute("posts", tribe_posts);
 
 
-        return "tribe";
+        return "tribes/tribe";
 
     }
 
