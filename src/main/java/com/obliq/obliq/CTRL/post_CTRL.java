@@ -38,9 +38,10 @@ public class post_CTRL {
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Random random =  new Random();
-        long randomNumber = (long) random.nextInt(133);
-        Card postCard = cardsRepo.findOne(randomNumber);
+//        Random random =  new Random();
+//        long randomNumber = (long) random.nextInt(133);
+        Post post = postRepo.findOne(id);
+        Card postCard = cardsRepo.findOne(post.getId());
         User userDb = userRepo.findOne(sessionUser.getId());
 
 //        list of comments by userId
