@@ -15,7 +15,7 @@ const picker = client.picker(options);
 
 // get DOM elements
 
-const form = document.getElementById('form-picker');
+const form = document.getElementById('form-pick');
 const fileInput = document.getElementById('fileupload');
 const pickerBtn = document.getElementById('picker');
 const nameBox = document.getElementById('nameBox');
