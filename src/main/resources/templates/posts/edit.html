@@ -19,6 +19,22 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="/profile" class="btn btn-primary">Cancel</a>
     </form>
+    <div class="row">
+        <form th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
+            <div class="card">
+                <div class="card-body">
+                    <div th:text="${card.card}"></div>
+                </div>
+            </div>
+            <div class="row">
+                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:field="*{dateCreated}" />
+                <input type="hidden" th:field="*{body}" />
+                <input type="hidden" th:field="*{title}" />
+                <button type="submit" name="change-card" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 
