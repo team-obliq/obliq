@@ -3,25 +3,24 @@
 <head>
     <th:block th:replace="fragments/head :: head('About')"/>
 </head>
-<body class="container">
+<body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<div class="row">
-<div class="col-6 card d-inline-block bg-transparent">
-    <div class="row">
-        <a th:href="@{http://www.github.com/travisVela}">GitHub</a>
-    </div>
-    <div class="row">
-        <a th:href="@{http://www.linkedin/in/travisvela}">LinkedIn</a>
+<div class="container">
+    <div class="row my-5">
+        <div class="col-6 card bg-transparent">
+            <img th:src="@{'https://cdn.filestackcontent.com/ooJkdSgyRwegSudEjyZ5'}" class="aboutUs-img rounded-circle" />
+            <a th:href="@{http://www.github.com/travisVela}">GitHub</a>
+            <a th:href="@{http://www.linkedin/in/travisvela}">LinkedIn</a>
+
+        </div>
+        <div class="col-6 card bg-transparent">
+            <img th:src="@{'https://cdn.filestackcontent.com/m8R5P3QAST812c3pCQ5w'}" class="aboutUs-img rounded-circle" />
+            <a th:href="@{http://www.github.com/carlomunguia}">GitHub</a>
+            <a th:href="@{http://www.linkedin/in/carlomunguia}">LinkedIn</a>
+
+        </div>
     </div>
 </div>
-<div class="col-6 card bg-transparent">
-    <div class="row">
-        <a th:href="@{http://www.github.com/carlomunguia}">GitHub</a>
-    </div>
-    <div class="row">
-        <a th:href="@{http://www.linkedin/in/carlomunguia}">LinkedIn</a>
-    </div>
-</div>
-</div>
+
 </body>
 </html> 

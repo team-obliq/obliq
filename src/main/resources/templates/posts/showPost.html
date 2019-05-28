@@ -7,63 +7,86 @@
 
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
-<div class="container">
-
-    <!--   card for Obliq card   -->
-    <div class="row card">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <div th:text="${card.card}" class="col-12 col-md-6 d-flex justify-content-center"></div>
-        </div>
-    </div>
-</div>
 
 <div class="container my-4">
 
     <!--   Card for post   -->
-    <div class="row card my-4">
-        <div class="card-body">
+    <div class="row jumbotron my-4">
+
             <div class="my-2">
                 <h1 th:text="${post.title}"></h1>
             </div>
             <div class="row">
                 <p th:text="${post.body}"></p>
             </div>
+        <div class="row card mx-auto obliq-card" >
+            <div class="card-body d-flex justify-content-center align-items-center">
+                <div class="col-12 col-md-6 d-flex justify-content-center">
+                    <h3 th:text="${card.card}"> </h3>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <!--   card for comments   -->
     <div th:each="comment : ${comments}">
-        <div class="row card">
+
+        <!--   card for post owner   -->
+        <div th:if="${comment.user.id == user.id}" class="row card my-4 ml-auto post-owner px-2" style="width:75%">
             <div class="col card-body">
                 <p th:text="${comment.body}"></p>
 
                 <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
                 <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
-            </div>
 
-            <div class="row">
-                <!--   number of votes   -->
-                <div th:text="${comment.getUsers().size()}" class="col"></div>
-
-                <!--   show edit and delete for user who created comment   -->
-                <div  th:if="${comment.user.id == user.id}" class="col">
-                    <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
-                    <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
-                </div>
-
-                <!--   hide vote button from user who created comment   -->
-                <div th:unless="${comment.user.id == user.id}" class="col">
-                    <div th:if="${user.comment_with_points.contains(comment)}">
-                        <a href="#" class="btn btn-success ml-5">Voted</a>
+                <div class="row">
+                    <div class="col mr-auto">
+                        <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
+                        <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
                     </div>
-                    <div th:unless="${user.comment_with_points.contains(comment)}">
-                        <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary ml-5">Upvote</a>
-                    </div>
+                    <!--   number of votes   -->
+                    <div th:text="${comment.getUsers().size()}" class="ml-auto px-2"></div>
+                    <a href="#" class="btn btn-success">
+                        <i class="far fa-thumbs-up"></i>
+
+                    </a>
                 </div>
             </div>
         </div>
 
+        <!--   card for users that didn't create post   -->
+        <div th:unless="${comment.user.id == user.id}" class="row card my-4 mr-auto px-2" style="width:75%">
+            <div class="col card-body">
+                <p th:text="${comment.body}"></p>
+
+                <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
+                <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
+
+                <!--   if user has voted   -->
+
+                    <div th:if="${user.comment_with_points.contains(comment)}" class="row ml-auto">
+                        <!--   number of votes   -->
+                        <div th:text="${comment.getUsers().size()}" class="ml-auto px-2"></div>
+                        <a href="#" class="btn btn-success">
+                            <i class="far fa-thumbs-up"></i>
+                        </a>
+                    </div>
+
+                <!--   if user has not voted   -->
+
+                    <div th:unless="${user.comment_with_points.contains(comment)}" class="row ">
+                        <!--   number of votes   -->
+                        <div th:text="${comment.getUsers().size()}" class="ml-auto px-2"></div>
+                        <a th:href="@{'/add/' + ${comment.id}}" class="btn btn-primary">
+                            <i class="far fa-thumbs-up"></i>
+                        </a>
+                    </div>
+            </div>
+        </div>
     </div>
+
+    <!--   form to create new comment   -->
     <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
         <div class="form-group my-5">
             <input th:field="*{body}" class="form-control" placeholder="enter comment"/>
