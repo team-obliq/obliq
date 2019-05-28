@@ -9,34 +9,30 @@
 <div class="bg-transparent container text-center bg-secondary">
     <br/>
     <h1 class="bg-transparent text-center">OBLIQ</h1>
-    <br />
-    <br />
-
+    <br/>
+    <br/>
     <h2 class="bg transparent text-center card bg-transparent">What is It?</h2>
     <div class="bg-transparent">
-        <h3 class="card-body bg-transparent">
+        <div class="card-body bg-transparent">
+<!--            <img src="/static/geom.png" th:src="@{/static/geom.png}">-->
             <span class="card bg-transparent">
             Human Beings.
             We all have problems needing to be solved.
             Yet sometimes, no matter what experts surround us in our field/career, we simply don't know where to turn to
             solve them.
             </span>
-            <br />
+            <br/>
             <span class="card bg-transparent">This is where Obliq steps in.</span>
-            <br />
+            <br/>
             <span class="card bg-transparent">
                 Based on implementing Brian Enos Oblique Strategies from 1975, Obliq is a full stack web application
             designed to bring people together
             to help solve problems in real time.
             </span>
-        </h3>
+        </div>
     </div>
 <a class=" btn-lg btn-outline-primary" th:href="@{/login/}">BEGIN</a>
-    <br />
-    <br />
 </div>
-
-
 <th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
