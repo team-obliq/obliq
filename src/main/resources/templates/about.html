@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head :: head('About')"/>
+</head>
+<body class="container">
+<th:block th:replace="fragments/navbar :: navbar" />
+<div class="row">
+<div class="col-6 card d-inline-block bg-transparent">
+    <div class="row">
+        <a th:href="@{http://www.github.com/travisVela}">GitHub</a>
+    </div>
+    <div class="row">
+        <a th:href="@{http://www.linkedin/in/travisvela}">LinkedIn</a>
+    </div>
+</div>
+<div class="col-6 card bg-transparent">
+    <div class="row">
+        <a th:href="@{http://www.github.com/carlomunguia}">GitHub</a>
+    </div>
+    <div class="row">
+        <a th:href="@{http://www.linkedin/in/carlomunguia}">LinkedIn</a>
+    </div>
+</div>
+</div>
+</body>
+</html> 
