@@ -5,28 +5,25 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
-<h1>HELLO FROM OBLIQ.APP</h1>
-
 <div class="container fill">
     <div class="row">
-        <div th:each="post : ${posts}" class="col col-md-4">
-            <div sec:authorize="isAuthenticated()">
-                <a th:href="@{'posts/' + ${post.id}}">
-                    <h3 th:text="${post.title}"></h3>
-                </a>
-            </div>
-            <div sec:authorize="isAnonymous()">
-                <a href="/login">
-                    <h3 th:text="${post.title}"></h3>
-                </a>
-            </div>
-            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>
-            <p th:text="${post.body}"></p>
-            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>
+<!--        <div th:each="post : ${posts}" class="col col-md-4">-->
+<!--            <div sec:authorize="isAuthenticated()">-->
+<!--                <a th:href="@{'posts/' + ${post.id}}">-->
+<!--                    <h3 th:text="${post.title}"></h3>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div sec:authorize="isAnonymous()">-->
+<!--                <a href="/login">-->
+<!--                    <h3 th:text="${post.title}"></h3>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>-->
+<!--            <p th:text="${post.body}"></p>-->
+<!--            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>-->
 
         </div>
     </div>
-</div>
 
 <th:block th:replace="fragments/footer :: footer" />
 <th:block th:replace="fragments/jsLinks :: jsLinks" />
