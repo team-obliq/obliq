@@ -5,13 +5,11 @@ import com.obliq.obliq.ENTITYS.Comment;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.*;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +36,6 @@ public class post_CTRL {
     @GetMapping("/posts/showPost/{id}")
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        Random random =  new Random();
-//        long randomNumber = (long) random.nextInt(133);
         Post post = postRepo.findOne(id);
         Card postCard = cardsRepo.findOne(post.getId());
         User userDb = userRepo.findOne(sessionUser.getId());
@@ -85,6 +81,7 @@ public class post_CTRL {
     public String showEditForm(@PathVariable long id, Model model) {
         Post post = postRepo.findOne(id);
         model.addAttribute("post", post);
+        model.addAttribute("card", cardsRepo.findOne(post.getCardID()));
         return "posts/edit";
     }
 
@@ -94,6 +91,18 @@ public class post_CTRL {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postEdited.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(postEdited);
+        return "redirect:/profile";
+    }
+
+    @PostMapping(value = "posts/edit/{id}", params = "change-card")
+    public String changeCard(@ModelAttribute Post post) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(userRepo.findOne(sessionUser.getId()));
+        Random random = new Random();
+        long newRandomNumber = (long) random.nextInt(133);
+        Card newPostCard = cardsRepo.findOne(newRandomNumber);
+        post.setCardID(newPostCard.getId());
+        postRepo.save(post);
         return "redirect:/profile";
     }
 
