@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/head :: head('Home')" />
+    <th:block th:replace="fragments/head :: head('Home')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
-<div class="container fill">
-    <div class="row">
-<!--        <div th:each="post : ${posts}" class="col col-md-4">-->
-<!--            <div sec:authorize="isAuthenticated()">-->
-<!--                <a th:href="@{'posts/' + ${post.id}}">-->
-<!--                    <h3 th:text="${post.title}"></h3>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div sec:authorize="isAnonymous()">-->
-<!--                <a href="/login">-->
-<!--                    <h3 th:text="${post.title}"></h3>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small>-->
-<!--            <p th:text="${post.body}"></p>-->
-<!--            <a th:href="@{'mailto: ' + ${post.user.email}}"><p th:text="${post.user.email}"></p></a>-->
+<th:block th:replace="fragments/navbar :: navbar"/>
+<div class="bg-transparent container text-center bg-secondary">
+    <br/>
+    <h1 class="bg-transparent text-center">OBLIQ</h1>
+    <br />
+    <br />
 
-        </div>
+    <h2 class="bg transparent text-center card bg-transparent">What is It?</h2>
+    <div class="bg-transparent">
+        <h3 class="card-body bg-transparent">
+            <span class="card bg-transparent">
+            Human Beings.
+            We all have problems needing to be solved.
+            Yet sometimes, no matter what experts surround us in our field/career, we simply don't know where to turn to
+            solve them.
+            </span>
+            <br />
+            <span class="card bg-transparent">This is where Obliq steps in.</span>
+            <br />
+            <span class="card bg-transparent">
+                Based on implementing Brian Enos Oblique Strategies from 1975, Obliq is a full stack web application
+            designed to bring people together
+            to help solve problems in real time.
+            </span>
+        </h3>
     </div>
+<a class=" btn-lg btn-outline-primary" th:href="@{/login/}">BEGIN</a>
+    <br />
+    <br />
+</div>
 
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>
