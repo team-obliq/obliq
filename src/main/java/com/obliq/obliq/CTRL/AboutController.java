@@ -1,6 +1,7 @@
 package com.obliq.obliq.CTRL;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AboutController {
 
     @GetMapping("/about")
-    public String aboutUs(){
+    public String aboutUs(Model model){
 
         return "about";
     }

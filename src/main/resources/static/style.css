@@ -2,7 +2,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     padding-bottom: 44px;
-    background-color: #475563;
+    /*background-color: #475563;*/
 }
 
 #footer {
@@ -16,6 +16,10 @@ body {
 .profile-img {
     height: 50px;
     width: 50px;
+}
+.aboutUs-img {
+    height: 200px;
+    width: 200px;
 }
 
 .fill {
@@ -39,5 +43,36 @@ body {
 
 .navbar-brand {
     font-size: 1.6rem;
+}
+
+.row.card.custom-anchor.my-4, .card-with-border {
+    background-color: #475563;
+    color: #cfcfcd;
+    border: 10px solid #334355;
+}
+
+.card {
+    background-color: #475563;
+    color: #cfcfcd;
+}
+.obliq-card {
+    height: 200px;
+    width:400px;
+    background-color: #cfcfcd;
+    color: #475563;
+}
+.post-owner {
+    background-color: #989c9d;
+}
+
+.btn-primary {
+    color: #cfcfcd;
+    background-color: #334355;
+    border: 1px solid #475563;
+}
+.btn-primary:hover {
+    color: #cfcfcd;
+    border: 1px solid #334544;
+    background-color: #475563;
 }
 
