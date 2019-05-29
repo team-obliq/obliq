@@ -19,22 +19,24 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="/profile" class="btn btn-primary">Cancel</a>
     </form>
-    <div class="row">
-        <form th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
+    <!--<div class="row my-4">-->
+        <form th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}" class="my-4">
             <div class="card">
                 <div class="card-body">
                     <div th:text="${card.card}"></div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row my-4">
                 <input type="hidden" th:field="*{id}" />
                 <input type="hidden" th:field="*{dateCreated}" />
                 <input type="hidden" th:field="*{body}" />
                 <input type="hidden" th:field="*{title}" />
-                <button type="submit" name="change-card" class="btn btn-primary">Submit</button>
+                <button type="submit" th:href="@{'/posts/edit/' + ${id}}" name="change-card" class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
             </div>
         </form>
-    </div>
+    <!--</div>-->
 </div>
 
 

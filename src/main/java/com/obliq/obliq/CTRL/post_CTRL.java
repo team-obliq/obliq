@@ -103,7 +103,7 @@ public class post_CTRL {
         Card newPostCard = cardsRepo.findOne(newRandomNumber);
         post.setCardID(newPostCard.getId());
         postRepo.save(post);
-        return "redirect:/profile";
+        return "redirect:/posts/edit/" + post.getId();
     }
 
 //    map for delete function
