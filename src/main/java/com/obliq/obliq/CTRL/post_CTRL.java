@@ -37,7 +37,7 @@ public class post_CTRL {
     public String showPost(@PathVariable long id, Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findOne(id);
-        Card postCard = cardsRepo.findOne(post.getId());
+        Card postCard = cardsRepo.findOne(post.getCardID());
         User userDb = userRepo.findOne(sessionUser.getId());
 
 //        list of comments by userId
@@ -80,18 +80,12 @@ public class post_CTRL {
     @GetMapping("/posts/edit/{id}")
     public String showEditForm(@PathVariable long id, Model model) {
         Post post = postRepo.findOne(id);
+        Card card = cardsRepo.findOne(post.getCardID());
         model.addAttribute("post", post);
-        model.addAttribute("card", cardsRepo.findOne(post.getCardID()));
+        model.addAttribute("card", card);
+        System.out.println("get card id: " + cardsRepo.findOne(post.getCardID()).getId());
+        System.out.println("get card card: " + cardsRepo.findOne(post.getCardID()).getCard());
         return "posts/edit";
-    }
-
-//    map for edited post. save to DB
-    @PostMapping("posts/edit/{id}")
-    public String editPost(@ModelAttribute Post postEdited) {
-        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        postEdited.setUser(userRepo.findOne(sessionUser.getId()));
-        postRepo.save(postEdited);
-        return "redirect:/profile";
     }
 
     @PostMapping(value = "posts/edit/{id}", params = "change-card")
@@ -104,6 +98,14 @@ public class post_CTRL {
         post.setCardID(newPostCard.getId());
         postRepo.save(post);
         return "redirect:/posts/edit/" + post.getId();
+    }
+//    map for edited post. save to DB
+    @PostMapping("posts/edit/{id}")
+    public String editPost(@ModelAttribute Post postEdited) {
+        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        postEdited.setUser(userRepo.findOne(sessionUser.getId()));
+        postRepo.save(postEdited);
+        return "redirect:/profile";
     }
 
 //    map for delete function
