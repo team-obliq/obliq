@@ -6,33 +6,10 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
-<div class="bg-transparent container text-center bg-secondary">
-    <br/>
-    <h1 class="bg-transparent text-center">OBLIQ</h1>
-    <br/>
-    <br/>
-    <h2 class="bg transparent text-center card bg-transparent">What is It?</h2>
-    <div class="bg-transparent">
-        <div class="card-body bg-transparent">
-<!--            <img src="/static/geom.png" th:src="@{/static/geom.png}">-->
-            <span class="card bg-transparent">
-            Human Beings.
-            We all have problems needing to be solved.
-            Yet sometimes, no matter what experts surround us in our field/career, we simply don't know where to turn to
-            solve them.
-            </span>
-            <br/>
-            <span class="card bg-transparent">This is where Obliq steps in.</span>
-            <br/>
-            <span class="card bg-transparent">
-                Based on implementing Brian Enos Oblique Strategies from 1975, Obliq is a full stack web application
-            designed to bring people together
-            to help solve problems in real time.
-            </span>
-        </div>
-    </div>
-<a class=" btn-lg btn-outline-primary" th:href="@{/login/}">BEGIN</a>
+<div class="text-center mx-auto">
+    <!--<a class=" btn btn-outline-secondary" th:href="@{/login/}">BEGIN</a>-->
 </div>
+<img src="../static/OBLIQ.png" th:src="@{/OBLIQ.png}" alt="obliq-img" id="obliq-logo" />
 <th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
