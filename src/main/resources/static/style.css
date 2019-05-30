@@ -18,6 +18,9 @@ body {
     width: 50px;
 }
 
+.profile-img:hover {
+    box-shadow: 3px 3px 11px rgba(33, 33, 33, .5);
+}
 .aboutUs-img {
     height: 200px;
     width: 200px;
@@ -56,6 +59,10 @@ body {
     background-color: #475563;
     color: #cfcfcd;
 }
+.card:hover{
+    box-shadow: 3px 3px 11px rgba(33, 33, 33, .5);
+}
+
 .obliq-card {
     height: 200px;
     width:400px;

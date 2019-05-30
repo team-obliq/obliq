@@ -10,13 +10,18 @@
         <div id="sidebar" class="col-12 col-md-2">
             <h3 class="d-flex justify-content-center my-2">Members</h3>
             <div th:each="user : ${users}" class="col-12 col-md-2">
+
                 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+
+               
+
+
                 <p th:text="${user.username}"></p>
             </div>
         </div>
         <div class="col-12 col-md-10">
             <div th:each="post : ${posts}">
-                <div class="row card card-with-border custom-anchor my-4">
+                <div class="row card card-with-border custom-anchor my-2">
                     <div class="card-body">
                         <h3 th:text="${post.title}"></h3>
                         <p><small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
