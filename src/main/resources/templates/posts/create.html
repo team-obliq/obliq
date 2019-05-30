@@ -8,8 +8,9 @@
 
 <div class="container">
     <div class="row fill d-flex justify-content-center align-items-center">
-        <h1 class="d-flex justify-content-center">Ask A Question</h1>
+
         <div class="col-md-8">
+            <h1 class="d-flex justify-content-center">Ask A Question</h1>
             <div class="card card-with-border">
                 <div class="card-body">
                     <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
@@ -17,7 +18,7 @@
                             <input th:field="*{title}" placeholder="title" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <textarea th:field="*{body}" placeholder="body" class="form-control"></textarea>
+                            <textarea th:field="*{body}" placeholder="I'm having trouble with..." class="form-control"></textarea>
                         </div>
 
                         <div class="row">
