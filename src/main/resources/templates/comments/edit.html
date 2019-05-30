@@ -6,18 +6,27 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
-<div class="container fill">
-    <form th:action="@{'/edit/' + ${id}}" th:method="post" th:object="${comment}">
-        <div class="form-group">
-            <input type="text" th:field="*{body}" class="form-control" />
-            <input type="hidden" th:field="*{id}" />
-            <input type="hidden" th:field="*{post.id}" />
-            <input type="hidden" th:field="*{dateCreated}" />
+<div class="container">
+    <div class="row fill d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <h1 class="d-flex justify-content-center">Edit Comment</h1>
+            <div class="card card-with-border">
+                <div class="card-body">
+                    <form th:action="@{'/edit/' + ${id}}" th:method="post" th:object="${comment}">
+                        <div class="form-group">
+                            <input type="text" th:field="*{body}" class="form-control" />
+                            <input type="hidden" th:field="*{id}" />
+                            <input type="hidden" th:field="*{post.id}" />
+                            <input type="hidden" th:field="*{dateCreated}" />
 
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">Cancel</a>
+                    </form>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">Cancel</a>
-    </form>
+    </div>
 </div>
 
 <th:block th:replace="fragments/footer :: footer" />
