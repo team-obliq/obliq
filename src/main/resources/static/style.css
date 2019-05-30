@@ -95,17 +95,18 @@ h1{
 }
 .post-owner {
     background-color: #989c9d;
+    color: #333;
 }
 
 .btn-primary {
     color: #333;
-    background-color: #e7e7db;
+    background-color: #c6bcd1;
     border: 1px solid #475563;
 }
 .btn-primary:hover {
     color: #333;
     border: 1px solid #334544;
-    background-color: #c7c4bf;
+    background-color: #c0b2d1;
 }
 
 #obliq-logo {
