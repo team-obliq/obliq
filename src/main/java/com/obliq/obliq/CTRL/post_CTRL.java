@@ -73,7 +73,7 @@ public class post_CTRL {
         post.setCardID(postCard.getId());
 
         postRepo.save(post);
-        return "redirect:/posts/showPost/" + post.getId();
+        return "redirect:/tribe";
     }
 
 //    map for edit form in the edit view

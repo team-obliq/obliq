@@ -6,30 +6,50 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
-<div class="container fill">
-    <form th:action="@{'/users/edit/' + ${id}}" th:method="post" th:object="${user}">
-        <div class="form-group">
-            <input type="text" th:field="*{username}" class="form-control"/>
-            <input type="email" th:field="*{email}" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <input type="text" th:field="*{first_name}" class="form-control"/>
-            <textarea th:field="*{bio}" class="form-control"></textarea>
-        </div>
-        <input type="hidden" th:field="*{id}" />
-        <input type="hidden" th:field="*{password}" />
-        <input type="hidden" th:field="*{dateCreated}" />
-        <input type="hidden" th:field="*{imageURL}" />
+<div class="container">
+    <div class="row fill d-flex justify-content-center align-items-center">
+        <h1 class="d-flex justify-content-center">Edit Profile</h1>
+        <div class="col-md-6">
+            <div class="card card-with-border">
+                <div class="card-body">
+                    <form th:action="@{'/users/edit/' + ${id}}" th:method="post" th:object="${user}">
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="username">username</label>
+                                <input id="username" type="text" th:field="*{username}" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label for="email">email</label>
+                                <input id="email" type="email" th:field="*{email}" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="firstName">first name</label>
+                                <input id="firstName" type="text" th:field="*{first_name}" class="form-control"/>
+                            </div>
+                            <div class="col">
+                                <label for="bio">bio</label>
+                                <textarea id="bio" th:field="*{bio}" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" th:field="*{id}" />
+                        <input type="hidden" th:field="*{password}" />
+                        <input type="hidden" th:field="*{dateCreated}" />
+                        <input type="hidden" th:field="*{imageURL}" />
 
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="/profile" class="btn btn-primary">Cancel</a>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="/profile" class="btn btn-primary">Cancel</a>
 
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </form>
-
+    </div>
 </div>
 
 <th:block th:replace="fragments/footer :: footer" />

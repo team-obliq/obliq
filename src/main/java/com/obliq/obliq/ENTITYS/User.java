@@ -45,6 +45,7 @@ private long tribe_id;
 private long career_id;
 
 @Column (name = "image_URL")
+@ColumnDefault(value = "'https://cdn.filestackcontent.com/3DXBYNhTTWXukh2GdDY3'")
 private String imageURL;
 
 @CreationTimestamp
