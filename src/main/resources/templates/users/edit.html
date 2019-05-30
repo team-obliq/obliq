@@ -8,8 +8,9 @@
 
 <div class="container">
     <div class="row fill d-flex justify-content-center align-items-center">
-        <h1 class="d-flex justify-content-center">Edit Profile</h1>
+
         <div class="col-md-6">
+            <h1 class="d-flex justify-content-center">Edit Profile</h1>
             <div class="card card-with-border">
                 <div class="card-body">
                     <form th:action="@{'/users/edit/' + ${id}}" th:method="post" th:object="${user}">
