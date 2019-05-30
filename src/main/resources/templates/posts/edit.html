@@ -6,6 +6,14 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
+<div class="container fill">
+    <div class="row">
+        <form class="col-12 col-md-6" th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
+            <div class="card">
+                <div class="card-body">
+                    <h2 th:text="${'Edit Post'}" class="mx-auto"></h2>
+                    <div class="form-group">
+                        <input type="text" class="form-control" th:field="*{title}"/>
 <div class="container">
     <div class="row fill d-flex justify-content-center">
         <form class="col-12 col-md-6 my-5" th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
@@ -27,7 +35,19 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <textarea class="form-control" th:field="*{body}"></textarea>
+                    </div>
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="hidden" th:field="*{dateCreated}"/>
+                    <input type="hidden" th:field="*{cardID}" />
                 </div>
+            </div>
+            <div class="row my-4">
+                <a href="/profile" class="btn btn-primary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
             <!--</form>-->
         </form>
 
