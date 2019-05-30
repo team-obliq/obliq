@@ -6,22 +6,30 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar" />
 
-<div class="container fill">
-    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-        <div class="form-group">
-            <input th:field="*{title}" placeholder="title" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <textarea th:field="*{body}" placeholder="body" class="form-control"></textarea>
-        </div>
+<div class="container">
+    <div class="row fill d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card card-with-border">
+                <div class="card-body">
+                    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+                        <div class="form-group">
+                            <input th:field="*{title}" placeholder="title" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <textarea th:field="*{body}" placeholder="body" class="form-control"></textarea>
+                        </div>
 
-        <div class="row">
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="/tribe" class="btn btn-primary">Cancel</a>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <a href="/tribe" class="btn btn-primary">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <th:block th:replace="fragments/footer :: footer" />

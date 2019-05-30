@@ -7,16 +7,22 @@
 <th:block th:replace="fragments/navbar :: navbar" />
 <div class="container">
     <div class="row">
-        <div id="sidebar" class="col-12 col-md-2">
+
+        <!--   sidebar for med and up   -->
+        <div id="sidebar" class="d-none d-md-block col-md-2">
             <h3 class="d-flex justify-content-center my-2">Members</h3>
             <div th:each="user : ${users}" class="col-12 col-md-2">
 
                 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
 
-               
-
-
                 <p th:text="${user.username}"></p>
+            </div>
+        </div>
+
+        <!--   "sdiebar" for mobile   -->
+        <div class="col d-sm-block d-md-none">
+            <div th:each="user : ${users}" class="d-flex justify-content-center">
+                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
             </div>
         </div>
         <div class="col-12 col-md-10">
