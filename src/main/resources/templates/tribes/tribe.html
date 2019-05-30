@@ -10,7 +10,7 @@
 
         <!--   sidebar for med and up   -->
         <div id="sidebar" class="d-none d-md-block col-md-2">
-            <h3 class="d-flex justify-content-center my-2">Members</h3>
+            <h1 class="d-flex justify-content-center my-4">Members</h1>
             <div th:each="user : ${users}" class="col-12 col-md-2">
 
                 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
@@ -19,18 +19,19 @@
             </div>
         </div>
 
-        <!--   "sdiebar" for mobile   -->
+        <!--   "sidebar" for mobile   -->
         <div class="col d-sm-block d-md-none">
             <div th:each="user : ${users}" class="d-flex justify-content-center">
                 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
             </div>
         </div>
         <div class="col-12 col-md-10">
+            <h1 class="d-flex justify-content-center my-4">Tribe Questions</h1>
             <div th:each="post : ${posts}">
                 <div class="row card card-with-border custom-anchor my-2">
                     <div class="card-body">
                         <h3 th:text="${post.title}"></h3>
-                        <p><small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'yyyy-MM-dd')}"></small></p>
+                        <p><small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small></p>
                         <p><small th:text="'posted by: ' + ${post.user.username}"></small></p>
                         <p th:text="${post.body}"></p>
                     </div>
