@@ -7,17 +7,33 @@
 <th:block th:replace="fragments/navbar :: navbar" />
 <div class="container">
     <div class="row my-5">
-        <div class="col-6 card bg-transparent">
-            <img th:src="@{'https://cdn.filestackcontent.com/ooJkdSgyRwegSudEjyZ5'}" class="aboutUs-img rounded-circle" />
-            <a th:href="@{http://www.github.com/travisVela}">GitHub</a>
-            <a th:href="@{http://www.linkedin/in/travisvela}">LinkedIn</a>
-
+        <div class="col-md-6">
+            <h1 class="d-flex justify-content-center">Travis Vela</h1>
+            <div class="card card-with-border">
+                <div class="card-body">
+                    <div class="col d-flex flex-column">
+                        <img th:src="@{'https://cdn.filestackcontent.com/ooJkdSgyRwegSudEjyZ5'}" class="aboutUs-img rounded-circle my-5 mx-auto" />
+                        <p class="my-2 mx-auto">Quote goes here</p>
+                        <h4 class="my-2 mx-auto"><a th:href="@{http://www.github.com/travisVela}">GitHub: /travisvela</a></h4>
+                        <h4 class="mx-auto"><a th:href="@{http://www.linkedin/in/travisvela}">LinkedIn: in/travisvela</a></h4>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-6 card bg-transparent">
-            <img th:src="@{'https://cdn.filestackcontent.com/m8R5P3QAST812c3pCQ5w'}" class="aboutUs-img rounded-circle" />
-            <a th:href="@{http://www.github.com/carlomunguia}">GitHub</a>
-            <a th:href="@{http://www.linkedin/in/carlomunguia}">LinkedIn</a>
+        <div class="col-md-6">
+            <h1 class="d-flex justify-content-center">Carlo Munguia</h1>
+            <div class="card card-with-border">
+                <div class="card-body">
+                    <div class="col d-flex flex-column">
+                        <img th:src="@{'https://cdn.filestackcontent.com/m8R5P3QAST812c3pCQ5w'}"
+                            class="aboutUs-img rounded-circle my-5 mx-auto"/>
 
+                        <p class="my-2 mx-auto">Quote goes here</p>
+                        <h4 class="my-2 mx-auto"><a th:href="@{http://www.github.com/carlomunguia}">GitHub: /carlomuguia</a></h4>
+                        <h4 class="mx-auto"><a th:href="@{http://www.linkedin/in/carlomunguia}">LinkedIn: in/carlomuguia</a></h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
