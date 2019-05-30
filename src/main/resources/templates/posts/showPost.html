@@ -34,7 +34,7 @@
             <div class="col card-body">
                 <p th:text="${comment.body}"></p>
 
-                <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small>
+                <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'MM-dd-yyyy')}"></small>
                 <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
 
                 <div class="row">

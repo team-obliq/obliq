@@ -4,7 +4,31 @@ body {
     padding-bottom: 44px;
     background-image: url("../images/witewall_3_@2X.png");
 }
+a, a#dropdownMenu {
+    color: #e7e7db;
+}
+a:hover, a#dropdownMenu:hover{
+    color: #c7c4bf;
+    text-decoration :none;
+}
+h1{
+    color: #333;
+}
 
+
+.btn-outline-primary {
+    color:#e7e7db;
+    border: 1px solid #e7e7db;
+}
+.btn-outline-primary:hover {
+    background-color: #c7c4bf;
+    color: #333;
+    border: 1px solid #e7e7db;
+}
+
+.navbar {
+    background-color: #343a40;
+}
 #footer {
     color: #fff;
     position: fixed;
@@ -74,14 +98,14 @@ body {
 }
 
 .btn-primary {
-    color: #cfcfcd;
-    background-color: #334355;
+    color: #333;
+    background-color: #e7e7db;
     border: 1px solid #475563;
 }
 .btn-primary:hover {
-    color: #cfcfcd;
+    color: #333;
     border: 1px solid #334544;
-    background-color: #475563;
+    background-color: #c7c4bf;
 }
 
 #obliq-logo {
