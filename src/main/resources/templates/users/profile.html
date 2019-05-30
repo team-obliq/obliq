@@ -25,7 +25,7 @@
                     <a th:href="@{'posts/showPost/' + ${post.id}}">
                         <h3 th:text="${post.title}"></h3>
                     </a>
-                    <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-yyyy-dd')}"></small></p>
+                    <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small></p>
                     <p th:text="${post.body}"></p>
                     <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
                     <a th:href="@{'/posts/delete/' + ${post.id}}" class="btn btn-primary">Delete</a>
@@ -44,7 +44,7 @@
                 <div class="card-body">
 
                     <p th:text="${comment.body}"></p>
-                    <p><small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'yyyy-MM-dd')}"></small></p>
+                    <p><small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'MM-dd-yyyy')}"></small></p>
                     <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
                     <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary">Delete</a>
                 </div>
