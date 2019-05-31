@@ -20,12 +20,12 @@
                     </div>
                     <form th:action="@{/login}" th:method="post">
                         <div class="form-group">
-                            <input id="username" type="text" class="form-control" name="username"
-                                   placeholder="username"/>
+                            <label for="username">username</label>
                         </div>
+                            <input id="username" type="text" class="form-control" name="username" />
                         <div class="form-group">
-                            <input id="password" type="password" class="form-control" name="password"
-                                   placeholder="password"/>
+                            <label for="password">password</label>
+                            <input id="password" type="password" class="form-control" name="password" />
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>

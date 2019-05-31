@@ -13,26 +13,33 @@
             <div class="card-body d-flex justify-content-center">
                 <form  th:action="@{/signup}" th:method="post" th:object="${user}">
                     <div class="form-group">
-                        <input type="text" th:field="*{username}" class="form-control my-4" id="username" aria-describedby="" placeholder="Enter username"/>
-
-                        <input type="email" th:field="*{email}" class="form-control my-2" id="email" aria-describedby=""
+                        <label for="username">username</label>
+                        <input type="text" th:field="*{username}" class="form-control" id="username" aria-describedby="" placeholder="Enter username"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">email</label>
+                        <input type="email" th:field="*{email}" class="form-control" id="email" aria-describedby=""
                                placeholder="Enter email"/>
                     </div>
                     <div class="form-group">
-                        <input type="password" th:field="*{password}" class="form-control my-4" id="password"
+                        <label for="password">password</label>
+                        <input type="password" th:field="*{password}" class="form-control" id="password"
                                aria-describedby="" placeholder="Enter password"/>
-                        <input type="text" th:field="*{first_name}" class="form-control my-2" id="first_name"
+                    </div>
+                    <div class="form-group">
+                        <label for="first_name">first name</label>
+                        <input type="text" th:field="*{first_name}" class="form-control" id="first_name"
                                placeholder="First Name" />
                     </div>
                     <div class="form-group">
-                        <!--<label for="bio">Write a short bio to tell your tribe who you are</label>-->
+                        <label for="bio">bio</label>
                         <textarea type="text" th:field="*{bio}" class="form-control" id="bio" placeholder="Write a short bio to tell your tribe who you are" ></textarea>
                     </div>
 
                     <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label for="continent">Contitnent</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="continent">Continent</label>
                                 <select th:field="*{continent}" id="continent">
                                     <option th:value="'North America'">North America</option>
                                     <option th:value="'South America'">South America</option>
@@ -40,13 +47,17 @@
                                     <option th:value="'Africa'">Africa</option>
                                     <option th:value="'Europe'">Europe</option>
                                     <option th:value="'Australia'">Australia</option>
-                                    <option th:value="'Antartica'">Antartica</option>
+                                    <option th:value="'Antartica'">Antarctica</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label for="career">Career</label>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="career">Career</label>
+                                    </div>
+                                </div>
                                 <select th:field="*{career_id}" id="career">
                                     <option th:each="career : ${careerList}"
                                             th:value="${career.getId()}"
@@ -57,28 +68,29 @@
                         </div>
                     </div>
 
-                    <div class="box row">
+
+                    <div class="row">
                         <form id="pick-form">
-                            <div class="field col-md-4 my-2">
+                            <div class="field col-md-6 my-2">
                                 <div class="control">
-                                    <button class="button btn btn-primary my-2" type="button" id="picker">Add Pic</button>
-                                    <input type="hidden" id="fileupload" name="fileupload" />
-                                    <input id="file-url" name="file-url" type="hidden" />
-                                    <input th:field="*{imageURL}" id="imageURL" name="imageURL" type="hidden" />
+                                    <button class="button btn btn-primary my-2" type="button" id="picker">Add Pic
+                                    </button>
+                                    <input type="hidden" id="fileupload" name="fileupload"/>
+                                    <input id="file-url" name="file-url" type="hidden"/>
+                                    <input th:field="*{imageURL}" id="imageURL" name="imageURL" type="hidden"/>
                                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-
-
                                 </div>
                                 <div class="control" id="nameBox"></div>
                                 <div class="control" id="urlBox"></div>
                             </div>
-                            <div class="field my-2 col-md-4">
+                            <div class="field my-2 col-md-6">
                                 <div class="control">
-                                    <input class="button btn btn-primary my-2" type="submit" value="Submit" />
+                                    <input class="button btn btn-primary my-2" type="submit" value="Submit"/>
                                 </div>
                             </div>
                         </form>
                     </div>
+
                 </form>
             </div>
         </div>
