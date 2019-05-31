@@ -14,7 +14,8 @@
                 <div class="card-body">
                     <form th:action="@{'/edit/' + ${id}}" th:method="post" th:object="${comment}">
                         <div class="form-group">
-                            <input type="text" th:field="*{body}" class="form-control" />
+                            <label for="body"></label>
+                            <input id="body" type="text" th:field="*{body}" class="form-control" />
                             <input type="hidden" th:field="*{id}" />
                             <input type="hidden" th:field="*{post.id}" />
                             <input type="hidden" th:field="*{dateCreated}" />
