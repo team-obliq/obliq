@@ -54,6 +54,36 @@
             </div>
         </div>
 
+        <!--   edit modal   -->
+        <!--<div class="modal fade" id="editModal" th:id="${'/edit/' + ${comment.id}}" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">-->
+            <!--<div class="modal-dialog modal-dialog-centered" role="document">-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-body">-->
+                        <!--<h5 class="modal-title d-flex justify-content-center">Edit Comment</h5>-->
+                        <!--<div class="card card-with-border">-->
+                            <!--<div class="card-body">-->
+                                <!--<form th:action="@{'/edit/' + ${id}}" th:method="post" th:object="${comment}">-->
+                                    <!--<div class="form-group">-->
+                                        <!--<label for="body">body</label>-->
+                                        <!--<input id="body" type="text" th:field="*{body}" class="form-control" />-->
+                                        <!--<input type="hidden" th:field="*{id}" />-->
+                                        <!--<input type="hidden" th:field="*{post.id}" />-->
+                                        <!--<input type="hidden" th:field="*{dateCreated}" />-->
+                                    <!--</div>-->
+                                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                                    <!--<a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">Cancel</a>-->
+                                <!--</form>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>-->
+                        <!--<button type="button" class="btn btn-primary">Submit</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
         <!--   card for users that didn't create post   -->
         <div th:unless="${comment.user.id == user.id}" class="row card my-4 mr-auto px-2" style="width:75%">
             <div class="col card-body">

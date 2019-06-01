@@ -130,4 +130,19 @@ h1{
     display: block;
 }
 
+#logout {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: #e7e7db;
+}
+#logout:hover {
+    color: #c7c4bf;
+    border: none;
+}
+#logout:active {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    text-decoration: none;
+    outline: none;
+}
 
