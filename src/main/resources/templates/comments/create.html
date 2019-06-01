@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragments/head :: head('Create Comment')" />
+    <th:block th:replace="fragments/head :: head('Create Comment')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container fill">
     <form th:action="@{/comments/create}" th:method="post" th:object="${comment}">
@@ -21,7 +21,7 @@
 </div>
 
 
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

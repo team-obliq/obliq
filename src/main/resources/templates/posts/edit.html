@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragments/head :: head('Edit')" />
+    <th:block th:replace="fragments/head :: head('Edit')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container fill">
     <div class="row fill d-flex justify-content-center">
@@ -23,7 +23,7 @@
                     </div>
                     <input type="hidden" th:field="*{id}"/>
                     <input type="hidden" th:field="*{dateCreated}"/>
-                    <input type="hidden" th:field="*{cardID}" />
+                    <input type="hidden" th:field="*{cardID}"/>
                     <div class="row">
                         <a href="/profile" class="btn btn-primary">Cancel</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -63,7 +63,7 @@
 </div>
 
 
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

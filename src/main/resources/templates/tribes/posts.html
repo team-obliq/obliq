@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/head :: head('Show')" />
+    <th:block th:replace="fragments/head :: head('Show')"/>
 
 
     <style>
@@ -31,14 +32,14 @@
 </head>
 
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container fill">
 
-    <div class = "row" id = "title" th:text="${post.title}"> </div>
-    <div class = "row" id = "post_body" th:text="${post.body}"> </div>
+    <div class="row" id="title" th:text="${post.title}"></div>
+    <div class="row" id="post_body" th:text="${post.body}"></div>
 
-    <div class = "row" id = "post_owner_info">
+    <div class="row" id="post_owner_info">
         <div class="col" th:text="${post_owner_name}"></div>
         <div class="col" th:text="${post_owner_career}"></div>
         <div class="col" th:text="${post_date}"></div>
@@ -52,7 +53,7 @@
             <input type="hidden" name="postId" th:value="${post.id}"/>
         </div>
 
-        <div class ="row" id="submit_button">
+        <div class="row" id="submit_button">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
@@ -60,7 +61,7 @@
     <br/>
 
     <div th:each="comment : ${comments}">
-        <div sec:authorize="isAnonymous()" class="row" th:text="${comment.body}"> </div>
+        <div sec:authorize="isAnonymous()" class="row" th:text="${comment.body}"></div>
     </div>
 
 
@@ -86,13 +87,7 @@
     <!--</div>-->
 
 
-
-
-
-
     <!--If your not the owner of the post-->
-
-
 
 
     <!--&lt;!&ndash;For each start&ndash;&gt;-->
@@ -124,16 +119,13 @@
     <!--</div>-->
 
 
-
-
-
     <!--</div>-->
     <!--</div>-->
 </div>
 
 
-<th:block th:replace="fragments/footer :: footer" />
-<script src = "../../static/js/showPost.js"> </script>
+<th:block th:replace="fragments/footer :: footer"/>
+<script src="../../static/js/showPost.js"></script>
 
 </body>
 

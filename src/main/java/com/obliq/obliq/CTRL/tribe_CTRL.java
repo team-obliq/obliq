@@ -1,5 +1,6 @@
 package com.obliq.obliq.CTRL;
 
+import com.obliq.obliq.ENTITYS.Career;
 import com.obliq.obliq.ENTITYS.Post;
 import com.obliq.obliq.ENTITYS.User;
 import com.obliq.obliq.REPOS.CareersRepository;
@@ -10,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class tribe_CTRL {
         }
 
         model.addAttribute("users", tribe_users);
-
+        model.addAttribute("careers", user.getCareer_id());
         List<Post> tribe_posts = new ArrayList<>();
         for(Post p: postRepo.findAll()) {
             if (p.getUser().getTribe_id() == user.getTribe_id())
@@ -54,14 +56,11 @@ public class tribe_CTRL {
 
         model.addAttribute("posts", tribe_posts);
 
-
         return "tribes/tribe";
 
     }
 
-//    @GetMapping("tribe/{id}")
-//    public String showPost(@PathVariable long id, Model model) {
-//        model.addAttribute("post", postRepo.findOne(id));
+
 //
 //        /* ---Post info attributes---------------------------------------------------------------------------------------- */
 ////        post_owner_name = postRepo.findOne(id).getUser().getFirst_name();

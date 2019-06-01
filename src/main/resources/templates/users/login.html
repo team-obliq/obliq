@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragments/head :: head('Login')" />
+    <th:block th:replace="fragments/head :: head('Login')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar" />
+<th:block th:replace="fragments/navbar"/>
 
 <div class="container">
     <div class="row fill d-flex justify-content-center align-items-center">
@@ -22,10 +22,10 @@
                         <div class="form-group">
                             <label for="username">username</label>
                         </div>
-                            <input id="username" type="text" class="form-control" name="username" />
+                        <input id="username" type="text" class="form-control" name="username"/>
                         <div class="form-group">
                             <label for="password">password</label>
-                            <input id="password" type="password" class="form-control" name="password" />
+                            <input id="password" type="password" class="form-control" name="password"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

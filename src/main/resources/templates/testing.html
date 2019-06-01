@@ -37,7 +37,7 @@
 </div>
 
 <h1>These are all the careers by id</h1>
-<div th:each="career : ${careers}">
+<div th:each="career : ${title}">
     <p th:text="${career.title}"></p>
     <p th:text="'career id: ' + ${career.id}"></p>
 </div>

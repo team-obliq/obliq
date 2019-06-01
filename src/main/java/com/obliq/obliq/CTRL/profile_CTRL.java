@@ -1,6 +1,7 @@
 package com.obliq.obliq.CTRL;
 
 import com.obliq.obliq.ENTITYS.User;
+import com.obliq.obliq.REPOS.CareersRepository;
 import com.obliq.obliq.REPOS.CommentRepository;
 import com.obliq.obliq.REPOS.PostRepository;
 import com.obliq.obliq.REPOS.UserRepository;
@@ -18,11 +19,13 @@ public class profile_CTRL {
     private UserRepository userRepo;
     private PostRepository postRepo;
     private CommentRepository commentRepo;
+    private CareersRepository careersRepo;
 
-    public profile_CTRL(UserRepository userRepo, PostRepository postRepo, CommentRepository commentRepo) {
+    public profile_CTRL(UserRepository userRepo, PostRepository postRepo, CommentRepository commentRepo, CareersRepository careersRepo) {
         this.userRepo = userRepo;
         this.postRepo = postRepo;
         this.commentRepo = commentRepo;
+        this.careersRepo = careersRepo;
     }
 
 
@@ -34,6 +37,7 @@ public class profile_CTRL {
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
         model.addAttribute("posts", postRepo.findByUserId(sessionUser.getId()));
         model.addAttribute("comments", commentRepo.findByUserId(sessionUser.getId()));
+        model.addAttribute("careers", careersRepo.findOne(sessionUser.getCareer_id()));
 
         System.out.println("profile_working");
         return "users/profile";
