@@ -17,16 +17,22 @@
                         <div class="form-group">
                             <label for="body"></label>
 
-                           
+
                             <textarea id="body" th:field="*{body}" class="form-control"></textarea>
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="hidden" th:field="*{post.id}" />
-                            <input type="hidden" th:field="*{dateCreated}" />
+                            <input type="hidden" th:field="*{id}"/>
+                            <input type="hidden" th:field="*{post.id}"/>
+                            <input type="hidden" th:field="*{dateCreated}"/>
 
 
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="fa fa-check mr-1"></span>
+                            <span>Submit</span>
+                        </button>
+                        <a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">
+                            <span class="fa fa-times mr-1"></span>
+                            <span>Cancel</span>
+                        </a>
                     </form>
                 </div>
             </div>
