@@ -22,28 +22,40 @@
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
                 <a class="nav-link" href="/posts/create">Post Question</a>
             </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item px-1">
+                <a class="nav-link" href="/profile">My Profile</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item px-1">
+                <a class="nav-link" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit Profile</a>
+            </li>
         </ul>
         <ul class="navbar-nav">
             <li sec:authorize="isAnonymous()" class="nav-item px-1">
                 <a class="nav-link" href="/login">Sign In</a>
             </li>
             <li sec:authorize="isAnonymous()" class="nav-item px-1">
-                <a class="btn btn-outline-primary" href="/signup">Register</a>
+
+                <a class="nav-link" href="/signup">Register</a>
+
             </li>
-            <li sec:authorize="isAuthenticated()" class="dropdown">
-                <a class="nav-link btn-link btn dropdown-toggle" href="#" role="button" id="dropdownMenu"
-                   data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">My Account</a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
-                    <a class="dropdown-item" href="/profile">My Profile</a>
-                    <a class="dropdown-item" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit
-                        Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <form th:action="@{/logout}" th:method="post">
-                        <button type="submit" class="dropdown-item">Sign Out</button>
-                    </form>
-                </div>
+            <li sec:authorize="isAuthenticated()" class="nav-item px-1">
+                <form th:action="@{/logout}" th:method="post">
+                    <button id="logout" type="submit" class="nav-link">Sign Out</button>
+                </form>
             </li>
+            <!--<li sec:authorize="isAuthenticated()" class="dropdown">-->
+                <!--<a class="nav-link btn-link btn dropdown-toggle" href="#" role="button" id="dropdownMenu"-->
+                   <!--data-toggle="dropdown"-->
+                   <!--aria-haspopup="true" aria-expanded="false">My Account</a>-->
+                <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">-->
+                    <!--<a class="dropdown-item" href="/profile">My Profile</a>-->
+                    <!--<a class="dropdown-item" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit Profile</a>-->
+                    <!--<div class="dropdown-divider"></div>-->
+                    <!--<form th:action="@{/logout}" th:method="post">-->
+                        <!--<button type="submit" class="dropdown-item">Sign Out</button>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</li>-->
         </ul>
 
 
