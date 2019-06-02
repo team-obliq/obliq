@@ -92,6 +92,13 @@ h1{
     width:400px;
     background-color: #c6bcd1;
     color: #475563;
+    box-shadow: #475563 6px 6px 8px;
+    padding: 77px;
+    text-shadow: papayawhip 1px 1px;
+}
+
+.obliq-card:hover {
+    box-shadow: #475563 6px 6px 8px;
 }
 .post-owner {
     background-color: #989c9d;
