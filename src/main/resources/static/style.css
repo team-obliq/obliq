@@ -117,9 +117,6 @@ h1{
     animation: kenburns 20s infinite;
 }
 
-
-
-
 .sidebar {
     height: 100%;
     width: 160px;
@@ -145,4 +142,8 @@ h1{
     text-decoration: none;
     outline: none;
 }
+.navbar-toggler-icon {
+    color: #fff;
+}
+
 
