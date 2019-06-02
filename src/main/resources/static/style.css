@@ -172,7 +172,7 @@ body:not(.no-splash){
     height: 150px;
     object-fit: cover;
 }
-#form-bg {
+.form-bg {
     background-image: url("../images/OBLIQ-LOGO-BLACK.png");
     background-size: contain;
     background-position: center center;
