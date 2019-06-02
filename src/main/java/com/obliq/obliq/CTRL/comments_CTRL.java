@@ -60,6 +60,17 @@ public class comments_CTRL {
         model.addAttribute("post", comment.getPost());
         return "comments/edit";
     }
+
+//    get mapping for modal
+    //    @GetMapping("/edit")
+//    @ResponseBody
+//    public Comment editComment(Integer id, Model model) {
+//        long idLong = (long) id;
+//        model.addAttribute("comment", commentRepo.findOne(idLong));
+//        System.out.println(commentRepo.findOne(idLong));
+//        return commentRepo.findOne(idLong);
+//
+//    }
     @PostMapping("/edit/{id}")
     public String editComment(@ModelAttribute Comment commentEdited) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
