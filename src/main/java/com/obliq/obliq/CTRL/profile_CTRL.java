@@ -37,9 +37,7 @@ public class profile_CTRL {
         model.addAttribute("user", userRepo.findOne(sessionUser.getId()));
         model.addAttribute("posts", postRepo.findByUserId(sessionUser.getId()));
         model.addAttribute("comments", commentRepo.findByUserId(sessionUser.getId()));
-        model.addAttribute("careers", careersRepo.findOne(sessionUser.getCareer_id()));
-
-        System.out.println("profile_working");
+        model.addAttribute("careers", careersRepo.findOne(sessionUser.getId()));
         return "users/profile";
 
     }
