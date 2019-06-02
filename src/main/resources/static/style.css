@@ -2,6 +2,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     padding-bottom: 44px;
+    /*background-color: #475563;*/
 }
 
 a, a#dropdownMenu {
@@ -49,6 +50,7 @@ h1{
 .profile-img {
     height: 50px;
     width: 50px;
+    object-fit: cover;
 }
 
 .profile-img:hover {
@@ -128,6 +130,7 @@ h1{
 #obliq-logo {
     width: 50%;
     height: 50%;
+    object-fit: cover;
 }
 
 .sidebar {
@@ -169,10 +172,15 @@ h1{
 .profile-page-img {
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 #form-bg {
     background-image: url("../images/OBLIQ-LOGO-BLACK.png");
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
+}
+
+.profile-stat {
+    width: 230px;
 }

@@ -32,7 +32,7 @@
                     <div class="card-body">
                         <h3 th:text="${post.title}"></h3>
                         <p>
-                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small>
+                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM.dd.yyyy')}"></small>
                         </p>
                         <p>
                             <small th:text="'posted by: ' + ${post.user.username}"></small>
