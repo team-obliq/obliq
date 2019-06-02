@@ -2,24 +2,33 @@
 body {
     font-family: 'Montserrat', sans-serif;
     padding-bottom: 44px;
-    /*background-image: url("../images/witewall_3_@2X.png");*/
 }
+
 a, a#dropdownMenu {
     color: #e7e7db;
 }
+
 a:hover, a#dropdownMenu:hover{
     color: #c7c4bf;
     text-decoration :none;
 }
+
 h1{
     color: #333;
 }
 
+#background-texture {
+    z-index: -1;
+    width: 100%;
+    height: 90vh;
+    background-image: url("../images/witewall_3_@2X.png");
+}
 
 .btn-outline-primary {
     color:#e7e7db;
     border: 1px solid #e7e7db;
 }
+
 .btn-outline-primary:hover {
     background-color: #c7c4bf;
     color: #333;
@@ -131,8 +140,8 @@ h1{
     display: block;
 }
 
-.splash {
-    background-color: #475563;
+.splash{
+    /*background-color: #475563;*/
 }
 
 #splash-text {
@@ -161,4 +170,9 @@ h1{
     width: 150px;
     height: 150px;
 }
-
+#form-bg {
+    background-image: url("../images/OBLIQ-LOGO-BLACK.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
