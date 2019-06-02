@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <th:block th:replace="fragments/head :: head('Home')" />
+    <th:block th:replace="fragments/head :: head('Home')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 <div class="container">
     <div class="row">
 
@@ -12,15 +13,16 @@
         <div id="sidebar" class="d-none d-md-block col-md-2">
             <h1 class="d-flex justify-content-center my-4">Members</h1>
             <div th:each="user : ${users}" class="col-12 col-md-2">
-                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
                 <p th:text="${user.username}"></p>
+                <!--                <div th:each="careers : ${career} "></div>-->
             </div>
         </div>
 
         <!--   "sidebar" for mobile   -->
         <div class="col d-sm-block d-md-none">
             <div th:each="user : ${users}" class="d-flex justify-content-center">
-                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
             </div>
         </div>
         <div class="col-12 col-md-10">
@@ -29,8 +31,12 @@
                 <div class="row card card-with-border custom-anchor my-2">
                     <div class="card-body">
                         <h3 th:text="${post.title}"></h3>
-                        <p><small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small></p>
-                        <p><small th:text="'posted by: ' + ${post.user.username}"></small></p>
+                        <p>
+                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small>
+                        </p>
+                        <p>
+                            <small th:text="'posted by: ' + ${post.user.username}"></small>
+                        </p>
                         <p th:text="${post.body}"></p>
                     </div>
                     <a th:href="@{'posts/showPost/' + ${post.id}}"></a>
@@ -40,8 +46,7 @@
 
     </div>
 </div>
-
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

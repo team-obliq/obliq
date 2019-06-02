@@ -4,13 +4,27 @@
 <head>
     <th:block th:replace="fragments/head :: head('Home')"/>
 </head>
-<body>
+<body class="splash">
 <th:block th:replace="fragments/navbar :: navbar"/>
 <div class="text-center mx-auto">
     <!--<a class=" btn btn-outline-secondary" th:href="@{/login/}">BEGIN</a>-->
 </div>
-<img src="../static/OBLIQ.png" th:src="@{/OBLIQ.png}" alt="obliq-img" id="obliq-logo" />
-<th:block th:replace="fragments/footer :: footer"/>
+<div class="d-flex row">
+<img src="../static/images/OBLIQ-LOGO-WHITE.png" th:src="@{images/OBLIQ-LOGO-WHITE.png}" alt="obliq-img"
+     id="obliq-logo" class="mx-auto justify-content-center mb-4"/>
+</div>
+<div class="text-center mx-auto display-4 px-5" id="splash-text">OBLIQ</div>
+<br/>
+<div class="row">
+<h4 class="text-center mx-auto col-6" id="splash-text">
+    is an problem solving community
+    designed to bring unlikely minds together
+    to achieve next level ideation.
+</h4>
+</div>
+<br/>
+<!--<h4 class="text-center mx-auto" id="splash-text">REGISTER NOW</h4>-->
+    <th:block th:replace="fragments/footer :: footer"/>
 <th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

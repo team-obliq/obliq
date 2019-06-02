@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:thL="http://www.w3.org/1999/html">
 <head>
-    <th:block th:replace="fragments/head :: head('Edit Profile')" />
+    <th:block th:replace="fragments/head :: head('Edit Profile')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container">
     <div class="row fill d-flex justify-content-center align-items-center">
@@ -34,15 +34,15 @@
                                 <textarea id="bio" th:field="*{bio}" class="form-control"></textarea>
                             </div>
                         </div>
-                        <input type="hidden" th:field="*{id}" />
-                        <input type="hidden" th:field="*{password}" />
-                        <input type="hidden" th:field="*{dateCreated}" />
-                        <input type="hidden" th:field="*{imageURL}" />
+                        <input type="hidden" th:field="*{id}"/>
+                        <input type="hidden" th:field="*{password}"/>
+                        <input type="hidden" th:field="*{dateCreated}"/>
+                        <input type="hidden" th:field="*{imageURL}"/>
 
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="/profile" class="btn btn-primary">Cancel</a>
+                                <a href="/profile" class="btn btn-primary float-right">Cancel</a>
 
                             </div>
                         </div>
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 </body>
 </html>

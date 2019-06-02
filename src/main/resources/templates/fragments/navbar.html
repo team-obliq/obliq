@@ -17,7 +17,7 @@
                 <a class="nav-link" href="/tribe">My Tribe</a>
             </li>
             <!--<li sec:authorize="isAuthenticated()" class="nav-item px-1">-->
-                <!--<a class="nav-link" href="/profile">My Profile</a>-->
+            <!--<a class="nav-link" href="/profile">My Profile</a>-->
             <!--</li>-->
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
                 <a class="nav-link" href="/posts/create">Post Question</a>
@@ -34,7 +34,9 @@
                 <a class="nav-link" href="/login">Sign In</a>
             </li>
             <li sec:authorize="isAnonymous()" class="nav-item px-1">
+
                 <a class="nav-link" href="/signup">Register</a>
+
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
                 <form th:action="@{/logout}" th:method="post">

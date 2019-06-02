@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="fragments/head :: head('Profile')" />
+    <th:block th:replace="fragments/head :: head('Profile')"/>
 </head>
 <body>
-<th:block th:replace="fragments/navbar :: navbar" />
+<th:block th:replace="fragments/navbar :: navbar"/>
 
 <div class="container">
     <h1>Hello, <span th:text="${user.first_name}"></span></h1>
     <div class="row">
         <div class="col col-md-4">
-            <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle" />
+            <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
             <p th:text="${user.bio}"></p>
         </div>
     </div>
 </div>
 
-<div class="container my-4" >
+<div class="container my-4">
     <h1>My Posts</h1>
     <div class="row my-2">
         <div th:each="post : ${posts}" class="col-12 col-md-4 my-2">
@@ -25,7 +25,9 @@
                     <a th:href="@{'posts/showPost/' + ${post.id}}">
                         <h3 th:text="${post.title}"></h3>
                     </a>
-                    <p> <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small></p>
+                    <p>
+                        <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM-dd-yyyy')}"></small>
+                    </p>
                     <p th:text="${post.body}"></p>
                     <a th:href="@{'/posts/edit/' + ${post.id}}" class="btn btn-primary">Edit</a>
                     <a th:href="@{'/posts/delete/' + ${post.id}}" class="btn btn-primary">Delete</a>
@@ -35,7 +37,6 @@
 
     </div>
 </div>
-
 <div class="container my-4">
     <h1>My Comments</h1>
     <div class="row my-2">
@@ -44,7 +45,9 @@
                 <div class="card-body">
 
                     <p th:text="${comment.body}"></p>
-                    <p><small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'MM-dd-yyyy')}"></small></p>
+                    <p>
+                        <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'MM-dd-yyyy')}"></small>
+                    </p>
                     <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary">Edit</a>
                     <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary">Delete</a>
                 </div>
@@ -56,8 +59,8 @@
 <form>
 
 </form>
-<th:block th:replace="fragments/footer :: footer" />
-<th:block th:replace="fragments/jsLinks :: jsLinks" />
+<th:block th:replace="fragments/footer :: footer"/>
+<th:block th:replace="fragments/jsLinks :: jsLinks"/>
 
 </body>
 </html>
