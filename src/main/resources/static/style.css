@@ -150,5 +150,8 @@ h1{
 .navbar-toggler-icon {
     color: #fff;
 }
-
+.profile-page-img {
+    width: 150px;
+    height: 150px;
+}
 
