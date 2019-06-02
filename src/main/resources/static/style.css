@@ -147,4 +147,8 @@ h1{
     text-decoration: none;
     outline: none;
 }
+.navbar-toggler-icon {
+    color: #fff;
+}
+
 
