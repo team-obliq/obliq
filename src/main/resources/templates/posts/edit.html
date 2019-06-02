@@ -9,7 +9,6 @@
 <div class="container fill">
     <div class="row fill d-flex justify-content-center">
         <form class="col-12 col-md-6 my-5" th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
-            <!--<form class="col-12 col-md-6">-->
             <h1 th:text="${'Edit Post'}" class="d-flex justify-content-center"></h1>
             <div class="card">
                 <div class="card-body">
@@ -25,9 +24,12 @@
                     <input type="hidden" th:field="*{dateCreated}"/>
                     <input type="hidden" th:field="*{cardID}"/>
                     <div class="row">
-                        <a href="/profile" class="btn btn-primary">Cancel</a>
+                        <a href="/profile" class="btn btn-primary">
+                            <span class="fa fa-times mr-1"></span>
+                            <span>Cancel</span>
+                        </a>
                         <button type="submit" class="btn btn-primary">
-                            <span class="fa fa-check"></span>
+                            <span class="fa fa-check mr-1"></span>
                             <span>Submit</span>
                         </button>
                     </div>

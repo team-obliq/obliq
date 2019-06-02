@@ -13,17 +13,18 @@
     <!--   Card for post   -->
     <div class="row jumbotron my-4">
 
-        <div class="col-md-6 my-2">
-            <h1 th:text="${post.title}" class="d-flex justify-content-center"></h1>
-            <p th:text="${post.body}" class="d-flex justify-content-center"></p>
+        <div class="col-md-6">
+            <h1 th:text="${post.title}"></h1>
+            <p th:text="${post.body}"></p>
         </div>
-        <div class="row">
-            <h4 class="row ml-5 mt-auto"> an inspiration for your problem:</h4>
-        </div>
-        <div class="col-md-6 card obliq-card ml-auto">
-            <div class="card-body d-flex justify-content-center align-items-center mx-auto">
-                <h5 th:text="${card.card}" class="card-pop"></h5>
+        <div class="col-md-6 ml-auto">
+            <h5 class="text-center text-muted">Inspiration for Your Problem</h5>
+            <div class="card obliq-card d-table w-100">
+                <div class="card-body d-table-cell align-middle text-center">
+                    <h4 th:text="${card.card}" class="card-pop mb-0"></h4>
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -32,23 +33,28 @@
     <div th:each="comment : ${comments}">
 
         <!--   card for post owner   -->
-        <div th:if="${comment.user.id == user.id}" class="row card my-4 ml-auto post-owner px-2" style="width:75%">
-            <div class="col card-body">
+        <div th:if="${comment.user.id == user.id}" class="card my-4 ml-auto post-owner px-2" style="width:75%">
+            <div class="card-body">
                 <p th:text="${comment.body}"></p>
 
                 <small th:text="'posted on: ' + ${#dates.format(comment.dateCreated, 'MM.dd.yyyy')}"></small>
                 <p th:text="'posted by: '+ ${comment.user.first_name}"></p>
 
-                <div class="row">
-                    <div class="col mr-auto">
-                        <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary ml-5">Edit</a>
-                        <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary ml-5">Delete</a>
+                <div class="d-flex">
+                    <div class="flex-grow-1">
+                        <a th:href="@{'/edit/' + ${comment.id}}" class="btn btn-primary mr-3">
+                            <span class="far fa-edit mr-1"></span>
+                            <span>Edit</span>
+                        </a>
+                        <a th:href="@{'/delete/' + ${comment.id}}" class="btn btn-primary">
+                            <span class="far fa-trash-alt mr-1"></span>
+                            <span>Delete</span>
+                        </a>
                     </div>
                     <!--   number of votes   -->
-                    <div th:text="${comment.getUsers().size()}" class="ml-auto px-2"></div>
+                    <div th:text="${comment.getUsers().size()}" class="px-2"></div>
                     <a href="#" class="btn btn-secondary">
                         <i class="far fa-thumbs-up"></i>
-
                     </a>
                 </div>
             </div>
@@ -77,7 +83,10 @@
         <!--</div>-->
         <!--</div>-->
         <!--<div class="modal-footer">-->
-        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>-->
+        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">
+    <span class="fa fa-times mr-1"></span>
+    <span>Cancel</span>
+</button>-->
         <!--<button type="button" class="btn btn-primary">Submit</button>-->
         <!--</div>-->
         <!--</div>-->
@@ -122,7 +131,7 @@
             <input type="hidden" name="postId" th:value="${post.id}"/>
         </div>
         <button type="submit" class="btn btn-primary">
-            <span class="fa fa-check"></span>
+            <span class="fa fa-check mr-1"></span>
             <span>Submit</span>
         </button>
     </form>
