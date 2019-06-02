@@ -6,32 +6,37 @@
 <body>
 <th:block th:replace="fragments/navbar"/>
 
-<div class="container">
-    <div class="row fill d-flex justify-content-center align-items-center">
-        <div class="col-md-6">
-            <h1 class="d-flex justify-content-center mx-auto">Login</h1>
-            <div class="card card-with-border">
-                <div class="card-body">
-                    <div th:if="${param.error}">
-                        Invalid Username or Password.
-                    </div>
-                    <div th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
-                    <form th:action="@{/login}" th:method="post">
-                        <div class="form-group">
-                            <label for="username">username</label>
-                        </div>
-                        <input id="username" type="text" class="form-control" name="username"/>
-                        <div class="form-group">
-                            <label for="password">password</label>
-                            <input id="password" type="password" class="form-control" name="password"/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
+<div id="background-texture" class="container-fluid">
+    <div class="container">
+        <div class="row fill">
+            <div id="form-bg" class="col-md-6">
+                <!--<img th:src="@{images/OBLIQ-LOGO-WHITE.png}" />-->
             </div>
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="d-flex justify-content-center mx-auto">Login</h1>
+                <div class="card card-with-border">
+                    <div class="card-body">
+                        <div th:if="${param.error}">
+                            Invalid Username or Password.
+                        </div>
+                        <div th:if="${param.logout}">
+                            You have been logged out.
+                        </div>
+                        <form th:action="@{/login}" th:method="post">
+                            <div class="form-group">
+                                <label for="username">username</label>
+                            </div>
+                            <input id="username" type="text" class="form-control" name="username"/>
+                            <div class="form-group">
+                                <label for="password">password</label>
+                                <input id="password" type="password" class="form-control" name="password"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
 </div>
