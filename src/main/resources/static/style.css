@@ -170,7 +170,7 @@ h1{
     width: 150px;
     height: 150px;
 }
-#form-bg {
+.form-bg {
     background-image: url("../images/OBLIQ-LOGO-BLACK.png");
     background-size: contain;
     background-position: center center;
