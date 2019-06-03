@@ -80,6 +80,6 @@ public class user_CTRL {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userEdited.setId(sessionUser.getId());
         users.save(userEdited);
-        return "redirect:/profile";
+        return "redirect:/my-profile";
     }
 }

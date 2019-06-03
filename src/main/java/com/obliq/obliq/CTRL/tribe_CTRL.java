@@ -35,7 +35,7 @@ public class tribe_CTRL {
 
 
     //    map profile view
-    @GetMapping("/tribe")
+    @GetMapping("/my-tribe")
     public String profile_get(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

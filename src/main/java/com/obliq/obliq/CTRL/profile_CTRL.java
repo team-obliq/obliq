@@ -30,7 +30,7 @@ public class profile_CTRL {
 
 
     //    map profile view
-    @GetMapping("/profile")
+    @GetMapping("/my-profile")
     public String profile_get(Model model) {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -54,7 +54,7 @@ public class profile_CTRL {
 //
 //    }
 
-    @PostMapping("/profile")
+    @PostMapping("/my-profile")
     public String profile_post() {
 
         System.out.println("profile");
