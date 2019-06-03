@@ -15,7 +15,8 @@
                 <h1 class="d-flex justify-content-center my-4">Members</h1>
                 <div th:each="user : ${users}">
                     <p class="d-flex justify-content-center"><img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/></p>
-                    <p th:text="${user.first_name}" class="d-flex justify-content-center"></p>
+                    <p th:text="${user.first_name}" class="d-flex justify-content-center mb-1"></p>
+                    <p class="d-flex justify-content-center"><i th:text="${career.title}" class="badge badge-primary"></i></p>
                     <!--                <div th:each="careers : ${career} "></div>-->
                 </div>
         </div>
@@ -32,11 +33,11 @@
                 <div class="row card card-with-border custom-anchor my-2">
                     <div class="card-body">
                         <h3 th:text="${post.title}"></h3>
-                        <p>
-                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM.dd.yyyy')}"></small>
+                        <p class="mb-1">
+                            <small th:text="'posted by: ' + ${post.user.username}"></small>
                         </p>
                         <p>
-                            <small th:text="'posted by: ' + ${post.user.username}"></small>
+                            <small th:text="'posted on: ' + ${#dates.format(post.dateCreated, 'MM.dd.yyyy')}"></small>
                         </p>
                         <p th:text="${post.body}"></p>
                     </div>
