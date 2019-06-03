@@ -203,3 +203,7 @@ body:not(.no-splash){
 #obliq-about {
     margin-bottom: 100px;
 }
+.codeup-icon {
+    height: 15px;
+    margin-right: 2px;
+}
