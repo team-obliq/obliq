@@ -82,6 +82,7 @@ body:not(.no-splash){
 
 .navbar-brand {
     font-size: 1.6rem;
+    text-decoration-color: #ffc99d!important;
 }
 
 .row.card.custom-anchor.my-4, .card-with-border {
@@ -100,7 +101,7 @@ body:not(.no-splash){
 
 .obliq-card {
     height: 200px;
-    background-color: #c6bcd1;
+    background-color: #ffc99d;
     color: #475563;
     box-shadow: #475563 6px 6px 8px;
     /*text-shadow: papayawhip 1px 1px;*/
@@ -203,3 +204,9 @@ body:not(.no-splash){
 #obliq-about {
     margin-bottom: 100px;
 }
+
+.obliqNavLogo {
+
+   color: #ffc99d !important;
+}
+
