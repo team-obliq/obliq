@@ -211,3 +211,6 @@ body:not(.no-splash){
 .logo-row {
     height: 300px;
 }
+.badge-primary {
+    background-color: #475563;
+}
