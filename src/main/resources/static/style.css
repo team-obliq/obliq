@@ -210,3 +210,16 @@ body:not(.no-splash){
    color: #ffc99d !important;
 }
 
+
+.codeup-icon {
+    height: 15px;
+    margin-right: 2px;
+}
+
+.logo-row {
+    height: 300px;
+}
+.badge-primary {
+    background-color: #475563;
+}
+

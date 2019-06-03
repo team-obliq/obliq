@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                login configuration
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/tribe")
+                .defaultSuccessUrl("/my-tribe")
                 .permitAll()
 //
 //                logout configuration
@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/profile",
+                        "/my-profile",
                         "/edit",
                         "/delete"
                 )

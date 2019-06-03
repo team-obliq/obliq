@@ -6,7 +6,7 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-<div class="container-fluid">
+<div class="container-fluid my-4">
     <div class="text-center mt-3">
         <img th:src="@{${user.imageURL}}" class="profile-page-img rounded-circle border mb-1"/>
         <h1 th:text="${user.first_name}"></h1>

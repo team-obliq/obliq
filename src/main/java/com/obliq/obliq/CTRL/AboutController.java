@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AboutController {
 
-    @GetMapping("/about")
+    @GetMapping("/about-us")
     public String aboutUs(Model model){
 
         return "about";

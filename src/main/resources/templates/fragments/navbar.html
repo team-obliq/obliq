@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse" id="main">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item px-1">
-                <a class="nav-link" href="/about">About Us</a>
+                <a class="nav-link" href="/about-us">About Us</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
-                <a class="nav-link" href="/tribe">My Tribe</a>
+                <a class="nav-link" href="/my-tribe">My Tribe</a>
             </li>
             <!--<li sec:authorize="isAuthenticated()" class="nav-item px-1">-->
             <!--<a class="nav-link" href="/profile">My Profile</a>-->
@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/posts/create">Post Question</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
-                <a class="nav-link" href="/profile">My Profile</a>
+                <a class="nav-link" href="/my-profile">My Profile</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item px-1">
                 <a class="nav-link" th:href="@{'/users/edit/' + ${#authentication.principal.id}}">Edit Profile</a>

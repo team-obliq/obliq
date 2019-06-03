@@ -73,7 +73,7 @@ public class post_CTRL {
         post.setCardID(postCard.getId());
 
         postRepo.save(post);
-        return "redirect:/tribe";
+        return "redirect:/my-tribe";
     }
 
 //    map for edit form in the edit view
@@ -105,7 +105,7 @@ public class post_CTRL {
         User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postEdited.setUser(userRepo.findOne(sessionUser.getId()));
         postRepo.save(postEdited);
-        return "redirect:/profile";
+        return "redirect:/my-profile";
     }
 
 //    map for delete function
@@ -114,7 +114,7 @@ public class post_CTRL {
 //        User sessionUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postRepo.findOne(id);
         postRepo.delete(post);
-        return "redirect:/profile";
+        return "redirect:/my-profile";
     }
 
 
