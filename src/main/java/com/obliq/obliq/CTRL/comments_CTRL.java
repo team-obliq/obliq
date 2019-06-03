@@ -73,7 +73,7 @@ public class comments_CTRL {
         Comment comment = commentRepo.findOne(id);
 
         commentRepo.delete(comment);
-        return "redirect:/posts/showPost/" + comment.getPost().getId();
+        return "redirect:/profile";
     }
 
 
