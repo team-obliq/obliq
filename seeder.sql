@@ -111,17 +111,7 @@ values ('MinaMoon', 'mina@mina.com', 'mina', 'Mina', 'My name is Mina and I am a
         current_date);
 
 
-INSERT INTO careers(title)
-values ('Doctor'),
-       ('Programmer'),
-       ('Astrologist'),
-       ('Nutritionist'),
-       ('Archaeologist'),
-       ('Architect'),
-       ('Writer'),
-       ('Cage Fighter'),
-       ('Painter'),
-       ('Teacher');
+
 
 INSERT INTO comments (date_created, body, points, post_id, user_id)
 VALUES (current_date,'this is Minas comment',0,1,1),
