@@ -207,3 +207,7 @@ body:not(.no-splash){
     height: 15px;
     margin-right: 2px;
 }
+
+.logo-row {
+    height: 300px;
+}
