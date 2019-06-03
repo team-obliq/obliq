@@ -7,21 +7,25 @@
 <body class="no-splash">
 
 <th:block th:replace="fragments/navbar :: navbar"/>
-<div class="text-center mx-auto">
-    <!--<a class=" btn btn-outline-secondary" th:href="@{/login/}">BEGIN</a>-->
-</div>
-<div class="d-flex row">
-<img src="../static/images/OBLIQ-LOGO-WHITE.png" th:src="@{images/OBLIQ-LOGO-WHITE.png}" alt="obliq-img"
-     id="obliq-logo" class="mx-auto justify-content-center mb-4"/>
-</div>
-<div class="text-center mx-auto display-3" id="splash-text">OBLIQ</div>
-<br/>
-<div class="row">
-<h4 class="text-center mx-auto col-6" id="splash-text">
-    A problem solving community
-    designed to bring unlikely minds together
-    to achieve next level ideation.
-</h4>
+<div class="container fill my-4">
+    <!--<div class="text-center mx-auto">-->
+        <!--&lt;!&ndash;<a class=" btn btn-outline-secondary" th:href="@{/login/}">BEGIN</a>&ndash;&gt;-->
+    <!--</div>-->
+    <div class="col d-flex flex-column justify-content-center">
+        <div class="d-flex row">
+            <img src="../static/images/OBLIQ-LOGO-WHITE.png" th:src="@{images/OBLIQ-LOGO-WHITE.png}" alt="obliq-img"
+                 id="obliq-logo" class="mx-auto justify-content-center mb-4"/>
+        </div>
+        <div class="text-center mx-auto display-3" id="splash-text">OBLIQ</div>
+        <br/>
+        <div class="row">
+            <h4 class="text-center mx-auto col-6" id="splash-text">
+                A problem solving community
+                designed to bring unlikely minds together
+                to achieve next level ideation.
+            </h4>
+        </div>
+    </div>
 </div>
 <br/>
 <!--<h4 class="text-center mx-auto" id="splash-text">REGISTER NOW</h4>-->
