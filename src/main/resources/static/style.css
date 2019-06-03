@@ -41,7 +41,7 @@ body:not(.no-splash){
 }
 #footer {
     color: #fff;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     left: 0;
     right: 0;
@@ -62,7 +62,7 @@ body:not(.no-splash){
 }
 
 .fill {
-    height: calc(100vh - 155px);
+    height: 90vh;
 }
 
 .hidden {
@@ -103,7 +103,7 @@ body:not(.no-splash){
     background-color: #c6bcd1;
     color: #475563;
     box-shadow: #475563 6px 6px 8px;
-    text-shadow: papayawhip 1px 1px;
+    /*text-shadow: papayawhip 1px 1px;*/
 }
 
 .obliq-card:hover {
@@ -198,4 +198,8 @@ body:not(.no-splash){
 .show>.btn-primary.dropdown-toggle {
     background-color: #816a9a !important;
     border-color: #475563 !important;
+}
+
+#obliq-about {
+    margin-bottom: 100px;
 }

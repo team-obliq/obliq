@@ -6,7 +6,7 @@
 <body>
 <th:block th:replace="fragments/navbar :: navbar"/>
 
-<div class="container fill">
+<div class="container">
     <div class="row fill d-flex justify-content-center">
         <form class="col-12 col-md-6 my-5" th:action="@{'/posts/edit/' + ${id}}" th:method="post" th:object="${post}">
             <h1 th:text="${'Edit Post'}" class="d-flex justify-content-center"></h1>
@@ -18,20 +18,22 @@
                     </div>
                     <div class="form-group">
                         <label for="body">body</label>
-                        <textarea id="body" class="form-control" th:field="*{body}"></textarea>
+                        <textarea id="body" class="form-control" th:field="*{body}" rows="5"></textarea>
                     </div>
                     <input type="hidden" th:field="*{id}"/>
                     <input type="hidden" th:field="*{dateCreated}"/>
                     <input type="hidden" th:field="*{cardID}"/>
                     <div class="row">
-                        <a href="/profile" class="btn btn-primary">
-                            <span class="fa fa-times mr-1"></span>
-                            <span>Cancel</span>
-                        </a>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="fa fa-check mr-1"></span>
-                            <span>Submit</span>
-                        </button>
+                        <div class="col">
+                            <a href="/profile" class="btn btn-primary">
+                                <span class="fa fa-times mr-1"></span>
+                                <span>Cancel</span>
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="fa fa-check mr-1"></span>
+                                <span>Submit</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,14 +51,16 @@
                             </div>
                         </div>
                         <div class="row my-4">
-                            <input type="hidden" th:field="*{id}"/>
-                            <input type="hidden" th:field="*{dateCreated}"/>
-                            <input type="hidden" th:field="*{body}"/>
-                            <input type="hidden" th:field="*{title}"/>
-                            <button type="submit" name="change-card"
-                                    class="btn btn-primary">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
+                            <div class="col">
+                                <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{dateCreated}"/>
+                                <input type="hidden" th:field="*{body}"/>
+                                <input type="hidden" th:field="*{title}"/>
+                                <button type="submit" name="change-card"
+                                        class="btn btn-primary">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

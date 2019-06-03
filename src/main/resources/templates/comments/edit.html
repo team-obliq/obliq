@@ -18,7 +18,7 @@
                             <label for="body"></label>
 
 
-                            <textarea id="body" th:field="*{body}" class="form-control"></textarea>
+                            <textarea id="body" th:field="*{body}" class="form-control" rows="5"></textarea>
                             <input type="hidden" th:field="*{id}"/>
                             <input type="hidden" th:field="*{post.id}"/>
                             <input type="hidden" th:field="*{dateCreated}"/>
@@ -26,11 +26,11 @@
 
                         </div>
                         <button type="submit" class="btn btn-primary">
-                            <span class="fa fa-check mr-1"></span>
+                            <span class="fa fa-check"></span>
                             <span>Submit</span>
                         </button>
                         <a th:href="@{'/posts/showPost/' + ${post.id}}" class="btn btn-primary">
-                            <span class="fa fa-times mr-1"></span>
+                            <span class="fa fa-times"></span>
                             <span>Cancel</span>
                         </a>
                     </form>
