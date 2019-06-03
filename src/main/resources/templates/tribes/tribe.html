@@ -10,13 +10,14 @@
     <div class="row my-4">
 
         <!--   sidebar for med and up   -->
-        <div id="sidebar" class="d-none d-md-block col-md-2">
-            <h1 class="d-flex justify-content-center my-4">Members</h1>
-            <div th:each="user : ${users}" class="col-12 col-md-2">
-                <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
-                <p th:text="${user.username}"></p>
-                <!--                <div th:each="careers : ${career} "></div>-->
-            </div>
+        <div id="sidebar" class="d-none d-md-block col-md-3 d-flex flex-column align-items-center justify-content-center">
+
+                <h1 class="d-flex justify-content-center my-4">Members</h1>
+                <div th:each="user : ${users}">
+                    <p class="d-flex justify-content-center"><img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/></p>
+                    <p th:text="${user.username}" class="d-flex justify-content-center"></p>
+                    <!--                <div th:each="careers : ${career} "></div>-->
+                </div>
         </div>
 
         <!--   "sidebar" for mobile   -->
@@ -25,7 +26,7 @@
                 <img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/>
             </div>
         </div>
-        <div class="col-12 col-md-10">
+        <div class="col-md-9">
             <h1 class="d-flex justify-content-center my-4">Tribe Activity</h1>
             <div th:each="post : ${posts}">
                 <div class="row card card-with-border custom-anchor my-2">

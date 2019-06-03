@@ -48,9 +48,9 @@ body:not(.no-splash){
     height: 44px;
 }
 .profile-img {
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
+    height: 80px;
+    width: 80px;
+    /*object-fit: cover;*/
 }
 
 .profile-img:hover {
