@@ -15,7 +15,7 @@
                 <h1 class="d-flex justify-content-center my-4">Members</h1>
                 <div th:each="user : ${users}">
                     <p class="d-flex justify-content-center"><img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/></p>
-                    <p th:text="${user.username}" class="d-flex justify-content-center"></p>
+                    <p th:text="${user.first_name}" class="d-flex justify-content-center"></p>
                     <!--                <div th:each="careers : ${career} "></div>-->
                 </div>
         </div>
