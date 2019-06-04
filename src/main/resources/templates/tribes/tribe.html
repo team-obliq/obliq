@@ -13,7 +13,7 @@
         <div id="sidebar" class="d-none d-md-block col-md-3 d-flex flex-column align-items-center justify-content-center">
 
                 <h1 class="d-flex justify-content-center my-4">Members</h1>
-                <div th:each="user : ${users}">
+                <div th:each="user : ${users}" class="mb-5">
                     <p class="d-flex justify-content-center"><img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/></p>
                     <p th:text="${user.first_name}" class="d-flex justify-content-center mb-1"></p>
                     <div th:each="career : ${careers}">
