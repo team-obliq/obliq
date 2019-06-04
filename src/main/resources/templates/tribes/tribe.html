@@ -16,7 +16,11 @@
                 <div th:each="user : ${users}">
                     <p class="d-flex justify-content-center"><img th:src="@{${user.imageURL}}" class="profile-img rounded-circle"/></p>
                     <p th:text="${user.first_name}" class="d-flex justify-content-center mb-1"></p>
-                    <p class="d-flex justify-content-center"><i th:text="${career.title}" class="badge badge-primary"></i></p>
+                    <div th:each="career : ${careers}">
+                        <p class="d-flex justify-content-center">
+                            <i th:if="${user.career_id == career.id}" th:text="${career.title}" class="badge badge-primary"></i>
+                        </p>
+                    </div>
                     <!--                <div th:each="careers : ${career} "></div>-->
                 </div>
         </div>

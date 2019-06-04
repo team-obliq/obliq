@@ -46,9 +46,17 @@ public class tribe_CTRL {
                 tribe_users.add(u);
         }
 
+        List<Career> careers = new ArrayList<>();
+        for (Career c : careerRepo.findAll()) {
+            for (User u : tribe_users) {
+                if (c.getId() == u.getCareer_id()) {
+                    careers.add(c);
+                }
+            }
+        }
+
         model.addAttribute("users", tribe_users);
-//        model.addAttribute("careers", user.getCareer_id());
-        model.addAttribute("career", careerRepo.findOne(sessionUser.getId()));
+        model.addAttribute("careers", careers);
         List<Post> tribe_posts = new ArrayList<>();
         for(Post p: postRepo.findAll()) {
             if (p.getUser().getTribe_id() == user.getTribe_id())
