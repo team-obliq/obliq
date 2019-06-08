@@ -37,7 +37,7 @@ form.addEventListener('submit', function (e) {
 
 // Helper to overwrite input value
 
-function updateForm (result) {
+function updateForm(result) {
     const fileData = result.filesUploaded[0];
     fileInput.value = fileData.url;
     imageUrl.value = fileInput.value;
