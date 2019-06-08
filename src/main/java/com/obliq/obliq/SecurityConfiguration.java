@@ -1,6 +1,6 @@
 package com.obliq.obliq;
 
-import com.obliq.obliq.SECURITY.UserDetailsLoader;
+import com.obliq.obliq.security.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
